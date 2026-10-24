@@ -79,3 +79,18 @@ test('global search filters module records and has a clear empty state', () => {
   assert.match(app, /No matching records\./);
   assert.match(app, /String\(row\.category\|\|''\).*String\(row\.priority\|\|''\)/);
 });
+
+
+test('backup recovery tolerates omitted legacy sections but rejects malformed sections', () => {
+  assert.match(app, /data\[key\]===undefined\?\[\]:data\[key\]/);
+  assert.match(app, /Invalid backup section: '\+key/);
+  assert.match(app, /Backup contains too many records/);
+});
+
+test('backup restore validates calendar dates and normalizes task/issue statuses', () => {
+  assert.match(app, /const validDate=\/\^\\d\{4\}-\\d\{2\}-\\d\{2\}\$\//);
+  assert.match(app, /const completed=key==='tasks'\?/);
+  assert.match(app, /const resolved=key==='issues'\?/);
+  assert.match(app, /if\(key==='tasks'\)status=completed\?'completed':'active'/);
+  assert.match(app, /if\(key==='issues'\)status=resolved\?'resolved':'active'/);
+});
