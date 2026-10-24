@@ -36,6 +36,18 @@ test('backup import is bounded and asks before replacing local data', () => {
   assert.match(app, /Replace this browser’s local workspace/);
 });
 
+test('global search covers status/date/amount and supports Escape dismissal', () => {
+  assert.match(app, /String\(row\.status\|\|''\)/);
+  assert.match(app, /String\(row\.date\|\|''\)/);
+  assert.match(app, /typeof row\.amount==='number'\?String\(row\.amount\)/);
+  assert.match(app, /e\.key==='Escape'/);
+  assert.match(app, /panel\.hidden=true/);
+});
+
+test('backup export allows the browser time to start downloading', () => {
+  assert.match(app, /setTimeout\(\(\)=>URL\.revokeObjectURL\(url\),1000\)/);
+});
+
 test('record creation and deletion validate and protect local data', () => {
   assert.match(app, /That record type is not available/);
   assert.match(app, /Enter a title before saving/);
