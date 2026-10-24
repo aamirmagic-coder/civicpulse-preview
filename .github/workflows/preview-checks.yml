@@ -23,6 +23,10 @@ jobs:
           grep -q 'global-search-results' index.html
           grep -q 'renderGlobalSearch' app.js
           grep -q 'Issue marked resolved' app.js
+          grep -q 'record-priority' app.js
+          grep -q 'record-category' app.js
+          grep -q 'priority:\[.low.\,.normal.\,.high.\,.urgent.\]' app.js
+          grep -q 'resolved:row.resolved===true' app.js
           grep -q 'civicpulse-local-backup' app.js
       - name: Check HTML parses
         run: |
