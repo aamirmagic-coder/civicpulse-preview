@@ -18,9 +18,9 @@
 ## Rebuild milestones
 
 - [ ] **M1 — Audit controls and workflows:** inventory all buttons, navigation paths, forms, validation and current storage behavior.
-- [ ] **M2 — Dashboard rebuild:** responsive bento dashboard, clear hierarchy, navigation states, light/dark themes and mobile checks.
-- [ ] **M3 — Core modules:** type-specific create/edit/complete/reopen workflows and validation.
-- [ ] **M4 — Search and capture:** authorised-scope search in the preview, record selection, quick-capture type selection and safe backup/import validation.
+- [ ] **M2 — Dashboard rebuild:** responsive bento dashboard, clear hierarchy, navigation states, light/dark themes and mobile checks. In progress: data-driven task completion percentage and recent local activity widgets added on `rebuild-v1-foundation`; mobile visual QA remains outstanding.
+- [ ] **M3 — Core modules:** type-specific create/edit/complete/reopen workflows and validation. Partial: task priority, issue category, and task/issue complete/resolve controls implemented; edit workflows and deeper validation remain.
+- [ ] **M4 — Search and capture:** authorised-scope search in the preview, record selection, quick-capture type selection and safe backup/import validation. Partial: local search matches category/priority; quick capture offers record types; backup import has schema/size/count checks.
 - [ ] **M5 — Automated QA:** routes, controls, forms, mobile overflow, data handling and public/private boundary checks.
 - [ ] **M6 — Deployment verification:** verify the deployed version and record exact commit + test results.
 - [ ] **M7 — Backend readiness:** separately assess authentication, role enforcement and cross-device persistence; do not claim these from frontend-only checks.
@@ -42,4 +42,6 @@
 3. In chat, send `CivicPulse status` to request a progress report, or `CivicPulse next: [task]` to reprioritise the next work batch.
 4. Each completed milestone must name its commit, tests actually run, and known gaps. Do not mark a milestone complete on deployment status alone.
 
-**Current next action:** complete the control/workflow inventory, then make a substantial dashboard + interaction change on an isolated rebuild branch.
+**Latest batch (2026-10-25):** added dashboard task-progress and recent-activity widgets, task priority and issue category fields, search parity for category/priority, and backup preservation of these fields. Static GitHub Actions checks are running for the latest commits. They do not prove browser-level behavior. See the isolated review branch and PR #1 before any merge.
+
+**Current next action:** inspect latest automated results, expand automated behavior tests, and continue the task/issue workflow before mobile visual QA.
