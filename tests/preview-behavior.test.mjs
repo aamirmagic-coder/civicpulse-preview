@@ -1,0 +1,42 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+
+const app = readFileSync('app.js', 'utf8');
+const html = readFileSync('index.html', 'utf8');
+const css = readFileSync('styles.css', 'utf8');
+
+test('record form exposes edit, save and cancel controls', () => {
+  for (const id of ['record-form','record-title','record-details','record-date','record-amount','record-submit-btn','record-cancel-edit']) {
+    assert.match(html, new RegExp('id="' + id + '"'), 'missing form control: ' + id);
+  }
+  assert.match(app, /startEditRecord\(listKey,row\)/);
+  assert.match(app, /resetRecordForm\(\)/);
+  assert.match(app, /this\.log\('Updated '\+def\.key\+' record'\)/);
+});
+
+test('task and issue workflows include typed fields and status controls', () => {
+  assert.match(app, /record-priority/);
+  assert.match(app, /record-category/);
+  assert.match(app, /Issue marked resolved/);
+  assert.match(app, /Issue reopened/);
+  assert.match(app, /Task status updated/);
+});
+
+test('dashboard progress and activity widgets have matching render hooks', () => {
+  for (const id of ['task-progress-bar','task-progress-fill','task-progress-copy','dashboard-activity']) {
+    assert.match(html, new RegExp('id="' + id + '"'), 'missing dashboard widget: ' + id);
+    assert.ok(app.includes(id), 'missing JavaScript hook: ' + id);
+  }
+});
+
+test('backup import is bounded and asks before replacing local data', () => {
+  assert.match(app, /file\.size>5\*1024\*1024/);
+  assert.match(app, /total>10000/);
+  assert.match(app, /Replace this browser’s local workspace/);
+});
+
+test('editing controls have mobile responsive styling', () => {
+  assert.match(css, /record-form-actions/);
+  assert.match(css, /@media\(max-width:560px\)/);
+});
