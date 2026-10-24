@@ -45,3 +45,8 @@
 **Latest batch (2026-10-25):** added dashboard task-progress and recent-activity widgets, task priority and issue category fields, search parity for category/priority, backup preservation of these fields, and generic record edit/save/cancel controls. Added Node regression tests for form controls, edit hooks, dashboard hooks, bounded backup import, mobile styling, local record validation/deletion safeguards, global search coverage, and backup export download timing. Latest GitHub Actions regression run is pending at the time of this update; these checks do not prove full browser-level behavior. See the isolated review branch and PR #1 before any merge.
 
 **Current next action:** inspect latest automated results, expand automated behavior tests, and continue the task/issue workflow before mobile visual QA.
+
+
+**Latest batch (2026-10-25, backup recovery):** backup import now treats omitted known sections as empty arrays for recovery compatibility while still rejecting malformed sections, validates actual calendar dates, caps restored amounts, and normalizes task/issue status fields so dashboard counts and status buttons agree. Added regression checks for these cases. Commit: `118a1cb965c10f82b5bf80ee8beb9e5953fa64d4` (app) and `ff038e32f4f449867141ed701da51b721c299b82` (tests). GitHub Actions checks are still running; no merge or deployment performed. Browser-level restore testing remains outstanding.
+
+**Next action:** finish keyboard/focus and responsive layout audit, then classify modules needing dedicated forms/workflows instead of the shared generic record form.
