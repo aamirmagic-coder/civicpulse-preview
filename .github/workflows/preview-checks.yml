@@ -1,0 +1,39 @@
+name: CivicPulse preview checks
+on:
+  push:
+    branches: [rebuild-v1-foundation]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Check required files and core interaction hooks
+        run: |
+          test -s index.html
+          test -s styles.css
+          test -s app.js
+          grep -q 'global-search-results' index.html
+          grep -q 'renderGlobalSearch' app.js
+          grep -q 'Issue marked resolved' app.js
+          grep -q 'civicpulse-local-backup' app.js
+      - name: Check HTML parses
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          class Check(HTMLParser):
+              def error(self, message):
+                  raise RuntimeError(message)
+          parser = Check(convert_charrefs=True)
+          parser.feed(Path('index.html').read_text())
+          parser.close()
+          print('HTML parser completed')
+          PY
