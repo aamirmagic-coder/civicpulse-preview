@@ -1,0 +1,18 @@
+{
+  "name": "CivicPulse — Community Intelligence",
+  "short_name": "CivicPulse",
+  "description": "Mobile-first community operations and intelligence workspace",
+  "start_url": "/civicpulse-preview/",
+  "scope": "/civicpulse-preview/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "icons": [
+    {
+      "src": "/civicpulse-preview/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
