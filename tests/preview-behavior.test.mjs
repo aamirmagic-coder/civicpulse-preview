@@ -54,3 +54,16 @@ test('edit workflow validates actual calendar dates and cancels on module change
   assert.match(app, /if\(this\.editingRecordId&&view!==this\.currentView\)this\.resetRecordForm\(\)/);
   assert.match(app, /if\(!this\.saveState\(\)\)\{Object\.assign\(row,before\);return;\}/);
 });
+
+test('task and issue status changes roll back if local save fails', () => {
+  assert.match(app, /if\(!this\.saveState\(\)\)\{Object\.assign\(row,before\);return;\}/);
+  assert.match(app, /Status changes are available for tasks and issues only/);
+  assert.match(app, /row\.status=row\.completed\?'completed':'active'/);
+  assert.match(app, /row\.status=row\.resolved\?'resolved':'active'/);
+});
+
+test('global search filters module records and has a clear empty state', () => {
+  assert.match(app, /this\.searchTerm=e\.target\.value\.trim\(\)\.toLowerCase\(\)/);
+  assert.match(app, /No matching records\./);
+  assert.match(app, /String\(row\.category\|\|''\).*String\(row\.priority\|\|''\)/);
+});
