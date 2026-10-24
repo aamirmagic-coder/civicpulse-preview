@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="CivicPulse phoenix mark">
+ <defs><linearGradient id="wingL" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#06B6D4"/></linearGradient><linearGradient id="wingR" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#10B981"/></linearGradient><linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FBBF24"/><stop offset="1" stop-color="#F97316"/></linearGradient></defs>
+ <rect width="128" height="128" rx="28" fill="#F3F6FC"/>
+ <path d="M60 77C43 65 28 49 24 20c17 17 28 20 38 33-6-18-3-31 3-40 5 18 7 31 3 45 10-15 22-23 34-27-4 23-15 39-35 49l-3 15H60z" fill="url(#wingL)"/>
+ <path d="M68 77c17-12 32-28 36-57-17 17-28 20-38 33 6-18 3-31-3-40-5 18-7 31-3 45-10-15-22-23-34-27 4 23 15 39 35 49l3 15h4z" fill="url(#wingR)" opacity=".92"/>
+ <path d="M64 39c-7 16-4 31 0 43 4-12 7-27 0-43z" fill="#38BDF8"/>
+ <path d="M61 78c-3 11-12 18-10 27 2 8 9 13 13 18 4-6 12-12 13-20 1-8-8-16-11-25l-2 14z" fill="url(#flame)"/>
+ <path d="M25 54c11 9 22 12 31 14-10 4-22 2-31-4M103 54C92 63 81 66 72 68c10 4 22 2 31-4" fill="none" stroke="#10B981" stroke-width="5" stroke-linecap="round"/>
+</svg>
