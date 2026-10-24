@@ -36,6 +36,14 @@ test('backup import is bounded and asks before replacing local data', () => {
   assert.match(app, /Replace this browser’s local workspace/);
 });
 
+test('record creation and deletion validate and protect local data', () => {
+  assert.match(app, /That record type is not available/);
+  assert.match(app, /Enter a title before saving/);
+  assert.match(app, /slice\(0,180\)/);
+  assert.match(app, /This cannot be undone unless you have a backup/);
+  assert.match(app, /if\(!this\.saveState\(\)\)\{this\.state\[listKey\]=previous;return;\}/);
+});
+
 test('editing controls have mobile responsive styling', () => {
   assert.match(css, /record-form-actions/);
   assert.match(css, /@media\(max-width:560px\)/);
