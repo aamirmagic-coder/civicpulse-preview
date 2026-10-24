@@ -40,3 +40,9 @@ test('editing controls have mobile responsive styling', () => {
   assert.match(css, /record-form-actions/);
   assert.match(css, /@media\(max-width:560px\)/);
 });
+
+test('edit workflow validates actual calendar dates and cancels on module change', () => {
+  assert.match(app, /Choose a real calendar date/);
+  assert.match(app, /if\(this\.editingRecordId&&view!==this\.currentView\)this\.resetRecordForm\(\)/);
+  assert.match(app, /if\(!this\.saveState\(\)\)\{Object\.assign\(row,before\);return;\}/);
+});
