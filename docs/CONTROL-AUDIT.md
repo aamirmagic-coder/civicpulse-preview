@@ -7,7 +7,7 @@ Scope: `rebuild-v1-foundation` branch, frontend-only preview. This is a code ins
 | Area | Observed behavior | Risk / next action |
 |---|---|---|
 | Global search | Previous handler sent dashboard searches to Tasks and searched only the current module. | Updated on rebuild branch to search across local collections and show a result panel. Needs runtime testing. |
-| Quick capture | Previously always created a Task, regardless of what the user wanted to capture. | Updated on rebuild branch to let the user select a record type. Still uses simple prompts and should be replaced with a polished accessible dialog later. |
+| Quick capture | Previously always created a Task, regardless of what the user wanted to capture. | Updated on rebuild branch to let the user select a record type in an accessible dialog with bounded title/details fields. Runtime keyboard and screen-reader testing remains outstanding. |
 | Issue lifecycle | Issue records could be deleted but did not have a Resolve/Reopen action in the list. | Updated on rebuild branch with a local resolve/reopen control. Needs behavior testing. |
 | Module data | Most modules use a shared generic title/details/date/amount form. | Replace with type-specific fields and validation in planned module batches. |
 | Persistence | Uses browser localStorage. | Local to one browser/device; not secure storage, not cross-device sync. Never put sensitive resident, political, or financial records in the public preview. |
@@ -31,7 +31,10 @@ Scope: `rebuild-v1-foundation` branch, frontend-only preview. This is a code ins
 
 - [x] Code/specification inspected.
 - [x] Branch changes present in GitHub.
-- [x] GitHub Actions static/regression workflow passed for commit `7d3270fe53da492fd87070a3507a7b827206547e`.
+- [ ] Latest GitHub Actions static/regression workflow status is not currently retrievable through the connected GitHub status/run tools; do not treat the historical pass above as proof that current head passes.
 - [ ] Browser interaction tests not yet run; current regression tests are primarily source-level assertions.
 - [ ] Mobile device visual QA not yet run.
 - [ ] Backend security/persistence not implemented by this frontend batch.
+- [ ] Backup validation and rollback need executable behavior tests, including malformed JSON, unsupported format/version, non-array sections, record limits, invalid IDs/titles, and storage quota failures.
+- [ ] Verify that imported custom fields cannot exceed intended per-field limits; current normalization drops unsupported value types but allows bounded custom string fields for forward compatibility.
+- [ ] Test on a real Android browser: dialog focus/escape behavior, touch targets, import/export picker, offline behavior, and install prompt.
