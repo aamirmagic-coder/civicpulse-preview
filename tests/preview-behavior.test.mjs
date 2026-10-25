@@ -231,3 +231,13 @@ test('Tasks and Issues show accurate local operational summaries', () => {
   assert.match(app, /Categories affected/);
   assert.match(app, /not connected to a municipal case system or live public map/);
 });
+
+
+test('Tasks can be filtered by priority and issues by category', () => {
+  assert.match(app, /task-priority-filter/);
+  assert.match(app, /this\.taskPriorityFilter==='all'\|\|String\(row\.priority\|\|'normal'\)\.toLowerCase\(\)===this\.taskPriorityFilter/);
+  assert.match(app, /issue-category-filter/);
+  assert.match(app, /this\.issueCategoryFilter==='all'\|\|\(row\.category\|\|'Other'\)===this\.issueCategoryFilter/);
+  assert.match(app, /this\.taskPriorityFilter='all';this\.issueCategoryFilter='all';this\.renderGlobalSearch\(\)/);
+  assert.match(app, /this\.taskPriorityFilter!=='all'\|\|this\.issueCategoryFilter!=='all'/);
+});
