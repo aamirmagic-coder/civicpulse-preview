@@ -62,3 +62,12 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 
 /* Issue reporting privacy fields */
 #record-type-fields textarea{width:100%;min-height:72px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font:inherit;resize:vertical}#record-type-fields textarea:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}#record-type-fields .record-form-note{grid-column:1/-1}
+
+
+/* Issue-reporting fields: clear hierarchy, readable guidance and mobile-safe controls */
+#record-type-fields textarea,
+#record-type-fields input[type="text"]{width:100%;min-width:0;min-height:44px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font:inherit;line-height:1.45}
+#record-type-fields textarea{resize:vertical;min-height:76px}
+#record-type-fields textarea:focus-visible,
+#record-type-fields input[type="text"]:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+#record-type-fields .record-form-note{grid-column:1/-1}
