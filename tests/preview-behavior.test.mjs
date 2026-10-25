@@ -206,3 +206,14 @@ test('People and Team lists filter by contact purpose and summarize consent safe
   assert.match(app, /Permission date: /);
   assert.match(css, /\.module-record-controls/);
 });
+
+
+test('People and Team views show local role/purpose summaries and privacy-aware empty states', () => {
+  assert.match(app, /people-team-summary/);
+  assert.match(app, /Team coordination/);
+  assert.match(app, /Service follow-up/);
+  assert.match(app, /permission timestamp/);
+  assert.match(app, /No people records yet/);
+  assert.match(app, /No team records yet/);
+  assert.match(css, /\.people-team-summary-grid/);
+});
