@@ -153,3 +153,13 @@ test('module list search includes issue location, status, date and amount fields
   assert.match(app, /row\.resolved\?'resolved':''/);
   assert.match(app, /row\.completed\?'completed':''/);
 });
+
+
+test('task and issue lists provide status filters and record sorting', () => {
+  assert.match(app, /record-status-filter/);
+  assert.match(app, /Overdue tasks/);
+  assert.match(app, /High \/ urgent/);
+  assert.match(app, /record-sort-filter/);
+  assert.match(app, /oldest.*Oldest first/s);
+  assert.match(app, /priorityRank/);
+});
