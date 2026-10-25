@@ -26,7 +26,7 @@ jobs:
           grep -q 'record-priority' app.js
           grep -q 'record-category' app.js
           grep -q 'priority:\[.low.\,.normal.\,.high.\,.urgent.\]' app.js
-          grep -q 'resolved:row.resolved===true' app.js
+          grep -q "const resolved=key==='issues'" app.js
           grep -q 'civicpulse-local-backup' app.js
       - name: Run regression checks
         run: node --test tests/preview-behavior.test.mjs
