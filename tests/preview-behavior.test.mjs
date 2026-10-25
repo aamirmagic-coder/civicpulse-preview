@@ -284,7 +284,8 @@ test('backup restore preserves bounded custom operational fields', () => {
 
 test('brand assets and theme references exist in repository', () => {
   assert.match(html, /src="icon\.svg"/);
-  assert.match(app, /icon-light\.svg/);
+  assert.doesNotMatch(app, /icon-light\.svg/);
+  assert.match(icon, /viewBox="0 0 128 128"/);
   assert.match(css, /--brand-flame:#F36B32/);
   assert.match(css, /--brand-sky:#328CC1/);
 });
