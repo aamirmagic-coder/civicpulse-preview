@@ -13,15 +13,15 @@
 <body>
   <header class="app-header">
     <div class="brand-wrapper">
-      <img class="app-brand-logo" src="icon.svg" alt="CivicPulse symbol">
-      <div class="brand-title"><h1>CivicPulse</h1><span>Community Intelligence</span></div>
+      <img class="app-brand-logo" src="icon.svg" alt="Sukuma phoenix mark">
+      <div class="brand-title"><h1>CivicPulse</h1><span>Community Intelligence · Sukuma</span></div>
     </div>
     <div class="header-actions">
       <label class="search-box" aria-label="Search records"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Search" autocomplete="off"></label>
       <button class="secondary-btn install-btn" id="install-app-btn" type="button" hidden>Install app</button>
       <button class="icon-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
     </div>
-  </header>
+  </header>\n  <section id="global-search-results" class="global-search-results" aria-label="Global search results" hidden></section>
 
   <main>
     <section class="hero-row">
@@ -64,6 +64,8 @@
         <button class="bento-card" data-open="team"><span class="bento-title">Team</span><strong class="bento-value" id="count-team">0</strong><span class="bento-badge">Field activity</span></button>
         <button class="bento-card" data-open="expenses"><span class="bento-title">Finance records</span><strong class="bento-value" id="count-finance">0</strong><span class="bento-badge">Income & expenses</span></button>
       </div>
+      <section class="info-card" aria-labelledby="task-progress-heading"><div><p class="eyebrow">DELIVERY</p><h3 id="task-progress-heading">Task completion</h3><p class="muted" id="task-progress-copy">No tasks recorded yet.</p><div class="progress-track" role="progressbar" aria-label="Task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="task-progress-bar"><span id="task-progress-fill"></span></div></div><button class="secondary-btn" data-open="tasks">View tasks</button></section>
+      <section class="info-card"><div><p class="eyebrow">RECENT ACTIVITY</p><h3>Workspace timeline</h3><p class="muted">Recent actions recorded in this browser.</p><div id="dashboard-activity" class="dashboard-activity"><p class="muted">No activity yet.</p></div></div><button class="secondary-btn" data-open="audit">View activity</button></section>
       <section class="info-card"><div><p class="eyebrow">AREA INTELLIGENCE</p><h3>Field activity</h3><p class="muted">The live public issue map is not connected in this local preview. No map data is fabricated.</p></div><div class="map-placeholder" aria-hidden="true"><span>⌖</span><i></i><i></i><i></i></div></section>
       <section class="info-card backup-card"><div><p class="eyebrow">YOUR DATA</p><h3>Backup & portability</h3><p class="muted">Export or restore the local workspace on this device.</p></div><div class="backup-actions"><button class="secondary-btn" id="export-btn">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="import-input" accept="application/json,.json" hidden></label></div></section>
       <p class="preview-warning">Preview only: records are stored in this browser and are not encrypted or synchronised. Do not enter sensitive resident, political or financial information.</p>
@@ -71,7 +73,7 @@
 
     <section id="module-view" hidden>
       <div class="module-toolbar"><div><p class="eyebrow" id="module-kicker">WORKSPACE</p><h3 id="module-title">Tasks</h3><p class="muted" id="module-description"></p></div><button class="secondary-btn" id="back-dashboard-btn">Overview</button></div>
-      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Title or short summary…" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Details or next steps (optional)" rows="2"></textarea><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><button class="primary-action-btn" type="submit">＋ Add record</button></form>
+      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Title or short summary…" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Internal case notes / details (optional)" rows="2"></textarea><div id="record-type-fields" class="record-form-meta" hidden></div><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><div class="record-form-actions"><button class="primary-action-btn" id="record-submit-btn" type="submit">＋ Add record</button><button class="secondary-btn" id="record-cancel-edit" type="button" hidden>Cancel edit</button></div></form>
       <div id="record-list" class="record-list"></div>
       <div id="module-empty" class="empty-state">No records yet. Add the first item above.</div>
     </section>
@@ -83,6 +85,21 @@
     <button class="dock-item" data-target="issues"><span>!</span>Issues</button>
     <button class="dock-item" data-target="more"><span>•••</span>More</button>
   </nav>
+  <dialog id="capture-dialog" class="capture-dialog" aria-labelledby="capture-dialog-title">
+    <form id="capture-form" class="capture-form">
+      <div class="capture-dialog-heading"><div><p class="eyebrow">QUICK ADD</p><h2 id="capture-dialog-title">Capture something</h2><p class="muted">Choose a record type and add the essentials.</p></div><button type="button" class="icon-btn" id="capture-cancel" aria-label="Close capture dialog">×</button></div>
+      <label for="capture-type">Record type</label>
+      <select id="capture-type" required>
+        <option value="tasks">Task</option><option value="issues">Issue / field report</option><option value="field">Field note</option><option value="projects">Project</option><option value="people">Person / contact</option><option value="fundraising">Fundraising record</option><option value="expenses">Expense</option>
+      </select>
+      <label for="capture-title">Title <span aria-hidden="true">*</span></label>
+      <input id="capture-title" name="title" maxlength="180" autocomplete="off" required placeholder="Short, clear summary">
+      <label for="capture-details">Details <span class="muted">(optional)</span></label>
+      <textarea id="capture-details" maxlength="2000" rows="3" placeholder="Context or next steps"></textarea>
+      <p class="capture-local-note">Saved in this browser only. Don’t enter sensitive resident information here.</p>
+      <div class="capture-form-actions"><button type="button" class="secondary-btn" id="capture-cancel-bottom" data-capture-cancel>Cancel</button><button type="submit" class="primary-action-btn">Create record</button></div>
+    </form>
+  </dialog>
   <script src="app.js"></script>
 </body>
 </html>
