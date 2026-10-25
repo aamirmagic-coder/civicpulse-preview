@@ -193,6 +193,6 @@ test('People and Team records use purpose-limited contact fields with validation
 
 test('People and Team require explicit permission before storing phone or email', () => {
   assert.match(app, /\(phone\|\|email\)&&!contactConsent/);
-  assert.match(app, /contactConsentAt\?new Date\(\)\.toISOString\(\):''/);
+  assert.match(app, /contactConsentAt=\(phone\|\|email\)&&contactConsent\?new Date\(\)\.toISOString\(\):''/);
   assert.match(app, /contactConsent\.checked=Boolean\(row\.contactConsentAt\)/);
 });
