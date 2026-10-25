@@ -49,3 +49,6 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 .record-status-badge.status-open{color:var(--accent);border-color:var(--border)}
 .record-status-badge.status-complete{color:var(--success);border-color:var(--success)}
 .record-status-badge.status-overdue{color:#f87171;border-color:#f87171}
+
+
+.module-record-controls{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px;align-items:center}.record-filter-label{display:flex;flex-direction:column;gap:5px;min-width:135px;color:var(--muted);font-size:.78rem}.record-filter-label select{max-width:100%;min-height:40px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font:inherit}@media(max-width:480px){.module-record-controls{display:grid;grid-template-columns:1fr 1fr}.record-filter-label{min-width:0}.record-filter-label select{width:100%;font-size:.8rem}}
