@@ -217,3 +217,5 @@ test('People and Team views show local role/purpose summaries and privacy-aware 
   assert.match(app, /No team records yet/);
   assert.match(css, /\.people-team-summary-grid/);
 });
+
+// Follow-up validation: overview styles are committed with the current branch head.
