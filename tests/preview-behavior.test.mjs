@@ -163,3 +163,12 @@ test('task and issue lists provide status filters and record sorting', () => {
   assert.match(app, /oldest.*Oldest first/s);
   assert.match(app, /priorityRank/);
 });
+
+
+test('module lists announce result counts and offer a clear-filter recovery action', () => {
+  assert.match(app, /module-record-count/);
+  assert.match(app, /aria-live','polite'/);
+  assert.match(app, /Showing '\+filtered\.length\+' of '\+list\.length/);
+  assert.match(app, /No records match the selected filters/);
+  assert.match(app, /Clear search and filters/);
+});
