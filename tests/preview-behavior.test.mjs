@@ -90,8 +90,8 @@ test('backup recovery tolerates omitted legacy sections but rejects malformed se
 
 test('backup restore rolls back workspace if preference persistence fails', () => {
   assert.ok(app.includes('const previousPreferences=this.preferences'));
-  assert.match(app, /if\\(!this\\.savePreferences\\(\\)\\)/);
-  assert.match(app, /this\\.state=previous;this\\.preferences=previousPreferences/);
+  assert.ok(app.includes('if(!this.savePreferences())'));
+  assert.ok(app.includes('this.state=previous;this.preferences=previousPreferences'));
   assert.match(app, /preferences could not be saved/);
 });
 
