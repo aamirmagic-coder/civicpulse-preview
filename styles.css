@@ -52,3 +52,6 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 
 
 .module-record-controls{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px;align-items:center}.record-filter-label{display:flex;flex-direction:column;gap:5px;min-width:135px;color:var(--muted);font-size:.78rem}.record-filter-label select{max-width:100%;min-height:40px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font:inherit}@media(max-width:480px){.module-record-controls{display:grid;grid-template-columns:1fr 1fr}.record-filter-label{min-width:0}.record-filter-label select{width:100%;font-size:.8rem}}
+
+
+.record-form-note{margin:2px 0 4px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--muted);font-size:.8rem;line-height:1.5}.contact-consent-label{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:9px;padding:10px 0;color:var(--text);font-size:.84rem;line-height:1.45}.contact-consent-label input{flex:0 0 auto;width:18px;height:18px;margin-top:2px;accent-color:var(--accent)}
