@@ -14,7 +14,7 @@ Scope: `rebuild-v1-foundation` branch, frontend-only preview. This is a code ins
 | Authorization | No authenticated multi-role security boundary in the public frontend. | UI controls cannot substitute for server-side auth/RBAC. Production blocker. |
 | Map | Explicit placeholder, no live data. | Do not describe as live. Any future public map needs a server-side privacy filter. |
 | Audit | Local activity array in browser storage. | Useful for local history only; not tamper-proof. |
-| Backup/import | Export and import exist; import validates a format and asks before replacing local state. | Needs automated tests for malformed/oversized data and rollback behavior. |
+| Backup/import | Export and import exist; import validates a format and asks before replacing local state. Source-level checks cover legacy sections, malformed sections, record limits, real dates and task/issue status normalization; deeper runtime tests and storage-failure simulation remain needed. | Add behavior-level tests for malformed/oversized files and rollback behavior. |
 | AI | Optional Worker connection; off by default; user-configured endpoint. | Keep isolated dev Worker only, free allowance only, no production credentials and no paid fallback. |
 | Deploy | GitHub Pages workflow publishes static assets from main. | Successful deploy proves publication only, not application behavior. |
 
@@ -24,13 +24,14 @@ Scope: `rebuild-v1-foundation` branch, frontend-only preview. This is a code ins
 - Quick capture supports Task, Issue/field report, Field note, Project, Person/contact, Fundraising record and Expense.
 - Issue records gain Resolve/Reopen action.
 - Search panel styling.
-- A GitHub Actions workflow checks JavaScript syntax, required hooks and HTML parsing.
+- A GitHub Actions workflow checks JavaScript syntax, required hooks, regression assertions and HTML parsing.
+- Backup import normalizes legacy task/issue status and ignores invalid calendar dates; missing legacy sections default to empty arrays.
 
 ## Test status
 
 - [x] Code/specification inspected.
 - [x] Branch changes present in GitHub.
-- [ ] Automated workflow result not yet observed.
-- [ ] Browser interaction tests not yet run.
+- [x] GitHub Actions static/regression workflow passed for commit `7d3270fe53da492fd87070a3507a7b827206547e`.
+- [ ] Browser interaction tests not yet run; current regression tests are primarily source-level assertions.
 - [ ] Mobile device visual QA not yet run.
 - [ ] Backend security/persistence not implemented by this frontend batch.
