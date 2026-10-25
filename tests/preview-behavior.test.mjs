@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 const app = readFileSync('app.js', 'utf8');
 const html = readFileSync('index.html', 'utf8');
 const css = readFileSync('styles.css', 'utf8');
+const icon = readFileSync('icon.svg', 'utf8');
 
 test('record form exposes edit, save and cancel controls', () => {
   for (const id of ['record-form','record-title','record-details','record-date','record-amount','record-submit-btn','record-cancel-edit']) {
