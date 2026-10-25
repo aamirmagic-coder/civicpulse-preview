@@ -94,3 +94,23 @@ test('backup restore validates calendar dates and normalizes task/issue statuses
   assert.match(app, /if\(key==='tasks'\)status=completed\?'completed':'active'/);
   assert.match(app, /if\(key==='issues'\)status=resolved\?'resolved':'active'/);
 });
+
+
+test('quick capture uses an accessible dialog with validated record type, title and details', () => {
+  assert.match(html, /<dialog id="capture-dialog"/);
+  assert.match(html, /id="capture-form"/);
+  assert.match(html, /id="capture-type"/);
+  assert.match(html, /id="capture-title"[^>]*maxlength="180"/);
+  assert.match(html, /id="capture-details"[^>]*maxlength="2000"/);
+  assert.match(app, /capture\(\)\{const dialog=document\.getElementById\('capture-dialog'\)/);
+  assert.match(app, /Choose a valid record type/);
+  assert.match(app, /Keep the title to 180 characters or fewer/);
+  assert.match(app, /Keep details to 2,000 characters or fewer/);
+  assert.doesNotMatch(app, /capture\(\)\{[^}]*prompt\(/);
+});
+
+test('quick capture dialog has mobile layout and focus styling', () => {
+  assert.match(css, /\.capture-dialog::backdrop/);
+  assert.match(css, /\.capture-form input:focus-visible/);
+  assert.match(css, /@media\(max-width:560px\)\{\.capture-dialog/);
+});
