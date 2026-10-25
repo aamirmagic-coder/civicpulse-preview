@@ -250,7 +250,7 @@ test('issue reporting separates internal notes from public-safe summaries and ev
   assert.match(app, /publicInput\.maxLength=500/);
   assert.match(app, /evidenceInput\.maxLength=300/);
   assert.match(app, /Evidence note or reference \(optional\)/);
-  assert.match(app, /evidence files are not uploaded or securely stored/);
+  assert.match(app, /evidence files are not uploaded or securely stored/i);
   assert.match(app, /never publish reporter names, phone numbers or internal notes/i);
   assert.match(app, /No municipal case system or live public map is connected/);
 });
