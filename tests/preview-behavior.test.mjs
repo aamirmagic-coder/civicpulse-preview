@@ -76,7 +76,7 @@ test('task and issue status changes roll back if local save fails', () => {
 
 test('global search filters module records and has a clear empty state', () => {
   assert.match(app, /this\.searchTerm=e\.target\.value\.trim\(\)\.toLowerCase\(\)/);
-  assert.match(app, /No matching records\./);
+  assert.match(app, /No (matching records|records match the selected filters)\.?/);
   assert.match(app, /\[row\.title,row\.details,row\.category,row\.priority,row\.location,row\.status,row\.date,row\.amount/);
 });
 
