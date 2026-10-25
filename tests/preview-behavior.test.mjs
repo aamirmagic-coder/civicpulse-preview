@@ -245,7 +245,7 @@ test('Tasks can be filtered by priority and issues by category', () => {
 
 
 test('issue reporting separates internal notes from public-safe summaries and evidence references', () => {
-  assert.match(app, /Internal case notes \(private to this browser preview\)/);
+  assert.match(app, /Internal case notes \(local only; not secure\)/);
   assert.match(app, /Public-safe summary \(optional; no names or contact details\)/);
   assert.match(app, /publicInput\.maxLength=500/);
   assert.match(app, /evidenceInput\.maxLength=300/);
@@ -269,7 +269,7 @@ test('issue reporting guides users to approximate public locations and avoids st
 });
 
 test('issue form labels internal case notes as browser-private and never public-safe', () => {
-  assert.match(app, /Internal case notes \(private to this browser preview\)/);
+  assert.match(app, /Internal case notes \(local only; not secure\)/);
   assert.match(app, /Local preview only — not secure; never copy into a public summary or map/);
   assert.match(app, /Internal case notes; local browser storage only, not secure/);
 });
