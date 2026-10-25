@@ -23,19 +23,19 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 #record-type-fields label{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:.78rem;min-width:0;flex:1}#record-type-fields select{width:100%;min-height:42px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font:inherit}#record-type-fields[hidden]{display:none}
 
 /* Executive dashboard progress and activity */
-.progress-track{height:9px;width:100%;margin-top:13px;overflow:hidden;border:1px solid var(--border);border-radius:999px;background:var(--bg)}#task-progress-fill{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--indigo),var(--emerald));transition:width .25s ease}.dashboard-activity{display:grid;gap:8px;margin-top:12px}.dashboard-activity-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--border)}.dashboard-activity-item strong{font-size:.85rem;font-weight:600;overflow-wrap:anywhere}.dashboard-activity-item small{color:var(--muted);font-size:.72rem;text-align:right;flex-shrink:0}@media(max-width:520px){.dashboard-activity-item{align-items:flex-start;flex-direction:column;gap:4px}.dashboard-activity-item small{text-align:left}}
+.progress-track{height:9px;width:100%;margin-top:13px;overflow:hidden;border:1px solid var(--border);border-radius:999px;background:var(--bg-canvas)}#task-progress-fill{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--indigo),var(--emerald));transition:width .25s ease}.dashboard-activity{display:grid;gap:8px;margin-top:12px}.dashboard-activity-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--border)}.dashboard-activity-item strong{font-size:.85rem;font-weight:600;overflow-wrap:anywhere}.dashboard-activity-item small{color:var(--muted);font-size:.72rem;text-align:right;flex-shrink:0}@media(max-width:520px){.dashboard-activity-item{align-items:flex-start;flex-direction:column;gap:4px}.dashboard-activity-item small{text-align:left}}
 
 .record-form-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.record-edit-btn{padding:8px 11px!important;font-size:.78rem!important}.record-item>button{flex:0 0 auto}@media(max-width:560px){.record-form-actions>*{flex:1}.record-item{flex-wrap:wrap}.record-item .record-content{flex-basis:100%}.record-item>button{flex:1}}
 
 /* Accessible quick-capture dialog */
-.capture-dialog{width:min(92vw,520px);max-height:88vh;overflow:auto;padding:0;border:1px solid var(--border);border-radius:20px;background:var(--surface,var(--card));color:var(--text);box-shadow:0 28px 90px #0009}
+.capture-dialog{width:min(92vw,520px);max-height:88vh;overflow:auto;padding:0;border:1px solid var(--border);border-radius:20px;background:var(--bg-card);color:var(--text);box-shadow:0 28px 90px #0009}
 .capture-dialog::backdrop{background:rgba(3,7,18,.72);backdrop-filter:blur(5px)}
 .capture-form{display:grid;gap:10px;padding:22px}
 .capture-dialog-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}
 .capture-dialog-heading h2{margin:3px 0 6px;font-size:1.35rem;letter-spacing:-.03em}
 .capture-dialog-heading .muted{margin:0;font-size:.86rem}
 .capture-form label{font-size:.83rem;font-weight:650;color:var(--text)}
-.capture-form input,.capture-form select,.capture-form textarea{width:100%;min-height:44px;padding:11px 12px;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text);font:inherit}
+.capture-form input,.capture-form select,.capture-form textarea{width:100%;min-height:44px;padding:11px 12px;border:1px solid var(--border);border-radius:11px;background:var(--bg-canvas);color:var(--text);font:inherit}
 .capture-form textarea{resize:vertical;min-height:88px}
 .capture-form input:focus-visible,.capture-form select:focus-visible,.capture-form textarea:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
 .capture-local-note{margin:3px 0;color:var(--muted);font-size:.75rem;line-height:1.5}
