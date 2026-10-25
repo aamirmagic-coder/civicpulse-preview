@@ -290,3 +290,27 @@ test('issue privacy fields survive edit and are cleared after reset', () => {
   assert.match(app, /if\(publicSummaryInput\)publicSummaryInput\.value=''/);
   assert.match(app, /if\(evidenceNoteInput\)evidenceNoteInput\.value=''/);
 });
+
+
+test('issue reporting separates internal notes from public-safe summaries and evidence references', () => {
+  assert.match(app, /Internal case notes \(this browser preview only\): /);
+  assert.match(app, /Public-safe summary \(optional; no names or contact details\)/);
+  assert.match(app, /publicSummary:publicSummary\.slice\(0,500\)/);
+  assert.match(app, /evidenceNote:evidenceNote\.slice\(0,300\)/);
+  assert.match(app, /Evidence note\/reference \(not uploaded\): /);
+  assert.match(app, /evidence files are not uploaded or securely stored/);
+  assert.match(app, /reporter names, phone numbers and internal notes must never be put on a public map/i);
+  assert.match(app, /not connected to a municipal case system or live public map/);
+});
+
+test('issue reporting guides users to approximate public locations and avoids storing evidence files', () => {
+  assert.match(app, /street, area or landmark; avoid home\/unit numbers/i);
+  assert.match(app, /avoid home or unit numbers/i);
+  assert.match(app, /do not paste private links/i);
+  assert.match(app, /Keep the public-safe summary to 500 characters or fewer/);
+  assert.match(app, /Keep the evidence note to 300 characters or fewer/);
+  assert.match(app, /publicSummaryInput\.value=String\(row\.publicSummary\|\|''\)/);
+  assert.match(app, /evidenceNoteInput\.value=String\(row\.evidenceNote\|\|''\)/);
+  assert.match(app, /publicSummaryInput\)publicSummaryInput\.value=''/);
+  assert.match(app, /evidenceNoteInput\)evidenceNoteInput\.value=''/);
+});
