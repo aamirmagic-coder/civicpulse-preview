@@ -172,3 +172,17 @@ test('module lists announce result counts and offer a clear-filter recovery acti
   assert.match(app, /No records match the selected filters/);
   assert.match(app, /Clear search and filters/);
 });
+
+
+test('People and Team records use purpose-limited contact fields with validation', () => {
+  assert.match(app, /Community service follow-up/);
+  assert.match(app, /Team coordination/);
+  assert.match(app, /record-role/);
+  assert.match(app, /record-phone/);
+  assert.match(app, /record-email/);
+  assert.match(app, /Enter a valid email address or leave it blank/);
+  assert.match(app, /Enter a valid phone number or leave it blank/);
+  assert.match(app, /contactPurpose:\['service','coordination','general'\]/);
+  assert.match(app, /if\(def\.key==='people'\|\|def\.key==='team'\)/);
+  assert.doesNotMatch(app, /political targeting|campaign targeting/);
+});
