@@ -85,6 +85,21 @@
     <button class="dock-item" data-target="issues"><span>!</span>Issues</button>
     <button class="dock-item" data-target="more"><span>•••</span>More</button>
   </nav>
+  <dialog id="capture-dialog" class="capture-dialog" aria-labelledby="capture-dialog-title">
+    <form id="capture-form" class="capture-form">
+      <div class="capture-dialog-heading"><div><p class="eyebrow">QUICK ADD</p><h2 id="capture-dialog-title">Capture something</h2><p class="muted">Choose a record type and add the essentials.</p></div><button type="button" class="icon-btn" id="capture-cancel" aria-label="Close capture dialog">×</button></div>
+      <label for="capture-type">Record type</label>
+      <select id="capture-type" required>
+        <option value="tasks">Task</option><option value="issues">Issue / field report</option><option value="field">Field note</option><option value="projects">Project</option><option value="people">Person / contact</option><option value="fundraising">Fundraising record</option><option value="expenses">Expense</option>
+      </select>
+      <label for="capture-title">Title <span aria-hidden="true">*</span></label>
+      <input id="capture-title" name="title" maxlength="180" autocomplete="off" required placeholder="Short, clear summary">
+      <label for="capture-details">Details <span class="muted">(optional)</span></label>
+      <textarea id="capture-details" maxlength="2000" rows="3" placeholder="Context or next steps"></textarea>
+      <p class="capture-local-note">Saved in this browser only. Don’t enter sensitive resident information here.</p>
+      <div class="capture-form-actions"><button type="button" class="secondary-btn" id="capture-cancel-bottom" data-capture-cancel>Cancel</button><button type="submit" class="primary-action-btn">Create record</button></div>
+    </form>
+  </dialog>
   <script src="app.js"></script>
 </body>
 </html>
