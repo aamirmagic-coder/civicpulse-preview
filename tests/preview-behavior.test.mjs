@@ -131,3 +131,18 @@ test('issue location remains optional and is loaded when editing a record', () =
   assert.match(app, /location:location\.slice\(0,240\)/);
   assert.match(app, /if\(locationInput\)locationInput\.value=''/);
 });
+
+
+test('task and issue records render clear status badges and overdue cues', () => {
+  assert.match(app, /record-status-badge/);
+  assert.match(app, /done\?'Completed':'Open'/);
+  assert.match(app, /done\?'Resolved':'Open'/);
+  assert.match(app, /status-overdue/);
+  assert.match(app, /Task overdue/);
+});
+
+test('status badges have theme-token styling and readable labels', () => {
+  assert.match(css, /\.record-status-badge/);
+  assert.match(css, /\.status-complete/);
+  assert.match(css, /\.status-overdue/);
+});
