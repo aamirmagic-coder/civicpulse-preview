@@ -42,3 +42,10 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 .capture-form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
 .capture-form-actions button{min-height:44px}
 @media(max-width:560px){.capture-dialog{width:calc(100vw - 24px);max-width:none;border-radius:18px}.capture-form{padding:18px}.capture-form-actions>*{flex:1}}
+
+
+/* Task and issue status clarity */
+.record-status-badge{display:inline-flex;align-items:center;width:max-content;max-width:100%;margin-top:7px;padding:4px 9px;border:1px solid var(--border);border-radius:999px;font-size:.72rem;font-weight:700;line-height:1.2}
+.record-status-badge.status-open{color:var(--accent);border-color:var(--border)}
+.record-status-badge.status-complete{color:var(--success);border-color:var(--success)}
+.record-status-badge.status-overdue{color:#f87171;border-color:#f87171}
