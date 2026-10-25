@@ -146,3 +146,10 @@ test('status badges have theme-token styling and readable labels', () => {
   assert.match(css, /\.status-complete/);
   assert.match(css, /\.status-overdue/);
 });
+
+
+test('module list search includes issue location, status, date and amount fields', () => {
+  assert.match(app, /\[row\.title,row\.details,row\.category,row\.priority,row\.location,row\.status,row\.date,row\.amount/);
+  assert.match(app, /row\.resolved\?'resolved':''/);
+  assert.match(app, /row\.completed\?'completed':''/);
+});
