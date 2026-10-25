@@ -219,3 +219,15 @@ test('People and Team views show local role/purpose summaries and privacy-aware 
 });
 
 // Follow-up validation: overview styles are committed with the current branch head.
+
+
+test('Tasks and Issues show accurate local operational summaries', () => {
+  assert.match(app, /tasks-issues-summary/);
+  assert.match(app, /\['Open tasks',openRows\.length\]/);
+  assert.match(app, /\['Overdue',overdueRows\.length\]/);
+  assert.match(app, /\['Completed',list\.length-openRows\.length\]/);
+  assert.match(app, /\['Open issues',openRows\.length\]/);
+  assert.match(app, /\['Resolved',list\.length-openRows\.length\]/);
+  assert.match(app, /Categories affected/);
+  assert.match(app, /not connected to a municipal case system or live public map/);
+});
