@@ -288,3 +288,18 @@ test('brand assets and theme references exist in repository', () => {
   assert.match(css, /--brand-flame:#F36B32/);
   assert.match(css, /--brand-sky:#328CC1/);
 });
+
+
+test('backup restore preserves bounded custom operational fields', () => {
+  assert.match(app, /for\(const \[field,value\] of Object\.entries\(row\)\)/);
+  assert.match(app, /\['__proto__','prototype','constructor'\]/);
+  assert.match(app, /typeof value==='string'&&value\.length<=5000/);
+  assert.match(app, /return \{\.\.\.safe,id:String\(row\.id\)/);
+});
+
+test('brand assets and theme references exist in repository', () => {
+  assert.match(html, /src="icon\.svg"/);
+  assert.match(app, /icon-light\.svg/);
+  assert.match(css, /--brand-flame:#F36B32/);
+  assert.match(css, /--brand-sky:#328CC1/);
+});
