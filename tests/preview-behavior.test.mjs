@@ -196,3 +196,13 @@ test('People and Team require explicit permission before storing phone or email'
   assert.match(app, /contactConsentAt=\(phone\|\|email\)&&contactConsent\?new Date\(\)\.toISOString\(\):''/);
   assert.match(app, /contactConsent\.checked=Boolean\(row\.contactConsentAt\)/);
 });
+
+
+test('People and Team lists filter by contact purpose and summarize consent safely', () => {
+  assert.match(app, /contact-purpose-filter/);
+  assert.match(app, /this\.contactPurposeFilter==='all'\|\|\(row\.contactPurpose\|\|'general'\)===this\.contactPurposeFilter/);
+  assert.match(app, /Permission recorded/);
+  assert.match(app, /Permission not recorded/);
+  assert.match(app, /Permission date: /);
+  assert.match(css, /\.module-record-controls/);
+});
