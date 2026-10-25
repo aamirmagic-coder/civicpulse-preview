@@ -88,7 +88,7 @@ test('backup recovery tolerates omitted legacy sections but rejects malformed se
   assert.match(app, /Backup contains too many records/);
 });
 
-test('backup restore validates calendar dates and normalizes task/issue statuses', () => {
+test('backup import rejects blank or overlong record titles', () => {\n  assert.match(app, /typeof row\\.title!=='string'\\|\\|!row\\.title\\.trim\\(\\)\\|\\|row\\.title\\.length>180/);\n  assert.match(app, /Invalid record title in '\\+key/);\n});\n\ntest('backup restore validates calendar dates and normalizes task/issue statuses', () => {
   assert.match(app, /const validDate=\/\^\\d\{4\}-\\d\{2\}-\\d\{2\}\$\//);
   assert.match(app, /const completed=key==='tasks'\?/);
   assert.match(app, /const resolved=key==='issues'\?/);
