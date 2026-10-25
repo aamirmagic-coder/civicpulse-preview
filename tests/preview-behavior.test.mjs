@@ -88,7 +88,26 @@ test('backup recovery tolerates omitted legacy sections but rejects malformed se
   assert.match(app, /Backup contains too many records/);
 });
 
-test('backup restore rolls back workspace if preference persistence fails', () => {\n  assert.match(app, /const previousPreferences=this\\.preferences/);\n  assert.match(app, /if\\(!this\\.savePreferences\\(\\)\\)/);\n  assert.match(app, /this\\.state=previous;this\\.preferences=previousPreferences/);\n  assert.match(app, /preferences could not be saved/);\n});\n\ntest('backup import rejects blank, oversized and duplicate record IDs', () => {\n  assert.match(app, /!String\\(row\\.id\\)\\.trim\\(\\)/);\n  assert.match(app, /const seenIds=new Set\\(\\)/);\n  assert.match(app, /seenIds\\.has\\(recordId\\)/);\n  assert.match(app, /Duplicate record ID in '\\+key/);\n});\n\ntest('backup import rejects blank or overlong record titles', () => {\n  assert.match(app, /typeof row\\.title!=='string'\\|\\|!row\\.title\\.trim\\(\\)\\|\\|row\\.title\\.length>180/);\n  assert.match(app, /Invalid record title in '\\+key/);\n});\n\ntest('backup restore validates calendar dates and normalizes task/issue statuses', () => {
+test('backup restore rolls back workspace if preference persistence fails', () => {
+  assert.match(app, /const previousPreferences=this\\.preferences/);
+  assert.match(app, /if\\(!this\\.savePreferences\\(\\)\\)/);
+  assert.match(app, /this\\.state=previous;this\\.preferences=previousPreferences/);
+  assert.match(app, /preferences could not be saved/);
+});
+
+test('backup import rejects blank, oversized and duplicate record IDs', () => {
+  assert.match(app, /!String\\(row\\.id\\)\\.trim\\(\\)/);
+  assert.match(app, /const seenIds=new Set\\(\\)/);
+  assert.match(app, /seenIds\\.has\\(recordId\\)/);
+  assert.match(app, /Duplicate record ID in '\\+key/);
+});
+
+test('backup import rejects blank or overlong record titles', () => {
+  assert.match(app, /typeof row\\.title!=='string'\\|\\|!row\\.title\\.trim\\(\\)\\|\\|row\\.title\\.length>180/);
+  assert.match(app, /Invalid record title in '\\+key/);
+});
+
+test('backup restore validates calendar dates and normalizes task/issue statuses', () => {
   assert.match(app, /const validDate=\/\^\\d\{4\}-\\d\{2\}-\\d\{2\}\$\//);
   assert.match(app, /const completed=key==='tasks'\?/);
   assert.match(app, /const resolved=key==='issues'\?/);
