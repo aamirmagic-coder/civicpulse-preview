@@ -96,14 +96,14 @@ test('backup restore rolls back workspace if preference persistence fails', () =
 });
 
 test('backup import rejects blank, oversized and duplicate record IDs', () => {
-  assert.match(app, /!String\\(row\\.id\\)\\.trim\\(\\)/);
-  assert.match(app, /const seenIds=new Set\\(\\)/);
-  assert.match(app, /seenIds\\.has\\(recordId\\)/);
+  assert.ok(app.includes('!String(row.id).trim()'));
+  assert.ok(app.includes('const seenIds=new Set()'));
+  assert.ok(app.includes('seenIds.has(recordId)'));
   assert.ok(app.includes("Duplicate record ID in '+key"));
 });
 
 test('backup import rejects blank or overlong record titles', () => {
-  assert.match(app, /typeof row\\.title!=='string'\\|\\|!row\\.title\\.trim\\(\\)\\|\\|row\\.title\\.length>180/);
+  assert.ok(app.includes("typeof row.title!=='string'||!row.title.trim()||row.title.length>180"));
   assert.ok(app.includes("Invalid record title in '+key"));
 });
 
