@@ -229,7 +229,7 @@ test('Tasks and Issues show accurate local operational summaries', () => {
   assert.match(app, /\['Open issues',openRows\.length\]/);
   assert.match(app, /\['Resolved',list\.length-openRows\.length\]/);
   assert.match(app, /Categories affected/);
-  assert.match(app, /not connected to a municipal case system or live public map/);
+  assert.match(app, /No municipal case system or live public map is connected/);
 });
 
 
@@ -251,8 +251,8 @@ test('issue reporting separates internal notes from public-safe summaries and ev
   assert.match(app, /evidenceInput\.maxLength=300/);
   assert.match(app, /Evidence note or reference \(optional\)/);
   assert.match(app, /evidence files are not uploaded or securely stored/);
-  assert.match(app, /reporter names, phone numbers and internal notes must never be put on a public map/i);
-  assert.match(app, /not connected to a municipal case system or live public map/);
+  assert.match(app, /never publish reporter names, phone numbers or internal notes/i);
+  assert.match(app, /No municipal case system or live public map is connected/);
 });
 
 test('issue reporting guides users to approximate public locations and avoids storing evidence files', () => {
@@ -270,6 +270,6 @@ test('issue reporting guides users to approximate public locations and avoids st
 
 test('issue form labels internal case notes as browser-private and never public-safe', () => {
   assert.match(app, /Internal case notes \(private to this browser preview\)/);
-  assert.match(app, /Internal case notes only — never include these in a public summary or map/);
-  assert.match(app, /Internal case notes; private to this browser preview/);
+  assert.match(app, /Local preview only — not secure; never copy into a public summary or map/);
+  assert.match(app, /Internal case notes; local browser storage only, not secure/);
 });
