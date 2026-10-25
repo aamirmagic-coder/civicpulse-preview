@@ -119,7 +119,7 @@ test('quick capture dialog has mobile layout and focus styling', () => {
 test('task and issue forms expose relevant fields without financial noise', () => {
   assert.match(app, /Task due date/);
   assert.match(app, /Issue report date/);
-    assert.match(app, /Issue location \\(optional(?:; avoid home or unit numbers)?\\)/);
+    assert.match(app, /Issue location \(optional(?:; avoid home or unit numbers)?\)/);
   assert.match(app, /Keep the issue location to 240 characters or fewer/);
   assert.match(app, /location:String\(meta\.location\|\|''\)\.trim\(\)\.slice\(0,240\)/);
   assert.match(app, /if\(amountLabel\)amountLabel\.hidden=true/);
