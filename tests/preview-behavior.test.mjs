@@ -99,12 +99,12 @@ test('backup import rejects blank, oversized and duplicate record IDs', () => {
   assert.match(app, /!String\\(row\\.id\\)\\.trim\\(\\)/);
   assert.match(app, /const seenIds=new Set\\(\\)/);
   assert.match(app, /seenIds\\.has\\(recordId\\)/);
-  assert.match(app, /Duplicate record ID in '\\+key/);
+  assert.ok(app.includes("Duplicate record ID in '+key"));
 });
 
 test('backup import rejects blank or overlong record titles', () => {
   assert.match(app, /typeof row\\.title!=='string'\\|\\|!row\\.title\\.trim\\(\\)\\|\\|row\\.title\\.length>180/);
-  assert.match(app, /Invalid record title in '\\+key/);
+  assert.ok(app.includes("Invalid record title in '+key"));
 });
 
 test('backup restore validates calendar dates and normalizes task/issue statuses', () => {
