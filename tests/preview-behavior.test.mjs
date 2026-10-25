@@ -314,3 +314,10 @@ test('issue reporting guides users to approximate public locations and avoids st
   assert.match(app, /publicSummaryInput\)publicSummaryInput\.value=''/);
   assert.match(app, /evidenceNoteInput\)evidenceNoteInput\.value=''/);
 });
+
+
+test('issue form labels internal case notes as browser-private and never public-safe', () => {
+  assert.match(app, /Internal case notes \(private to this browser preview\)/);
+  assert.match(app, /Internal case notes only — never include these in a public summary or map/);
+  assert.match(app, /Internal case notes; private to this browser preview/);
+});
