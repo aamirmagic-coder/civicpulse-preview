@@ -184,5 +184,6 @@ test('People and Team records use purpose-limited contact fields with validation
   assert.match(app, /Enter a valid phone number or leave it blank/);
   assert.match(app, /contactPurpose:\['service','coordination','general'\]/);
   assert.match(app, /if\(def\.key==='people'\|\|def\.key==='team'\)/);
-  assert.doesNotMatch(app, /political targeting|campaign targeting/);
+  assert.match(app, /Never reuse community service follow-up contacts for political outreach/);\n  assert.match(app, /record-contact-consent/);\n  assert.match(app, /Confirm permission to store these contact details for the selected purpose/);\n  assert.match(app, /contactConsentAt/);
 });
+\n\ntest('People and Team require explicit permission before storing phone or email', () => {\n  assert.match(app, /\(phone\|\|email\)&&!contactConsent/);\n  assert.match(app, /contactConsentAt\?new Date\(\)\.toISOString\(\):''/);\n  assert.match(app, /contactConsent\.checked=Boolean\(row\.contactConsentAt\)/);\n});\n
