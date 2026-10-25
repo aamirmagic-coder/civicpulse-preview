@@ -114,3 +114,20 @@ test('quick capture dialog has mobile layout and focus styling', () => {
   assert.match(css, /\.capture-form input:focus-visible/);
   assert.match(css, /@media\(max-width:560px\)\{\.capture-dialog/);
 });
+
+
+test('task and issue forms expose relevant fields without financial noise', () => {
+  assert.match(app, /Task due date/);
+  assert.match(app, /Issue report date/);
+  assert.match(app, /Issue location \(optional\)/);
+  assert.match(app, /Keep the issue location to 240 characters or fewer/);
+  assert.match(app, /location:String\(meta\.location\|\|''\)\.trim\(\)\.slice\(0,240\)/);
+  assert.match(app, /if\(amountLabel\)amountLabel\.hidden=true/);
+  assert.match(app, /def\.key==='issues'&&row\.location/);
+});
+
+test('issue location remains optional and is loaded when editing a record', () => {
+  assert.match(app, /locationInput\.value=String\(row\.location\|\|''\)/);
+  assert.match(app, /location:location\.slice\(0,240\)/);
+  assert.match(app, /if\(locationInput\)locationInput\.value=''/);
+});
