@@ -1,7 +1,7 @@
 {
-  "name": "CivicPulse — Community Intelligence",
-  "short_name": "CivicPulse",
-  "description": "Mobile-first community operations and intelligence workspace",
+  "name": "SUKUMA! — Stand Up! We build together.",
+  "short_name": "SUKUMA!",
+  "description": "Local-first community accountability workspace preview.",
   "start_url": "/civicpulse-preview/",
   "scope": "/civicpulse-preview/",
   "display": "standalone",
@@ -9,10 +9,10 @@
   "theme_color": "#0B0F19",
   "icons": [
     {
-      "src": "/civicpulse-preview/icon.svg",
+      "src": "assets/sukuma-symbol-original.png",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
