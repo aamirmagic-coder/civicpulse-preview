@@ -20,3 +20,19 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 :where(a,button,input,textarea,select,[tabindex]):focus-visible{outline:3px solid var(--brand-blue);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media (max-width:640px){.app-header{padding:10px 14px}.brand-title span{max-width:175px;letter-spacing:.02em;font-size:.62rem}.search-box{width:42px;padding:0 10px}.search-box input{width:0;opacity:0}.search-box:focus-within{width:min(48vw,220px)}.search-box:focus-within input{width:100%;opacity:1}.hero-row{align-items:flex-start;flex-wrap:wrap}.action-hub{align-items:flex-start;flex-direction:column}.primary-action-btn{min-height:44px}.secondary-btn,.icon-btn{min-height:44px}.quick-nav-scroll{scrollbar-width:thin}}
+
+/* Local casework workflow */
+.issue-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;grid-column:1/-1}
+.issue-fields label,.case-workflow label{display:flex;flex-direction:column;gap:6px;color:var(--secondary);font-size:.78rem;font-weight:650}
+.issue-fields select,.case-workflow select,.case-workflow input{width:100%;min-height:42px;padding:9px 10px;border:1px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--text)}
+.privacy-note{grid-column:1/-1;padding:10px 12px;border:1px solid var(--border);border-left:3px solid var(--action-orange);border-radius:10px;background:var(--bg-elevated);color:var(--text);font-size:.78rem;line-height:1.5}
+.case-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:10px}
+.status-badge,.priority-badge{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 8px;font-size:.68rem;font-weight:750;letter-spacing:.02em}
+.status-open{background:#E5E7EB;color:#182030}.status-acknowledged{background:#DBEAFE;color:#1E3A8A}.status-in_progress{background:#FEF3C7;color:#78350F}.status-escalated{background:#FFEDD5;color:#7C2D12}.status-resolved,.status-closed{background:#D1FAE5;color:#064E3B}
+.priority-low{color:var(--secondary)}.priority-normal{color:var(--text)}.priority-high{background:#FFEDD5;color:#7C2D12}.priority-urgent{background:#FEE2E2;color:#7F1D1D}
+.case-workflow{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(140px,1fr) auto;align-items:end;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.case-workflow button{min-height:42px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font-weight:700}
+.case-history{margin-top:10px;color:var(--secondary);font-size:.78rem}.case-history summary{cursor:pointer;min-height:36px;display:flex;align-items:center;font-weight:700;color:var(--text)}.case-history ol{margin:4px 0 0 18px;padding-left:6px}.case-history li{padding:5px 0 7px 2px}.case-history time{font-variant-numeric:tabular-nums}.case-history p{margin-top:3px;overflow-wrap:anywhere}
+@media(max-width:640px){.issue-fields{grid-template-columns:1fr}.case-workflow{grid-template-columns:1fr}.case-workflow button{width:100%}}
+
+.issue-fields[hidden],.privacy-note[hidden]{display:none!important}

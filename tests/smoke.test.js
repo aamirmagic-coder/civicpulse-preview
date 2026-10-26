@@ -43,6 +43,15 @@ test('primary action text contrast meets WCAG AA for the provisional orange toke
   assert.ok((values[0] + 0.05) / (values[1] + 0.05) >= 4.5);
 });
 
+test('offline shell caches the Sukuma casework module, tokens and original symbol', () => {
+  const sw = read('sw.js');
+  assert.match(sw, /casework\.js/);
+  assert.match(sw, /tokens\/tokens\.css/);
+  assert.match(sw, /assets\/sukuma-symbol-original\.png/);
+  assert.match(sw, /sukuma-preview-shell-v3/);
+  assert.doesNotMatch(sw, /icon-light\.svg|BASE\+'\/icon\.svg'/);
+});
+
 test('accessibility guardrails and privacy limitations are documented', () => {
   const css = read('styles.css');
   const readme = read('README.md');
