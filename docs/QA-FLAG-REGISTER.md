@@ -1,27 +1,24 @@
-# CivicPulse QA / Flag Register
-This register distinguishes verified defects from provisional recommendations.
+# SUKUMA! QA / Flag Register
 
-## Historical red flag list
-Status: NOT RECOVERED. Do not label newly proposed items as original.
+This register distinguishes verified constraints from provisional recommendations. It is not the recovered historical flag list.
 
-## Historical orange flag list
-Status: NOT RECOVERED. Do not label newly proposed items as original.
+## Critical blockers before production
+- **BLOCKED:** No verified server-side authentication, authorization, account isolation, or role enforcement in this public frontend.
+- **BLOCKED:** No verified secure municipal case-submission endpoint or status integration.
+- **BLOCKED:** No production persistence, backup recovery, or tamper-proof audit trail verified.
+- **REQUIRED:** Do not enter live resident, political, health, financial, or other sensitive data in the preview.
+- **REQUIRED:** Public maps or issue feeds must never expose reporter identity/contact details.
+- **REQUIRED:** Imports must validate the complete payload and require explicit confirmation before replacing any local data.
 
-## Provisional red flags (critical blockers before production)
-- Public/private data boundary not enforced by a verified server-side authorization layer.
-- Public issue map must not expose reporter identity or contact details.
-- No production use until authentication, RBAC, account isolation and persistence are verified.
-- Do not use production credentials, database or live resident records in the public preview.
-- Imports must not overwrite existing records without explicit confirmation and successful validation.
-
-## Provisional orange flags (important gaps / follow-up)
-- The dashboard area-intelligence panel is a placeholder, not a live map.
-- Module forms are currently generic and do not yet satisfy the full type-specific workflows.
-- Current records are local to the browser/device and do not sync across devices.
-- Local activity history is not a tamper-proof audit log.
-- Voice dictation support and third-party speech handling vary by browser.
-- The exact historical user-approved red/orange entries must be recovered from the archived source before treating this register as final.
+## Important gaps
+- The area-intelligence panel is a placeholder, not a live map or verified statistics.
+- Some module forms remain generic and do not satisfy complete type-specific workflows.
+- Records remain local to one browser/device and do not sync across devices.
+- Browser-local activity history is not a tamper-proof security audit trail.
+- Speech recognition varies by browser and may send audio to a browser/vendor service.
+- Exact official logo files, colour values, clear-space/minimum-size rules, and font/licence details require owner verification.
+- Automated checks validate source-level invariants; they do not replace browser, device, screen-reader, or contrast testing.
 
 ## Proposed severity definitions
-- Red: security/privacy risk, data loss, critical workflow failure, or a misleading public-facing claim.
-- Orange: incomplete workflow, usability/accessibility issue, reliability limitation or missing non-critical capability.
+- **Red:** security/privacy risk, data loss, critical workflow failure, or misleading public-facing claim.
+- **Orange:** incomplete workflow, usability/accessibility issue, reliability limitation, or missing non-critical capability.
