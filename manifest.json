@@ -6,5 +6,13 @@
   "scope": "/civicpulse-preview/",
   "display": "standalone",
   "background_color": "#0B0F19",
-  "theme_color": "#0B0F19"
+  "theme_color": "#0B0F19",
+  "icons": [
+    {
+      "src": "assets/sukuma-symbol-original.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
