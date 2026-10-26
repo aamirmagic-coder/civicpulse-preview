@@ -1,0 +1,38 @@
+/* SUKUMA! UI tokens — provisional screen values only.
+   Official blue/orange HEX values must be verified against owner-approved master artwork.
+   Do not use this file as a print/brand specification. */
+:root{
+  color-scheme:dark;
+  --brand-blue:#2563EB; /* PROVISIONAL — verify against master artwork */
+  --action-orange:#EA580C; /* PROVISIONAL — verify against master artwork */
+  --brand-charcoal:#0B0F19; /* provisional screen value from working guide */
+  --surface-light:#FAFAF8; /* provisional screen value from working guide */
+  --text-dark:#182030; /* provisional screen value from working guide */
+  --text-secondary-light:#5A6574; /* provisional screen value from working guide */
+  --bg-canvas:var(--brand-charcoal);
+  --bg-card:#151D2A;
+  --bg-elevated:#1B2638;
+  --border:#344156;
+  --text:#F9FAFB;
+  --secondary:#C1C8D3;
+  --muted:#B6C0CF;
+  --indigo:var(--brand-blue);
+  --emerald:#10B981;
+  --dock:rgba(15,22,36,.92);
+  --shadow:0 18px 48px rgba(0,0,0,.22);
+  --radius:18px;
+}
+[data-theme=light]{
+  color-scheme:light;
+  --bg-canvas:var(--surface-light);
+  --bg-card:#FFFFFF;
+  --bg-elevated:#F0F2F5;
+  --border:#C7CED8;
+  --text:var(--text-dark);
+  --secondary:#414B5B;
+  --muted:#4A5565;
+  --indigo:var(--brand-blue);
+  --emerald:#047857;
+  --dock:rgba(250,250,248,.94);
+  --shadow:0 16px 38px rgba(15,23,42,.08);
+}
