@@ -5,8 +5,8 @@
 ## Brand and logo
 - Product identity: **SUKUMA!**
 - Working line from the supplied guide: **“Stand Up! We build together.”**
-- The original symbol must never be redrawn, distorted, stretched, rotated, or recoloured.
-- The old CivicPulse icon is intentionally not displayed as a Sukuma! logo. The approved owner-supplied logo still needs to be added as an unmodified binary asset.
+- The original symbol must never be redrawn, distorted, stretched, rotated, or recoloured. The current asset is used with `object-fit: contain`.
+- The owner-supplied original symbol is included unmodified at `assets/sukuma-symbol-original.png` and used only as the symbol-only mark. Horizontal/stacked lockup proofs remain review-only, not final artwork.
 - Horizontal light/dark lockups are preferred; stacked lockup is secondary. Use symbol-only only where the full lockup cannot remain legible.
 
 ## Typography
