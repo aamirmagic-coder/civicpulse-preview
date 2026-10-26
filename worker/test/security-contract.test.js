@@ -33,6 +33,8 @@ test("write payloads use strict allowlists and enforce field lengths", () => {
 test("case and event writes use the same transaction client", () => {
   assert.match(worker, /const client = await pool\.connect\(\)/);
   assert.match(worker, /await client\.query\("BEGIN"\)/);
+  assert.match(worker, /FOR UPDATE/);
+  assert.match(worker, /locked\.rows\[0\]\.status, body\.status/);
   assert.match(worker, /await client\.query\("COMMIT"\)/);
   assert.match(worker, /await client\.query\("ROLLBACK"\)/);
   assert.match(worker, /client\.release\(\)/);
