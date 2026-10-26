@@ -1,4 +1,4 @@
-const CACHE='sukuma-preview-shell-v3';
+const CACHE='sukuma-preview-shell-v4';
 const BASE='/civicpulse-preview';
 const ASSETS=[BASE+'/',BASE+'/index.html',BASE+'/styles.css',BASE+'/app.js',BASE+'/manifest.json',BASE+'/assets/sukuma-app-icon.png',BASE+'/assets/sukuma-horizontal-dark.png',BASE+'/assets/sukuma-horizontal-light.png',BASE+'/sw.js'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
