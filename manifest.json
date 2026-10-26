@@ -1,17 +1,17 @@
 {
-  "name": "CivicPulse — Community Intelligence",
-  "short_name": "CivicPulse",
-  "description": "Mobile-first community operations and intelligence workspace",
+  "name": "Sukuma! — Community Feedback & Accountability",
+  "short_name": "Sukuma!",
+  "description": "Mobile-first municipal feedback, complaint resolution and accountability workspace",
   "start_url": "/civicpulse-preview/",
   "scope": "/civicpulse-preview/",
   "display": "standalone",
-  "background_color": "#0B0F19",
-  "theme_color": "#0B0F19",
+  "background_color": "#182229",
+  "theme_color": "#182229",
   "icons": [
     {
-      "src": "/civicpulse-preview/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/civicpulse-preview/assets/sukuma-app-icon.png",
+      "sizes": "650x650",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

@@ -1,88 +1,78 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0B0F19">
-  <meta name="description" content="CivicPulse — Community Intelligence">
-  <title>CivicPulse — Community Intelligence</title>
+  <meta name="theme-color" content="#F6F0E7">
+  <meta name="description" content="Sukuma! — community feedback, service delivery and accountability workspace.">
+  <title>Sukuma! — Community Accountability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="icon" type="image/png" href="assets/sukuma-app-icon.png">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="app-header">
-    <div class="brand-wrapper">
-      <img class="app-brand-logo" src="icon.svg" alt="CivicPulse symbol">
-      <div class="brand-title"><h1>CivicPulse</h1><span>Community Intelligence</span></div>
-    </div>
+    <a class="brand-wrapper" href="./" aria-label="Sukuma! home">
+      <img class="app-brand-logo" src="assets/sukuma-horizontal-light.png" alt="Sukuma!">
+    </a>
     <div class="header-actions">
-      <label class="search-box" aria-label="Search records"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Search" autocomplete="off"></label>
-      <button class="secondary-btn install-btn" id="install-app-btn" type="button" hidden>Install app</button>
-      <button class="icon-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
+      <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search local records</span><input id="global-search" type="search" placeholder="Search records" autocomplete="off"></label>
+      <button class="icon-btn" id="theme-toggle-btn" type="button" aria-label="Switch colour theme" title="Switch theme"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
+      <button class="secondary-btn install-btn" id="install-app-btn" type="button" hidden>Install</button>
     </div>
   </header>
-
-  <main>
-    <section class="hero-row">
-      <div><p class="eyebrow">COMMUNITY OPERATIONS</p><h2 id="page-heading">Executive briefing</h2><p class="muted" id="page-subtitle">Your local workspace at a glance.</p></div>
-      <span class="status-chip"><span class="status-dot"></span> Local preview</span>
+  <main id="main-content">
+    <section class="welcome-row">
+      <div><p class="eyebrow">COMMUNITY ACCOUNTABILITY</p><h1 id="page-heading">Your community desk</h1><p class="intro" id="page-subtitle">Keep issues visible. Track action. Follow through.</p></div>
+      <span class="workspace-state"><span class="state-dot"></span> Private device workspace</span>
     </section>
-
-    <section class="action-hub">
-      <div class="action-copy"><span class="eyebrow">QUICK ACTION</span><h3>Capture what matters.</h3><p class="muted">Add a task, field note or operational record.</p></div>
-      <button class="primary-action-btn" id="quick-capture-btn"><span aria-hidden="true">＋</span> Capture Something</button>
+    <section class="hero-panel" aria-labelledby="hero-title">
+      <div class="hero-copy"><span class="hero-label">FROM REPORT TO RESOLUTION</span><h2 id="hero-title">Make every concern<br>count.</h2><p>Organise service-delivery concerns, record follow-ups and keep community work moving.</p><button class="primary-action-btn" id="quick-capture-btn" type="button"><span aria-hidden="true">＋</span> Capture an update</button></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div><div class="art-hill hill-one"></div><div class="art-hill hill-two"></div><div class="art-path"></div><span class="art-mark">S!</span></div>
     </section>
-
-    <div class="quick-nav-scroll" aria-label="Quick navigation">
-      <button class="pill-tab active" data-target="dashboard">Overview</button>
-      <button class="pill-tab" data-target="tasks">Tasks</button>
-      <button class="pill-tab" data-target="issues">Issues</button>
-      <button class="pill-tab" data-target="fundraising">Finance</button>
-      <button class="pill-tab" data-target="people">People</button>
-      <button class="pill-tab" data-target="knowledge">Knowledge Base</button>
-      <button class="pill-tab" data-target="audit">Audit</button>
-      <button class="pill-tab" data-target="settings">Settings</button>
-    </div>
-
-    <section class="assistant-card" aria-labelledby="assistant-heading">
-      <div class="assistant-heading"><div><p class="eyebrow">CIVIC AI</p><h3 id="assistant-heading">Community Intelligence Assistant</h3><p class="muted">Ask for planning help, summaries or next steps. AI requests use the configured service only.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
-      <div id="ai-messages" class="ai-messages" aria-live="polite"><p class="ai-message assistant-message">I can help structure plans and draft actions once a free AI service is connected. Do not enter sensitive resident details.</p></div>
-      <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Civic AI</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="Ask Civic AI…" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button" aria-label="Dictate a message">🎙 Speak</button><button class="primary-action-btn" type="submit">Ask AI</button></div></form>
-      <div class="assistant-tools"><button class="secondary-btn" id="ai-config-btn" type="button">Configure AI</button><button class="secondary-btn" id="voice-read-btn" type="button">🔊 Read latest reply</button><button class="secondary-btn" id="voice-stop-btn" type="button">Stop voice</button><button class="secondary-btn" id="whatsapp-share-btn" type="button">Share via WhatsApp</button></div>
-      <p class="small muted">AI is off until explicitly configured. Voice uses your browser/device speech engine for read-aloud at no API cost. Microphone dictation availability varies by browser and may send audio to its speech service. Free AI quota only; no paid fallback. WhatsApp opens a draft for you to send.</p>
-      <div id="ai-config-panel" class="ai-config-panel" hidden><label for="ai-endpoint">AI Worker URL</label><input id="ai-endpoint" type="url" inputmode="url" placeholder="https://your-worker.example.workers.dev" autocomplete="url"><label for="ai-password">Workspace password</label><input id="ai-password" type="password" maxlength="512" autocomplete="current-password" placeholder="Password for the configured Worker"><div class="assistant-tools"><button class="primary-action-btn" type="button" id="ai-connect-btn">Connect</button><button class="secondary-btn" type="button" id="ai-disconnect-btn">Disconnect</button></div><p class="small muted">Password is used for sign-in and not saved by this page. Configure a dedicated dev Worker with an approved origin before connecting. Never use production credentials in a public demo.</p></div>
-    </section>
-
-    <section id="dashboard-view">
-      <div class="section-heading"><div><p class="eyebrow">AT A GLANCE</p><h3>Executive overview</h3></div><span class="muted small">Counts update from this device</span></div>
-      <div class="bento-grid">
-        <button class="bento-card" data-open="tasks"><span class="bento-title">Open tasks</span><strong class="bento-value" id="count-tasks">0</strong><span class="bento-badge" id="badge-tasks">0 completed</span></button>
-        <button class="bento-card" data-open="issues"><span class="bento-title">Open issues</span><strong class="bento-value" id="count-issues">0</strong><span class="bento-badge">Field reports</span></button>
-        <button class="bento-card" data-open="projects"><span class="bento-title">Projects</span><strong class="bento-value" id="count-projects">0</strong><span class="bento-badge">Track outcomes</span></button>
-        <button class="bento-card" data-open="people"><span class="bento-title">People</span><strong class="bento-value" id="count-people">0</strong><span class="bento-badge">Local records</span></button>
-        <button class="bento-card" data-open="team"><span class="bento-title">Team</span><strong class="bento-value" id="count-team">0</strong><span class="bento-badge">Field activity</span></button>
-        <button class="bento-card" data-open="expenses"><span class="bento-title">Finance records</span><strong class="bento-value" id="count-finance">0</strong><span class="bento-badge">Income & expenses</span></button>
+    <nav class="quick-nav-scroll" aria-label="Workspace sections">
+      <button class="pill-tab active" data-target="dashboard" type="button">Overview</button>
+      <button class="pill-tab" data-target="issues" type="button">Service issues</button>
+      <button class="pill-tab" data-target="tasks" type="button">Follow-ups</button>
+      <button class="pill-tab" data-target="projects" type="button">Projects</button>
+      <button class="pill-tab" data-target="field" type="button">Field notes</button>
+      <button class="pill-tab" data-target="people" type="button">Contacts</button>
+      <button class="pill-tab" data-target="more" type="button">More tools</button>
+    </nav>
+    <section id="dashboard-view" class="dashboard-view">
+      <div class="section-heading"><div><p class="eyebrow">WORK IN VIEW</p><h2>Workspace overview</h2></div><span class="small muted">Live counts from this browser</span></div>
+      <div class="metric-grid">
+        <button class="metric-card metric-featured" data-open="issues" type="button"><span class="metric-icon" aria-hidden="true">!</span><span class="metric-label">Open service issues</span><strong class="metric-value" id="count-issues">0</strong><span class="metric-foot">Local reports <span aria-hidden="true">↗</span></span></button>
+        <button class="metric-card" data-open="tasks" type="button"><span class="metric-icon" aria-hidden="true">✓</span><span class="metric-label">Open follow-ups</span><strong class="metric-value" id="count-tasks">0</strong><span class="metric-foot" id="badge-tasks">0 completed</span></button>
+        <button class="metric-card" data-open="projects" type="button"><span class="metric-icon" aria-hidden="true">↗</span><span class="metric-label">Projects tracked</span><strong class="metric-value" id="count-projects">0</strong><span class="metric-foot">Delivery & outcomes</span></button>
+        <button class="metric-card" data-open="field" type="button"><span class="metric-icon" aria-hidden="true">⌖</span><span class="metric-label">Field notes</span><strong class="metric-value" id="count-team">0</strong><span class="metric-foot">Saved locally</span></button>
       </div>
-      <section class="info-card"><div><p class="eyebrow">AREA INTELLIGENCE</p><h3>Field activity</h3><p class="muted">The live public issue map is not connected in this local preview. No map data is fabricated.</p></div><div class="map-placeholder" aria-hidden="true"><span>⌖</span><i></i><i></i><i></i></div></section>
-      <section class="info-card backup-card"><div><p class="eyebrow">YOUR DATA</p><h3>Backup & portability</h3><p class="muted">Export or restore the local workspace on this device.</p></div><div class="backup-actions"><button class="secondary-btn" id="export-btn">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="import-input" accept="application/json,.json" hidden></label></div></section>
-      <p class="preview-warning">Preview only: records are stored in this browser and are not encrypted or synchronised. Do not enter sensitive resident, political or financial information.</p>
+      <div class="content-grid">
+        <section class="panel priority-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE THE NEXT STEP</p><h3>Move work forward</h3></div><span class="panel-symbol" aria-hidden="true">↗</span></div><p class="muted">Capture a service issue, note an action, or record a follow-up while the details are fresh.</p><div class="shortcut-list"><button type="button" class="shortcut-row" data-open="issues"><span class="shortcut-icon issue-icon" aria-hidden="true">!</span><span><strong>Log a service issue</strong><small>Record the concern and what needs to happen</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="tasks"><span class="shortcut-icon task-icon" aria-hidden="true">✓</span><span><strong>Add a follow-up</strong><small>Keep the next action visible</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="field"><span class="shortcut-icon field-icon" aria-hidden="true">⌖</span><span><strong>Save a field note</strong><small>Capture observations for later review</small></span><span class="row-arrow" aria-hidden="true">→</span></button></div></section>
+        <aside class="panel integrity-panel"><div class="integrity-mark" aria-hidden="true">S!</div><p class="eyebrow">BUILT FOR FOLLOW-THROUGH</p><h3>Clear notes.<br>Visible action.</h3><p class="muted">Use the workspace to organise work without overstating what has been verified or resolved.</p><div class="integrity-rule"><span class="rule-dot"></span><span>Keep reported concerns separate from verified outcomes.</span></div></aside>
+      </div>
+      <section class="assistant-card panel" aria-labelledby="assistant-heading">
+        <div class="assistant-heading"><div><p class="eyebrow">OPTIONAL TOOL</p><h3 id="assistant-heading">Sukuma! Assistant</h3><p class="muted">Draft plans and organise next steps. AI stays disconnected until you configure a service.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
+        <div id="ai-messages" class="ai-messages" aria-live="polite"><p class="ai-message assistant-message">I can help structure a plan once an approved free AI service is connected. Avoid entering personal or sensitive resident information.</p></div>
+        <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Sukuma! Assistant</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="What would you like to plan?" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button">Dictate</button><button class="primary-action-btn" type="submit">Ask assistant</button></div></form>
+        <div class="assistant-tools"><button class="secondary-btn" id="ai-config-btn" type="button">Configure AI</button><button class="secondary-btn" id="voice-read-btn" type="button">Read reply aloud</button><button class="secondary-btn" id="voice-stop-btn" type="button">Stop voice</button><button class="secondary-btn" id="whatsapp-share-btn" type="button">Prepare WhatsApp draft</button></div>
+        <p class="small muted">No paid fallback. Voice input may use your browser's speech service. WhatsApp opens a draft; you choose the recipient and send it yourself.</p>
+        <div id="ai-config-panel" class="ai-config-panel" hidden><label for="ai-endpoint">Development Worker URL</label><input id="ai-endpoint" type="url" inputmode="url" placeholder="https://your-worker.example.workers.dev" autocomplete="url"><label for="ai-password">Workspace password</label><input id="ai-password" type="password" maxlength="512" autocomplete="current-password" placeholder="Worker password"><div class="assistant-tools"><button class="primary-action-btn" type="button" id="ai-connect-btn">Connect</button><button class="secondary-btn" type="button" id="ai-disconnect-btn">Disconnect</button></div><p class="small muted">Use a dedicated development Worker only. Never enter production credentials here.</p></div>
+      </section>
+      <section class="panel data-panel"><div><p class="eyebrow">YOUR WORKSPACE</p><h3>Local data & portability</h3><p class="muted">Records stay in this browser. Export a backup before changing devices.</p></div><div class="backup-actions"><button class="secondary-btn" id="export-btn" type="button">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="import-input" accept="application/json,.json" hidden></label></div></section>
+      <p class="preview-warning"><strong>Preview limitation:</strong> This is not connected to a municipality, public issue map or shared database. Records are stored in browser storage and are not encrypted. Do not enter sensitive resident, political or financial information.</p>
     </section>
-
     <section id="module-view" hidden>
-      <div class="module-toolbar"><div><p class="eyebrow" id="module-kicker">WORKSPACE</p><h3 id="module-title">Tasks</h3><p class="muted" id="module-description"></p></div><button class="secondary-btn" id="back-dashboard-btn">Overview</button></div>
-      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Title or short summary…" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Details or next steps (optional)" rows="2"></textarea><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><button class="primary-action-btn" type="submit">＋ Add record</button></form>
-      <div id="record-list" class="record-list"></div>
-      <div id="module-empty" class="empty-state">No records yet. Add the first item above.</div>
+      <div class="module-toolbar"><div><p class="eyebrow" id="module-kicker">WORKSPACE</p><h2 id="module-title">Service issues</h2><p class="muted" id="module-description"></p></div><button class="secondary-btn" id="back-dashboard-btn" type="button">Back to overview</button></div>
+      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Short summary or action" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Details, location description or next steps (avoid personal data)" rows="3"></textarea><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><button class="primary-action-btn" type="submit">＋ Save record</button></form>
+      <div id="record-list" class="record-list"></div><div id="module-empty" class="empty-state">No records yet. Add the first item above.</div>
     </section>
   </main>
-
-  <nav class="bottom-dock" aria-label="Main navigation">
-    <button class="dock-item active" data-target="dashboard"><span>▦</span>Dashboard</button>
-    <button class="dock-item" data-target="tasks"><span>✓</span>Tasks</button>
-    <button class="dock-item" data-target="issues"><span>!</span>Issues</button>
-    <button class="dock-item" data-target="more"><span>•••</span>More</button>
-  </nav>
+  <nav class="bottom-dock" aria-label="Primary navigation"><button class="dock-item active" data-target="dashboard" type="button"><span aria-hidden="true">⌂</span>Overview</button><button class="dock-item" data-target="issues" type="button"><span aria-hidden="true">!</span>Issues</button><button class="dock-item" data-target="tasks" type="button"><span aria-hidden="true">✓</span>Follow-ups</button><button class="dock-item" data-target="more" type="button"><span aria-hidden="true">•••</span>More</button></nav>
   <script src="app.js"></script>
 </body>
 </html>
