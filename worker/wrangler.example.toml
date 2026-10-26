@@ -1,0 +1,9 @@
+name = "sukuma-case-api-preview"
+main = "src/index.js"
+compatibility_date = "2026-10-26"
+# Configure these secrets/vars only on a development Worker after review.
+# NEON_DATABASE_URL: secret; use a restricted DB role, ideally through Neon/Hyperdrive.
+# NEON_AUTH_JWKS_URL: exact JWKS endpoint from the configured Neon Auth project.
+# NEON_AUTH_ISSUER: exact issuer value from Neon Auth metadata.
+# NEON_AUTH_AUDIENCE: exact audience configured for the access token.
+# ALLOWED_ORIGINS: comma-separated exact HTTPS origins; no wildcards.
