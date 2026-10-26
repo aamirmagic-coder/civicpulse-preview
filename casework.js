@@ -50,5 +50,6 @@
     }
     return {...row,category,priority,status,completed:status==='resolved'||status==='closed',history};
   }
-\n  return {ISSUE_STATUSES,ISSUE_PRIORITIES,ISSUE_CATEGORIES,STATUS_LABELS,createIssueRecord,transitionIssue,sanitizeImportedIssueRecord};
+
+  return {ISSUE_STATUSES,ISSUE_PRIORITIES,ISSUE_CATEGORIES,STATUS_LABELS,createIssueRecord,transitionIssue,sanitizeImportedIssueRecord};
 });
