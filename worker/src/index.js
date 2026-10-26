@@ -154,10 +154,15 @@ export async function handleRequest(request, env) {
         }
         if (parts.length === 4 && parts[3] === "status" && request.method === "PATCH") {
           const body = updatePayload(await readJson(request));
-          if (item.status === body.status) return error(409, "Case already has that status.", cors);
           const client = await pool.connect();
           try {
             await client.query("BEGIN");
+            const locked = await client.query(
+              "SELECT status FROM public.sukuma_cases WHERE id = $1 AND owner_id = $2 FOR UPDATE",
+              [caseId, session.actorId]
+            );
+            if (!locked.rows[0]) { await client.query("ROLLBACK"); return error(404, "Case not found.", cors); }
+            if (locked.rows[0].status === body.status) { await client.query("ROLLBACK"); return error(409, "Case already has that status.", cors); }
             const changed = await client.query(
               "UPDATE public.sukuma_cases SET status = $1, updated_at = now(), resolved_at = CASE WHEN $1 IN ('resolved','closed') THEN COALESCE(resolved_at, now()) ELSE NULL END WHERE id = $2 AND owner_id = $3 RETURNING id, title, details, category, priority, status, created_at AS \"createdAt\", updated_at AS \"updatedAt\"",
               [body.status, caseId, session.actorId]
@@ -165,7 +170,7 @@ export async function handleRequest(request, env) {
             if (!changed.rows[0]) { await client.query("ROLLBACK"); return error(404, "Case not found.", cors); }
             await client.query(
               "INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'status_changed',$3,$4,$5)",
-              [caseId, session.actorId, item.status, body.status, body.note]
+              [caseId, session.actorId, locked.rows[0].status, body.status, body.note]
             );
             await client.query("COMMIT");
             return json({ case: changed.rows[0] }, 200, cors);
