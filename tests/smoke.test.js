@@ -26,9 +26,10 @@ test('design tokens define both themes and clearly label unverified brand colour
 test('preview uses the supplied original Sukuma symbol instead of the legacy CivicPulse icon', () => {
   const html = read('index.html');
   const manifest = JSON.parse(read('manifest.json'));
-  assert.doesNotMatch(html, /app-brand-logo|href="icon\.svg"/);
+  assert.match(html, /src="assets\/sukuma-symbol-original\.png"/);
+  assert.doesNotMatch(html, /href="icon\.svg"/);
   assert.equal(manifest.short_name, 'SUKUMA!');
-  assert.equal(manifest.icons, undefined);
+  assert.equal(manifest.icons[0].src, 'assets/sukuma-symbol-original.png');
 });
 
 test('primary action text contrast meets WCAG AA for the provisional orange token', () => {
