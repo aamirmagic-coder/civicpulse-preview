@@ -1,6 +1,6 @@
 const CACHE='sukuma-preview-shell-v3';
 const BASE='/civicpulse-preview';
-const ASSETS=[BASE+'/',BASE+'/index.html',BASE+'/styles.css',BASE+'/app.js',BASE+'/manifest.json',BASE+'/assets/sukuma-app-icon.png',BASE+'/assets/sukuma-horizontal-dark.png',BASE+'/assets/sukuma-horizontal-light.png'];
+const ASSETS=[BASE+'/',BASE+'/index.html',BASE+'/styles.css',BASE+'/app.js',BASE+'/manifest.json',BASE+'/assets/sukuma-app-icon.png',BASE+'/assets/sukuma-horizontal-dark.png',BASE+'/assets/sukuma-horizontal-light.png',BASE+'/sw.js'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
