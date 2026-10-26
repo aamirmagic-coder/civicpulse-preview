@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0B0F19">
-  <meta name="description" content="CivicPulse — Community Intelligence">
-  <title>CivicPulse — Community Intelligence</title>
+  <meta name="description" content="SUKUMA! — Stand Up! We build together. A local-first community accountability workspace.">
+  <title>SUKUMA! — Stand Up! We build together.</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header class="app-header">
-    <div class="brand-wrapper">
-      <img class="app-brand-logo" src="icon.svg" alt="CivicPulse symbol">
-      <div class="brand-title"><h1>CivicPulse</h1><span>Community Intelligence</span></div>
+    <div class="brand-wrapper" aria-label="SUKUMA! brand">
+      <div class="brand-title"><h1>SUKUMA<span aria-hidden="true">!</span></h1><span>Stand Up! We build together.</span></div>
     </div>
     <div class="header-actions">
       <label class="search-box" aria-label="Search records"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Search" autocomplete="off"></label>
@@ -46,9 +49,9 @@
     </div>
 
     <section class="assistant-card" aria-labelledby="assistant-heading">
-      <div class="assistant-heading"><div><p class="eyebrow">CIVIC AI</p><h3 id="assistant-heading">Community Intelligence Assistant</h3><p class="muted">Ask for planning help, summaries or next steps. AI requests use the configured service only.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
+      <div class="assistant-heading"><div><p class="eyebrow">SUKUMA! ASSISTANT</p><h3 id="assistant-heading">Community Intelligence Assistant</h3><p class="muted">Ask for planning help, summaries or next steps. AI requests use the configured service only.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
       <div id="ai-messages" class="ai-messages" aria-live="polite"><p class="ai-message assistant-message">I can help structure plans and draft actions once a free AI service is connected. Do not enter sensitive resident details.</p></div>
-      <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Civic AI</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="Ask Civic AI…" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button" aria-label="Dictate a message">🎙 Speak</button><button class="primary-action-btn" type="submit">Ask AI</button></div></form>
+      <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Sukuma assistant</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="Ask Sukuma assistant…" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button" aria-label="Dictate a message">🎙 Speak</button><button class="primary-action-btn" type="submit">Ask AI</button></div></form>
       <div class="assistant-tools"><button class="secondary-btn" id="ai-config-btn" type="button">Configure AI</button><button class="secondary-btn" id="voice-read-btn" type="button">🔊 Read latest reply</button><button class="secondary-btn" id="voice-stop-btn" type="button">Stop voice</button><button class="secondary-btn" id="whatsapp-share-btn" type="button">Share via WhatsApp</button></div>
       <p class="small muted">AI is off until explicitly configured. Voice uses your browser/device speech engine for read-aloud at no API cost. Microphone dictation availability varies by browser and may send audio to its speech service. Free AI quota only; no paid fallback. WhatsApp opens a draft for you to send.</p>
       <div id="ai-config-panel" class="ai-config-panel" hidden><label for="ai-endpoint">AI Worker URL</label><input id="ai-endpoint" type="url" inputmode="url" placeholder="https://your-worker.example.workers.dev" autocomplete="url"><label for="ai-password">Workspace password</label><input id="ai-password" type="password" maxlength="512" autocomplete="current-password" placeholder="Password for the configured Worker"><div class="assistant-tools"><button class="primary-action-btn" type="button" id="ai-connect-btn">Connect</button><button class="secondary-btn" type="button" id="ai-disconnect-btn">Disconnect</button></div><p class="small muted">Password is used for sign-in and not saved by this page. Configure a dedicated dev Worker with an approved origin before connecting. Never use production credentials in a public demo.</p></div>
