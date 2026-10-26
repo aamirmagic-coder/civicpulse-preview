@@ -5,6 +5,7 @@
 SUKUMA! replaces the CivicPulse identity for this preview. The supplied original symbol is included unmodified as a symbol-only asset. The lockup proof artwork remains review-only and is not used as a final logo.
 
 ## What's included
+- Issue casework lifecycle with category, priority, status transitions and browser-local history (not official submission or a secure audit trail).
 - Mobile-first, responsive frontend with light/dark theme support.
 - Foundation CSS tokens and explicit provisional colour status.
 - Montserrat headings and Inter body text (network fonts with system fallbacks).
