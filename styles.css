@@ -34,3 +34,5 @@ html{scroll-behavior:smooth}body{min-height:100vh;background:radial-gradient(ell
 .case-workflow button{min-height:42px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--bg-elevated);color:var(--text);font-weight:700}
 .case-history{margin-top:10px;color:var(--secondary);font-size:.78rem}.case-history summary{cursor:pointer;min-height:36px;display:flex;align-items:center;font-weight:700;color:var(--text)}.case-history ol{margin:4px 0 0 18px;padding-left:6px}.case-history li{padding:5px 0 7px 2px}.case-history time{font-variant-numeric:tabular-nums}.case-history p{margin-top:3px;overflow-wrap:anywhere}
 @media(max-width:640px){.issue-fields{grid-template-columns:1fr}.case-workflow{grid-template-columns:1fr}.case-workflow button{width:100%}}
+
+.issue-fields[hidden],.privacy-note[hidden]{display:none!important}
