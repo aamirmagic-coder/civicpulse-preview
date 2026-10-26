@@ -2,7 +2,7 @@
 
 **Status:** Public frontend preview and design-system foundation; not a production municipal case-management system.
 
-SUKUMA! replaces the CivicPulse identity for this preview. Brand assets must come from the approved owner-supplied artwork; this branch deliberately does not reuse or modify the former CivicPulse icon while the official Sukuma logo file is being integrated.
+SUKUMA! replaces the CivicPulse identity for this preview. The supplied original symbol is included unmodified as a symbol-only asset. The lockup proof artwork remains review-only and is not used as a final logo.
 
 ## What's included
 - Mobile-first, responsive frontend with light/dark theme support.
