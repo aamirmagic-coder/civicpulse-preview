@@ -1,4 +1,4 @@
-name: Frontend quality checks
+name: Frontend and Worker quality checks
 on:
   push:
     branches: ["**"]
@@ -11,7 +11,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Check JavaScript syntax
+      - name: Check frontend JavaScript syntax
         run: node --check app.js
-      - name: Run smoke tests
+      - name: Run frontend smoke tests
         run: node --test tests/*.test.js
+      - name: Install Worker dependencies
+        run: npm --prefix worker install --no-package-lock --ignore-scripts --no-audit --no-fund
+      - name: Check Worker JavaScript syntax
+        run: npm --prefix worker run check
+      - name: Run Worker security and HTTP-boundary tests
+        run: npm --prefix worker test
