@@ -10,6 +10,11 @@ This register distinguishes verified constraints from provisional recommendation
 - **REQUIRED:** Public maps or issue feeds must never expose reporter identity/contact details.
 - **REQUIRED:** Imports must validate the complete payload and require explicit confirmation before replacing any local data.
 
+## Core casework update (local preview)
+- **IMPLEMENTED:** Issue records support category, priority, status, and a local chronological status-history log.
+- **IMPLEMENTED:** Status changes and notes are stored only in the current browser. They are not municipal submissions or an official audit trail.
+- **REQUIRED:** Existing legacy issue records may lack category, priority, or history; UI uses safe display fallbacks, but no migration to an official backend has occurred.
+
 ## Important gaps
 - The area-intelligence panel is a placeholder, not a live map or verified statistics.
 - Some module forms remain generic and do not satisfy complete type-specific workflows.
