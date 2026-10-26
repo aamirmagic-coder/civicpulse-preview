@@ -31,6 +31,17 @@ test('preview does not ship the previous CivicPulse icon as Sukuma branding', ()
   assert.equal(manifest.icons, undefined);
 });
 
+test('primary action text contrast meets WCAG AA for the provisional orange token', () => {
+  const tokens = read('tokens/tokens.css');
+  const orange = tokens.match(/--action-orange:(#[0-9A-Fa-f]{6})/)[1];
+  const darkText = tokens.match(/--text-dark:(#[0-9A-Fa-f]{6})/)[1];
+  const luminance = (hex) => hex.slice(1).match(/../g).map((pair) => parseInt(pair, 16) / 255)
+    .map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+  const values = [luminance(orange), luminance(darkText)].sort((a, b) => b - a);
+  assert.ok((values[0] + 0.05) / (values[1] + 0.05) >= 4.5);
+});
+
 test('accessibility guardrails and privacy limitations are documented', () => {
   const css = read('styles.css');
   const readme = read('README.md');
