@@ -134,7 +134,7 @@ export async function handleRequest(request, env) {
             "INSERT INTO public.sukuma_cases (owner_id, title, details, category, priority, status) VALUES ($1,$2,$3,$4,$5,'open') RETURNING id, title, details, category, priority, status, created_at AS \"createdAt\", updated_at AS \"updatedAt\"",
             [session.actorId, body.title, body.details, body.category, body.priority]
           );
-          await client.query("INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ("INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'created',NULL,'open','Case created')",$2,$2,'created',NULL,'open','Case created')", [row.rows[0].id, session.actorId]);
+          await client.query("INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'created',NULL,'open','Case created')", [row.rows[0].id, session.actorId]);
           await client.query("COMMIT");
           return json({ case: row.rows[0] }, 201, cors);
         } catch (e) { await client.query("ROLLBACK"); throw e; }
