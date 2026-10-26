@@ -48,7 +48,7 @@
     if(!history.length&&status==='open'&&typeof row.createdAt==='string'&&row.createdAt.length<50){
       history.push({status:'open',at:row.createdAt,note:'Legacy case restored; prior history unavailable'});
     }
-    return {...row,category,priority,status,completed:status==='resolved'||status==='closed',history};
+    return {id:String(row.id||'').slice(0,120),title:typeof row.title==='string'?row.title.trim().slice(0,180):'',details:typeof row.details==='string'?row.details.slice(0,2000):'',date:typeof row.date==='string'&&/^\\d{4}-\\d{2}-\\d{2}$/.test(row.date)?row.date:'',amount:null,category,priority,status,completed:status==='resolved'||status==='closed',createdAt:typeof row.createdAt==='string'&&row.createdAt.length<50?row.createdAt:new Date().toISOString(),history};
   }
 
   return {ISSUE_STATUSES,ISSUE_PRIORITIES,ISSUE_CATEGORIES,STATUS_LABELS,createIssueRecord,transitionIssue,sanitizeImportedIssueRecord};
