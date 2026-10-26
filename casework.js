@@ -35,5 +35,20 @@
     history.push({status:nextStatus,at:now,note:String(note||'').trim().slice(0,240)});
     return {...issue,status:nextStatus,completed:nextStatus==='resolved'||nextStatus==='closed',history};
   }
-  return {ISSUE_STATUSES,ISSUE_PRIORITIES,ISSUE_CATEGORIES,STATUS_LABELS,createIssueRecord,transitionIssue};
+
+  function sanitizeImportedIssueRecord(input){
+    const row=input&&typeof input==='object'&&!Array.isArray(input)?input:{};
+    const status=ISSUE_STATUSES.includes(row.status)?row.status:'open';
+    const category=ISSUE_CATEGORIES.includes(row.category)?row.category:'Other';
+    const priority=ISSUE_PRIORITIES.includes(row.priority)?row.priority:'normal';
+    const rawHistory=Array.isArray(row.history)?row.history.slice(-500):[];
+    const history=rawHistory.filter(event=>event&&typeof event==='object'&&!Array.isArray(event)&&
+      ISSUE_STATUSES.includes(event.status)&&typeof event.at==='string'&&event.at.length<50)
+      .map(event=>({status:event.status,at:event.at,note:typeof event.note==='string'?event.note.trim().slice(0,240):''}));
+    if(!history.length&&status==='open'&&typeof row.createdAt==='string'&&row.createdAt.length<50){
+      history.push({status:'open',at:row.createdAt,note:'Legacy case restored; prior history unavailable'});
+    }
+    return {...row,category,priority,status,completed:status==='resolved'||status==='closed',history};
+  }
+\n  return {ISSUE_STATUSES,ISSUE_PRIORITIES,ISSUE_CATEGORIES,STATUS_LABELS,createIssueRecord,transitionIssue,sanitizeImportedIssueRecord};
 });
