@@ -1,5 +1,5 @@
 {
-  "name": "Sukuma! \u2014 Community Feedback & Accountability",
+  "name": "Sukuma! — Community Feedback & Accountability",
   "short_name": "Sukuma!",
   "description": "Mobile-first municipal feedback, complaint resolution and accountability workspace",
   "start_url": "/civicpulse-preview/",
@@ -9,9 +9,9 @@
   "theme_color": "#182229",
   "icons": [
     {
-      "src": "/civicpulse-preview/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/civicpulse-preview/assets/sukuma-app-icon.png",
+      "sizes": "650x650",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
