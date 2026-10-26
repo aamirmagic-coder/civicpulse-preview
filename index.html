@@ -1,78 +1,86 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en-ZA" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#F6F0E7">
-  <meta name="description" content="Sukuma! — community feedback, service delivery and accountability workspace.">
-  <title>Sukuma! — Community Accountability</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="assets/sukuma-app-icon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6F0E7">
+<meta name="description" content="Sukuma! dashboard design preview — illustrative interface, not live municipal data.">
+<title>Sukuma! — Dashboard Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--brand:#0F3D4A;--brand-deep:#0B333F;--brand-soft:#DDF2F4;--accent:#F06724;--canvas:#F4F7F9;--surface:#FFFFFF;--surface-alt:#F1F5F9;--text:#1E293B;--muted:#64748B;--border:#E2E8F0;--success:#2E7D32;--danger:#E64A19;--action-text:#fff;--dock:rgba(255,255,255,.96);--shadow:0 2px 8px rgba(0,0,0,.04);--radius:20px}
+[data-theme=dark]{color-scheme:dark;--brand:#78C3C8;--brand-deep:#A8DADD;--brand-soft:#203B3E;--accent:#E99770;--canvas:#182229;--surface:#202B32;--surface-alt:#293740;--text:#F6F2EB;--muted:#C0C8CB;--border:#40515A;--success:#8BC7A7;--danger:#F2A29A;--action-text:#182229;--dock:rgba(24,34,41,.94);--shadow:0 18px 48px rgba(0,0,0,.22)}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif}h1,h2,h3{font-family:Montserrat,Inter,sans-serif;letter-spacing:-.035em;margin:0}button,input{font:inherit}button,a{touch-action:manipulation}a{color:inherit}.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--surface);padding:1rem;z-index:10}.shell{max-width:1440px;margin:auto;min-height:100vh;display:grid;grid-template-columns:250px minmax(0,1fr)}.sidebar{padding:26px 16px;border-right:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;gap:28px}.brandmark{padding:4px 12px 12px}.brandmark img{width:166px;max-width:100%;height:auto;object-fit:contain}.eyebrow{font-size:.73rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--muted)}.nav{display:grid;gap:5px}.nav a{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:12px;text-decoration:none;color:var(--muted);font-weight:600}.nav a.active{background:var(--brand-soft);color:var(--brand-deep)}.ico{width:22px;display:inline-grid;place-items:center;font-size:1.05rem}.sidebar-note{margin-top:auto;border:1px solid var(--border);border-radius:16px;padding:14px;background:var(--surface-alt);font-size:.84rem;color:var(--muted)}.main{min-width:0;padding:28px clamp(16px,3vw,42px) 96px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:30px}.crumb{font-size:.84rem;color:var(--muted)}.top-actions{display:flex;gap:10px;align-items:center}.search{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:10px 13px;min-width:min(260px,35vw);color:var(--text)}.iconbtn,.btn{border:1px solid var(--border);border-radius:12px;padding:10px 13px;background:var(--surface);color:var(--text);cursor:pointer;font-weight:650}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn:focus-visible,.iconbtn:focus-visible,.nav a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.welcome{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}.welcome h1{font-size:clamp(1.7rem,3vw,2.45rem);margin:4px 0 7px}.welcome p{color:var(--muted);margin:0}.demo-tag{display:inline-flex;align-items:center;gap:7px;background:var(--surface-alt);border:1px solid var(--border);padding:7px 10px;border-radius:999px;font-size:.76rem;font-weight:700;color:var(--muted);white-space:nowrap}.demo-tag:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}.grid{display:grid;gap:16px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);min-width:0}.metric-head{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:.83rem;font-weight:600;gap:8px}.metric-icon{display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-deep);width:36px;height:36px;border-radius:11px;font-size:1.1rem}.metric-number{font:700 clamp(1.7rem,2.5vw,2.15rem)/1.2 Montserrat,sans-serif;margin:16px 0 7px}.metric-foot{font-size:.78rem;color:var(--muted)}.metric-foot strong{color:var(--success)}.content-grid{grid-template-columns:minmax(0,1.55fr) minmax(280px,1fr);align-items:start}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.section-head h2{font-size:1.08rem}.text-link{font-size:.84rem;color:var(--brand-deep);font-weight:700;text-decoration:none}.case-list{display:grid;gap:12px}.case{border:1px solid var(--border);border-radius:15px;padding:15px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}.case h3{font-size:.94rem;letter-spacing:-.02em;margin:3px 0 5px}.case p{font-size:.82rem;color:var(--muted);margin:0}.case-meta{font-size:.75rem;color:var(--muted)}.status{align-self:start;display:inline-flex;border-radius:999px;padding:5px 9px;font-size:.7rem;font-weight:750;white-space:nowrap;background:var(--surface-alt);color:var(--muted)}.status.progress{background:#FBE9E7;color:#E64A19}.status.waiting{background:#EDE7F6;color:#673AB7}.status.resolved{background:#E8F5E9;color:#2E7D32}.dark .status{}[data-theme=dark] .status.progress{background:#55382A;color:#FFD0B3}[data-theme=dark] .status.waiting{background:#303B59;color:#D3DCFF}[data-theme=dark] .status.resolved{background:#254735;color:#B8E6C8}.case-bottom{grid-column:1/-1;border-top:1px solid var(--border);padding-top:10px;margin-top:3px;display:flex;justify-content:space-between;gap:10px;align-items:center}.tiny{font-size:.75rem;color:var(--muted)}.priority{display:flex;gap:6px;align-items:center;font-size:.74rem;font-weight:700}.dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}.dot.green{background:var(--success)}.activity{display:grid;gap:0}.activity-item{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}.activity-item:last-child{border:0}.activity-icon{width:32px;height:32px;border-radius:10px;background:var(--brand-soft);display:grid;place-items:center;color:var(--brand-deep)}.activity p{font-size:.83rem;margin:0 0 3px}.activity time{font-size:.74rem;color:var(--muted)}.quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.quick{border:1px solid var(--border);background:var(--surface);border-radius:14px;text-decoration:none;padding:13px;display:flex;gap:10px;align-items:center;font-size:.82rem;font-weight:650}.quick span:first-child{width:30px;height:30px;border-radius:9px;background:var(--surface-alt);display:grid;place-items:center}.footnote{font-size:.75rem;color:var(--muted);margin-top:20px}.mobile-nav{display:none}
+@media(max-width:1100px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{grid-template-columns:minmax(0,1.2fr) minmax(260px,1fr)}.shell{grid-template-columns:220px minmax(0,1fr)}}
+@media(max-width:760px){.shell{display:block}.sidebar{display:none}.main{padding:18px 14px 105px}.topbar{align-items:flex-start;margin-bottom:23px}.crumb{display:none}.search{min-width:0;width:42vw;padding:10px;font-size:.84rem}.top-actions{gap:7px}.iconbtn{padding:10px}.welcome{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:18px}.welcome h1{font-size:1.8rem}.metrics{gap:10px;margin-bottom:14px}.card{padding:15px;border-radius:17px}.metric-number{font-size:1.65rem;margin:13px 0 5px}.metric-head{align-items:flex-start;font-size:.76rem}.metric-icon{width:31px;height:31px}.metric-foot{font-size:.7rem}.content-grid{grid-template-columns:1fr;gap:14px}.case{padding:13px}.quick-actions{gap:8px}.mobile-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(5,1fr);padding:9px 5px max(9px,env(safe-area-inset-bottom));background:var(--dock);backdrop-filter:blur(14px);border-top:1px solid var(--border)}.mobile-nav a{text-decoration:none;display:grid;justify-items:center;gap:3px;padding:5px 0;color:var(--muted);font-size:.66rem;font-weight:650}.mobile-nav a.active{color:var(--brand-deep)}.mobile-nav .ico{font-size:1.1rem}.demo-tag{font-size:.7rem}.footnote{margin-top:16px}}
+@media(max-width:390px){.search{width:36vw}.metrics{gap:8px}.card{padding:12px}.metric-number{font-size:1.45rem}.metric-head{font-size:.7rem}.metric-foot{font-size:.66rem}.case h3{font-size:.88rem}.status{font-size:.65rem;padding:4px 7px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="app-header">
-    <a class="brand-wrapper" href="./" aria-label="Sukuma! home">
-      <img class="app-brand-logo" src="assets/sukuma-horizontal-light.png" alt="Sukuma!">
-    </a>
-    <div class="header-actions">
-      <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search local records</span><input id="global-search" type="search" placeholder="Search records" autocomplete="off"></label>
-      <button class="icon-btn" id="theme-toggle-btn" type="button" aria-label="Switch colour theme" title="Switch theme"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
-      <button class="secondary-btn install-btn" id="install-app-btn" type="button" hidden>Install</button>
-    </div>
-  </header>
-  <main id="main-content">
-    <section class="welcome-row">
-      <div><p class="eyebrow">COMMUNITY ACCOUNTABILITY</p><h1 id="page-heading">Your community desk</h1><p class="intro" id="page-subtitle">Keep issues visible. Track action. Follow through.</p></div>
-      <span class="workspace-state"><span class="state-dot"></span> Private device workspace</span>
-    </section>
-    <section class="hero-panel" aria-labelledby="hero-title">
-      <div class="hero-copy"><span class="hero-label">FROM REPORT TO RESOLUTION</span><h2 id="hero-title">Make every concern<br>count.</h2><p>Organise service-delivery concerns, record follow-ups and keep community work moving.</p><button class="primary-action-btn" id="quick-capture-btn" type="button"><span aria-hidden="true">＋</span> Capture an update</button></div>
-      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div><div class="art-hill hill-one"></div><div class="art-hill hill-two"></div><div class="art-path"></div><span class="art-mark">S!</span></div>
-    </section>
-    <nav class="quick-nav-scroll" aria-label="Workspace sections">
-      <button class="pill-tab active" data-target="dashboard" type="button">Overview</button>
-      <button class="pill-tab" data-target="issues" type="button">Service issues</button>
-      <button class="pill-tab" data-target="tasks" type="button">Follow-ups</button>
-      <button class="pill-tab" data-target="projects" type="button">Projects</button>
-      <button class="pill-tab" data-target="field" type="button">Field notes</button>
-      <button class="pill-tab" data-target="people" type="button">Contacts</button>
-      <button class="pill-tab" data-target="more" type="button">More tools</button>
-    </nav>
-    <section id="dashboard-view" class="dashboard-view">
-      <div class="section-heading"><div><p class="eyebrow">WORK IN VIEW</p><h2>Workspace overview</h2></div><span class="small muted">Live counts from this browser</span></div>
-      <div class="metric-grid">
-        <button class="metric-card metric-featured" data-open="issues" type="button"><span class="metric-icon" aria-hidden="true">!</span><span class="metric-label">Open service issues</span><strong class="metric-value" id="count-issues">0</strong><span class="metric-foot">Local reports <span aria-hidden="true">↗</span></span></button>
-        <button class="metric-card" data-open="tasks" type="button"><span class="metric-icon" aria-hidden="true">✓</span><span class="metric-label">Open follow-ups</span><strong class="metric-value" id="count-tasks">0</strong><span class="metric-foot" id="badge-tasks">0 completed</span></button>
-        <button class="metric-card" data-open="projects" type="button"><span class="metric-icon" aria-hidden="true">↗</span><span class="metric-label">Projects tracked</span><strong class="metric-value" id="count-projects">0</strong><span class="metric-foot">Delivery & outcomes</span></button>
-        <button class="metric-card" data-open="field" type="button"><span class="metric-icon" aria-hidden="true">⌖</span><span class="metric-label">Field notes</span><strong class="metric-value" id="count-team">0</strong><span class="metric-foot">Saved locally</span></button>
-      </div>
-      <div class="content-grid">
-        <section class="panel priority-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE THE NEXT STEP</p><h3>Move work forward</h3></div><span class="panel-symbol" aria-hidden="true">↗</span></div><p class="muted">Capture a service issue, note an action, or record a follow-up while the details are fresh.</p><div class="shortcut-list"><button type="button" class="shortcut-row" data-open="issues"><span class="shortcut-icon issue-icon" aria-hidden="true">!</span><span><strong>Log a service issue</strong><small>Record the concern and what needs to happen</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="tasks"><span class="shortcut-icon task-icon" aria-hidden="true">✓</span><span><strong>Add a follow-up</strong><small>Keep the next action visible</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="field"><span class="shortcut-icon field-icon" aria-hidden="true">⌖</span><span><strong>Save a field note</strong><small>Capture observations for later review</small></span><span class="row-arrow" aria-hidden="true">→</span></button></div></section>
-        <aside class="panel integrity-panel"><div class="integrity-mark" aria-hidden="true">S!</div><p class="eyebrow">BUILT FOR FOLLOW-THROUGH</p><h3>Clear notes.<br>Visible action.</h3><p class="muted">Use the workspace to organise work without overstating what has been verified or resolved.</p><div class="integrity-rule"><span class="rule-dot"></span><span>Keep reported concerns separate from verified outcomes.</span></div></aside>
-      </div>
-      <section class="assistant-card panel" aria-labelledby="assistant-heading">
-        <div class="assistant-heading"><div><p class="eyebrow">OPTIONAL TOOL</p><h3 id="assistant-heading">Sukuma! Assistant</h3><p class="muted">Draft plans and organise next steps. AI stays disconnected until you configure a service.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
-        <div id="ai-messages" class="ai-messages" aria-live="polite"><p class="ai-message assistant-message">I can help structure a plan once an approved free AI service is connected. Avoid entering personal or sensitive resident information.</p></div>
-        <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Sukuma! Assistant</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="What would you like to plan?" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button">Dictate</button><button class="primary-action-btn" type="submit">Ask assistant</button></div></form>
-        <div class="assistant-tools"><button class="secondary-btn" id="ai-config-btn" type="button">Configure AI</button><button class="secondary-btn" id="voice-read-btn" type="button">Read reply aloud</button><button class="secondary-btn" id="voice-stop-btn" type="button">Stop voice</button><button class="secondary-btn" id="whatsapp-share-btn" type="button">Prepare WhatsApp draft</button></div>
-        <p class="small muted">No paid fallback. Voice input may use your browser's speech service. WhatsApp opens a draft; you choose the recipient and send it yourself.</p>
-        <div id="ai-config-panel" class="ai-config-panel" hidden><label for="ai-endpoint">Development Worker URL</label><input id="ai-endpoint" type="url" inputmode="url" placeholder="https://your-worker.example.workers.dev" autocomplete="url"><label for="ai-password">Workspace password</label><input id="ai-password" type="password" maxlength="512" autocomplete="current-password" placeholder="Worker password"><div class="assistant-tools"><button class="primary-action-btn" type="button" id="ai-connect-btn">Connect</button><button class="secondary-btn" type="button" id="ai-disconnect-btn">Disconnect</button></div><p class="small muted">Use a dedicated development Worker only. Never enter production credentials here.</p></div>
-      </section>
-      <section class="panel data-panel"><div><p class="eyebrow">YOUR WORKSPACE</p><h3>Local data & portability</h3><p class="muted">Records stay in this browser. Export a backup before changing devices.</p></div><div class="backup-actions"><button class="secondary-btn" id="export-btn" type="button">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="import-input" accept="application/json,.json" hidden></label></div></section>
-      <p class="preview-warning"><strong>Preview limitation:</strong> This is not connected to a municipality, public issue map or shared database. Records are stored in browser storage and are not encrypted. Do not enter sensitive resident, political or financial information.</p>
-    </section>
-    <section id="module-view" hidden>
-      <div class="module-toolbar"><div><p class="eyebrow" id="module-kicker">WORKSPACE</p><h2 id="module-title">Service issues</h2><p class="muted" id="module-description"></p></div><button class="secondary-btn" id="back-dashboard-btn" type="button">Back to overview</button></div>
-      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Short summary or action" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Details, location description or next steps (avoid personal data)" rows="3"></textarea><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><button class="primary-action-btn" type="submit">＋ Save record</button></form>
-      <div id="record-list" class="record-list"></div><div id="module-empty" class="empty-state">No records yet. Add the first item above.</div>
-    </section>
-  </main>
-  <nav class="bottom-dock" aria-label="Primary navigation"><button class="dock-item active" data-target="dashboard" type="button"><span aria-hidden="true">⌂</span>Overview</button><button class="dock-item" data-target="issues" type="button"><span aria-hidden="true">!</span>Issues</button><button class="dock-item" data-target="tasks" type="button"><span aria-hidden="true">✓</span>Follow-ups</button><button class="dock-item" data-target="more" type="button"><span aria-hidden="true">•••</span>More</button></nav>
-  <script src="app.js"></script>
-</body>
-</html>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="shell">
+<aside class="sidebar" aria-label="Primary navigation">
+<div class="brandmark"><img src="assets/sukuma-horizontal-light.png" alt="Sukuma!"></div>
+<div><div class="eyebrow" style="padding:0 13px 10px">Workspace</div><nav class="nav">
+<a class="active" href="#overview" aria-current="page"><span class="ico" aria-hidden="true">▦</span>Overview</a>
+<a href="#cases"><span class="ico" aria-hidden="true">◎</span>Service issues</a>
+<a href="#activity"><span class="ico" aria-hidden="true">◷</span>Case history</a>
+<a href="#actions"><span class="ico" aria-hidden="true">✓</span>Tasks & follow-ups</a>
+<a href="#community"><span class="ico" aria-hidden="true">⌖</span>Community insights</a>
+</nav></div>
+<div><div class="eyebrow" style="padding:0 13px 10px">Manage</div><nav class="nav">
+<a href="#reports"><span class="ico" aria-hidden="true">▤</span>Reports</a><a href="#settings"><span class="ico" aria-hidden="true">⚙</span>Settings</a>
+</nav></div>
+<div class="sidebar-note"><strong style="color:var(--text)">Preview workspace</strong><br>Sample interface only. No resident records or live municipal data are connected.</div>
+</aside>
+<main class="main" id="main">
+<header class="topbar"><div class="crumb">Workspace <span aria-hidden="true">/</span> Overview</div><div class="top-actions"><label class="skip" for="search">Search this preview</label><input id="search" class="search" type="search" placeholder="Search cases…" aria-label="Search illustrative cases"><button class="iconbtn" id="theme" type="button" aria-label="Switch colour theme" title="Switch colour theme">◐</button></div></header>
+<section id="overview" aria-labelledby="welcome-title">
+<div class="welcome"><div><div class="eyebrow">Community accountability workspace</div><h1 id="welcome-title">Good morning.</h1><p>A clearer view of issues, ownership and next steps.</p></div><span class="demo-tag">Illustrative preview · not live data</span></div>
+<div class="grid metrics" aria-label="Illustrative dashboard metrics">
+<article class="card"><div class="metric-head"><span>Open cases</span><span class="metric-icon" aria-hidden="true">◎</span></div><div class="metric-number">24</div><div class="metric-foot">Example count · demo only</div></article>
+<article class="card"><div class="metric-head"><span>Awaiting response</span><span class="metric-icon" aria-hidden="true">◷</span></div><div class="metric-number">08</div><div class="metric-foot">Example count · demo only</div></article>
+<article class="card"><div class="metric-head"><span>Resolved this month</span><span class="metric-icon" aria-hidden="true">✓</span></div><div class="metric-number">17</div><div class="metric-foot">Example count · demo only</div></article>
+<article class="card"><div class="metric-head"><span>Follow-ups due</span><span class="metric-icon" aria-hidden="true">↗</span></div><div class="metric-number">05</div><div class="metric-foot">Example count · demo only</div></article>
+</div>
+</section>
+<div class="grid content-grid">
+<section class="card" id="cases" aria-labelledby="cases-title"><div class="section-head"><h2 id="cases-title">Priority service issues</h2><a class="text-link" href="#cases">View all <span aria-hidden="true">→</span></a></div>
+<div class="case-list" id="case-list">
+<article class="case" data-search="water supply service delivery high priority">
+<div><div class="case-meta">CASE EXAMPLE · DEMO-001</div><h3>Water supply interruption</h3><p>Illustrative area · Ward not specified</p></div><span class="status progress">In progress</span>
+<div class="case-bottom"><span class="priority"><span class="dot"></span>High priority</span><span class="tiny">Next check: example date</span></div></article>
+<article class="case" data-search="street light public safety awaiting response">
+<div><div class="case-meta">CASE EXAMPLE · DEMO-002</div><h3>Streetlight not working</h3><p>Illustrative area · Ward not specified</p></div><span class="status waiting">Awaiting response</span>
+<div class="case-bottom"><span class="priority"><span class="dot"></span>Standard priority</span><span class="tiny">Follow-up: example date</span></div></article>
+<article class="case" data-search="waste collection refuse resolved">
+<div><div class="case-meta">CASE EXAMPLE · DEMO-003</div><h3>Missed refuse collection</h3><p>Illustrative area · Ward not specified</p></div><span class="status resolved">Resolved</span>
+<div class="case-bottom"><span class="priority"><span class="dot green"></span>Closed · example only</span><span class="tiny">History available in concept</span></div></article>
+</div>
+<p class="footnote">All case names, IDs, statuses and counts on this screen are fictional placeholders for layout review.</p>
+</section>
+<aside class="grid" style="gap:14px">
+<section class="card" id="activity" aria-labelledby="activity-title"><div class="section-head"><h2 id="activity-title">Recent case activity</h2><a class="text-link" href="#activity">History</a></div><div class="activity">
+<div class="activity-item"><span class="activity-icon" aria-hidden="true">↗</span><div><p><strong>Follow-up scheduled</strong><br>Example water-supply case</p><time>Illustrative timeline event</time></div></div>
+<div class="activity-item"><span class="activity-icon" aria-hidden="true">✉</span><div><p><strong>Response recorded</strong><br>Example streetlight case</p><time>Illustrative timeline event</time></div></div>
+<div class="activity-item"><span class="activity-icon" aria-hidden="true">✓</span><div><p><strong>Resolution noted</strong><br>Example refuse case</p><time>Illustrative timeline event</time></div></div>
+</div></section>
+<section class="card" id="actions" aria-labelledby="actions-title"><div class="section-head"><h2 id="actions-title">Quick actions</h2></div><div class="quick-actions">
+<a class="quick" href="#cases"><span aria-hidden="true">＋</span><span>Log an issue</span></a><a class="quick" href="#activity"><span aria-hidden="true">↻</span><span>Record follow-up</span></a><a class="quick" href="#reports"><span aria-hidden="true">▤</span><span>Prepare report</span></a><a class="quick" href="#community"><span aria-hidden="true">⌖</span><span>View community</span></a>
+</div></section>
+<section class="card" id="community" aria-labelledby="community-title"><div class="section-head"><h2 id="community-title">Community intelligence</h2></div><p style="font-size:.86rem;color:var(--muted);margin:0">Designed to surface verified patterns and service trends. This preview contains no real community insights or geographic data.</p></section>
+</aside>
+</div>
+<p class="footnote" id="reports">Design preview only · Local-first reference interface · Do not enter personal, resident, political or financial information.</p>
+</main>
+</div>
+<nav class="mobile-nav" aria-label="Mobile navigation"><a class="active" href="#overview" aria-current="page"><span class="ico" aria-hidden="true">▦</span>Overview</a><a href="#cases"><span class="ico" aria-hidden="true">◎</span>Cases</a><a href="#actions"><span class="ico" aria-hidden="true">＋</span>Actions</a><a href="#activity"><span class="ico" aria-hidden="true">◷</span>History</a><a href="#community"><span class="ico" aria-hidden="true">⌖</span>Community</a></nav>
+<script>
+const root=document.documentElement;const themeButton=document.getElementById('theme');
+themeButton.addEventListener('click',()=>{const dark=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',dark?'light':'dark');themeButton.setAttribute('aria-label',dark?'Switch colour theme':'Switch colour theme');});
+document.getElementById('search').addEventListener('input',event=>{const q=event.target.value.trim().toLowerCase();document.querySelectorAll('#case-list .case').forEach(card=>{card.hidden=!!q&&!((card.innerText+' '+card.dataset.search).toLowerCase().includes(q));});});
+</script>
+</body></html>
