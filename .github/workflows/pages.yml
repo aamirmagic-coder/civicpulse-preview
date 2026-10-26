@@ -1,4 +1,4 @@
-name: CivicPulse public preview
+name: Sukuma! public preview
 on:
   push:
     branches: [main]
@@ -8,7 +8,7 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: civicpulse-preview-pages
+  group: sukuma-preview-pages
   cancel-in-progress: true
 jobs:
   build:
@@ -22,8 +22,9 @@ jobs:
           enablement: true
       - name: Prepare static site
         run: |
-          mkdir -p _site
+          mkdir -p _site/assets
           cp index.html styles.css app.js sw.js manifest.json icon.svg icon-light.svg _site/
+          cp assets/sukuma-app-icon.png assets/sukuma-horizontal-dark.png assets/sukuma-horizontal-light.png _site/assets/
           touch _site/.nojekyll
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
