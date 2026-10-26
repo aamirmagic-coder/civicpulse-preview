@@ -11,7 +11,7 @@ const MAX_BODY = 8192;
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
   status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", "x-content-type-options": "nosniff", ...headers }
 });
-const error = (status, message) => json({ error: message }, status);
+const error = (status, message, headers = {}) => json({ error: message }, status, headers);
 const uuid = value => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value || "");
 function onlyKeys(value, allowed) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("JSON body must be an object.");
@@ -127,19 +127,18 @@ export async function handleRequest(request, env) {
       }
       if (parts.length === 2 && parts[1] === "cases" && request.method === "POST") {
         const body = createPayload(await readJson(request));
-        const created = await pool.query("BEGIN");
+        const client = await pool.connect();
         try {
-          const row = await pool.query(
+          await client.query("BEGIN");
+          const row = await client.query(
             "INSERT INTO public.sukuma_cases (owner_id, title, details, category, priority, status) VALUES ($1,$2,$3,$4,$5,'open') RETURNING id, title, details, category, priority, status, created_at AS \"createdAt\", updated_at AS \"updatedAt\"",
             [session.actorId, body.title, body.details, body.category, body.priority]
           );
-          await pool.query(
-            "INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'created',NULL,'open','Case created')",
-            [row.rows[0].id, session.actorId]
-          );
-          await pool.query("COMMIT");
+          await client.query("INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ("INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'created',NULL,'open','Case created')",$2,$2,'created',NULL,'open','Case created')", [row.rows[0].id, session.actorId]);
+          await client.query("COMMIT");
           return json({ case: row.rows[0] }, 201, cors);
-        } catch (e) { await pool.query("ROLLBACK"); throw e; }
+        } catch (e) { await client.query("ROLLBACK"); throw e; }
+        finally { client.release(); }
       }
       if (parts.length >= 3 && parts[1] === "cases" && uuid(parts[2])) {
         const caseId = parts[2];
@@ -156,20 +155,22 @@ export async function handleRequest(request, env) {
         if (parts.length === 4 && parts[3] === "status" && request.method === "PATCH") {
           const body = updatePayload(await readJson(request));
           if (item.status === body.status) return error(409, "Case already has that status.", cors);
-          await pool.query("BEGIN");
+          const client = await pool.connect();
           try {
-            const changed = await pool.query(
+            await client.query("BEGIN");
+            const changed = await client.query(
               "UPDATE public.sukuma_cases SET status = $1, updated_at = now(), resolved_at = CASE WHEN $1 IN ('resolved','closed') THEN COALESCE(resolved_at, now()) ELSE NULL END WHERE id = $2 AND owner_id = $3 RETURNING id, title, details, category, priority, status, created_at AS \"createdAt\", updated_at AS \"updatedAt\"",
               [body.status, caseId, session.actorId]
             );
-            if (!changed.rows[0]) { await pool.query("ROLLBACK"); return error(404, "Case not found.", cors); }
-            await pool.query(
+            if (!changed.rows[0]) { await client.query("ROLLBACK"); return error(404, "Case not found.", cors); }
+            await client.query(
               "INSERT INTO public.sukuma_case_events (case_id, owner_id, actor_id, event_type, from_status, to_status, note) VALUES ($1,$2,$2,'status_changed',$3,$4,$5)",
               [caseId, session.actorId, item.status, body.status, body.note]
             );
-            await pool.query("COMMIT");
+            await client.query("COMMIT");
             return json({ case: changed.rows[0] }, 200, cors);
-          } catch (e) { await pool.query("ROLLBACK"); throw e; }
+          } catch (e) { await client.query("ROLLBACK"); throw e; }
+          finally { client.release(); }
         }
       }
       return error(404, "Not found.", cors);
