@@ -264,6 +264,59 @@ body{background:var(--canvas);color:var(--text)}
 @media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+/* TEMPORARY palette inspired by the supplied deep-teal and warm-neutral references. */
+:root{color-scheme:light;--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 12px 34px #07374412}
+[data-theme=dark]{color-scheme:dark;--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 12px 34px #0005}
+.status.waiting{background:#FFF0E8;color:#8C3926}.status.resolved{background:#DDF3EB;color:#155C50}
+[data-theme=dark] .status.waiting{background:#4B302A;color:#FFB39A}[data-theme=dark] .status.resolved{background:#153F3E;color:#8DE1D3}
+.heading.hero-seascape{--accent:#E97856}
+.hero-cta{background:var(--accent);border-color:var(--accent)}
+.metrics .card:before{background:var(--accent)}
+.bar-fill{background:var(--accent)}
+.insight{background:linear-gradient(145deg,#073744,#087F8C)}
+[data-theme=dark] .insight{background:linear-gradient(145deg,#082B36,#124D58)}
+/* Logo sizing and matte blending for supplied light/dark variants. Artwork files are preserved unchanged. */
+.logo{padding:0 3px 5px;min-height:74px;display:flex;align-items:center}
+.logo img{width:204px;max-width:100%;max-height:82px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img{mix-blend-mode:screen}
+.header-logo{min-height:62px;flex:0 1 auto}
+.header-logo img{width:270px;max-width:42vw;max-height:76px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{min-height:94px;align-items:center}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;padding:0;mix-blend-mode:multiply}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){
+ .logo img{width:190px;max-height:72px}
+ .header-logo{min-height:54px}
+ .header-logo img{width:220px;max-width:43vw;max-height:64px}
+ .drawer-head img{width:84px;height:84px}
+}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+
+
+/* TEMPORARY palette inspired by supplied reference: deep ocean navy, cool white, teal and coral. */
+:root{color-scheme:light;--brand:#087E8B;--deep:#082335;--accent:#F26B5B;--canvas:#F2F7F8;--surface:#FFFFFF;--soft:#E1EFF0;--text:#102A36;--muted:#526975;--line:#CCDDE1;--green:#168B72;--service-orange:#E98B45;--shadow:0 12px 34px #08233512}
+[data-theme=dark]{color-scheme:dark;--brand:#55D6C2;--deep:#071923;--accent:#FF8A78;--canvas:#08141D;--surface:#10232E;--soft:#183743;--text:#F2FAFC;--muted:#B2C7D0;--line:#2C4652;--green:#55D6A5;--service-orange:#FFB36B;--shadow:0 12px 34px #0005}
+.heading{background:linear-gradient(125deg,var(--deep),#087E8B)}
+.insight{background:linear-gradient(145deg,#082335,#0C5963)}
+.bar-fill{background:var(--accent)}
+.heading .overline,.heading p{color:#E0F4F5}
+[data-theme=dark] .heading .overline,[data-theme=dark] .heading p{color:#D6E8EC}
+/* Logo sizing and theme-aware blending; original artwork is preserved. */
+.logo{padding:0 4px 4px;min-height:70px;display:flex;align-items:center}
+.logo img{width:210px;max-width:100%;height:auto;max-height:84px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.header-logo{flex:0 1 auto;min-height:64px}
+.header-logo picture{display:flex;align-items:center;min-width:0}
+.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img,[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{align-items:center;min-height:92px}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;mix-blend-mode:multiply;padding:0}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){.logo img{width:190px;max-height:72px}.header-logo{min-height:56px}.header-logo img{width:218px;max-width:43vw;max-height:64px}.drawer-head img{width:82px;height:82px}}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+</style>
 </head>
 <body><a class="skip" href="#main">Skip to main content</a>
 <div class="layout">
@@ -433,56 +486,3 @@ applyNearbyLimit();
  }
 })();
 </script></body></html>
-/* TEMPORARY palette inspired by the supplied deep-teal and warm-neutral references. */
-:root{color-scheme:light;--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 12px 34px #07374412}
-[data-theme=dark]{color-scheme:dark;--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 12px 34px #0005}
-.status.waiting{background:#FFF0E8;color:#8C3926}.status.resolved{background:#DDF3EB;color:#155C50}
-[data-theme=dark] .status.waiting{background:#4B302A;color:#FFB39A}[data-theme=dark] .status.resolved{background:#153F3E;color:#8DE1D3}
-.heading.hero-seascape{--accent:#E97856}
-.hero-cta{background:var(--accent);border-color:var(--accent)}
-.metrics .card:before{background:var(--accent)}
-.bar-fill{background:var(--accent)}
-.insight{background:linear-gradient(145deg,#073744,#087F8C)}
-[data-theme=dark] .insight{background:linear-gradient(145deg,#082B36,#124D58)}
-/* Logo sizing and matte blending for supplied light/dark variants. Artwork files are preserved unchanged. */
-.logo{padding:0 3px 5px;min-height:74px;display:flex;align-items:center}
-.logo img{width:204px;max-width:100%;max-height:82px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
-[data-theme=dark] .logo img{mix-blend-mode:screen}
-.header-logo{min-height:62px;flex:0 1 auto}
-.header-logo img{width:270px;max-width:42vw;max-height:76px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
-[data-theme=dark] .header-logo img{mix-blend-mode:screen}
-.drawer-head{min-height:94px;align-items:center}
-.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;padding:0;mix-blend-mode:multiply}
-[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
-@media(max-width:760px){
- .logo img{width:190px;max-height:72px}
- .header-logo{min-height:54px}
- .header-logo img{width:220px;max-width:43vw;max-height:64px}
- .drawer-head img{width:84px;height:84px}
-}
-@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
-
-<style>
-
-/* TEMPORARY palette inspired by supplied reference: deep ocean navy, cool white, teal and coral. */
-:root{color-scheme:light;--brand:#087E8B;--deep:#082335;--accent:#F26B5B;--canvas:#F2F7F8;--surface:#FFFFFF;--soft:#E1EFF0;--text:#102A36;--muted:#526975;--line:#CCDDE1;--green:#168B72;--service-orange:#E98B45;--shadow:0 12px 34px #08233512}
-[data-theme=dark]{color-scheme:dark;--brand:#55D6C2;--deep:#071923;--accent:#FF8A78;--canvas:#08141D;--surface:#10232E;--soft:#183743;--text:#F2FAFC;--muted:#B2C7D0;--line:#2C4652;--green:#55D6A5;--service-orange:#FFB36B;--shadow:0 12px 34px #0005}
-.heading{background:linear-gradient(125deg,var(--deep),#087E8B)}
-.insight{background:linear-gradient(145deg,#082335,#0C5963)}
-.bar-fill{background:var(--accent)}
-.heading .overline,.heading p{color:#E0F4F5}
-[data-theme=dark] .heading .overline,[data-theme=dark] .heading p{color:#D6E8EC}
-/* Logo sizing and theme-aware blending; original artwork is preserved. */
-.logo{padding:0 4px 4px;min-height:70px;display:flex;align-items:center}
-.logo img{width:210px;max-width:100%;height:auto;max-height:84px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
-.header-logo{flex:0 1 auto;min-height:64px}
-.header-logo picture{display:flex;align-items:center;min-width:0}
-.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
-[data-theme=dark] .logo img,[data-theme=dark] .header-logo img{mix-blend-mode:screen}
-.drawer-head{align-items:center;min-height:92px}
-.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;mix-blend-mode:multiply;padding:0}
-[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
-@media(max-width:760px){.logo img{width:190px;max-height:72px}.header-logo{min-height:56px}.header-logo img{width:218px;max-width:43vw;max-height:64px}.drawer-head img{width:82px;height:82px}}
-@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
-
-</style>
