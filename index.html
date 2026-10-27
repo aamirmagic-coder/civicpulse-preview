@@ -68,7 +68,61 @@
 .quick-tile:nth-child(1) .quick-icon,.quick-tile:nth-child(4) .quick-icon{stroke:var(--accent)}
 @media(max-width:760px){.quick-actions-panel{margin-bottom:14px}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quick-tile{aspect-ratio:1/1;padding:12px;gap:12px;font-size:12px}.quick-icon{width:30px;height:30px}}
 @media(max-width:370px){.quick-grid{gap:8px}.quick-tile{padding:9px;font-size:11px;gap:9px}.quick-icon{width:27px;height:27px}}
+
+/* Community pulse interactive map and nearby reports */
+.pulse-section{margin:32px 0 34px;padding-top:2px}
+.pulse-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:18px}
+.pulse-heading h2{font:750 clamp(21px,2.3vw,28px)/1.2 Montserrat,sans-serif;letter-spacing:-.035em;margin:5px 0}
+.pulse-heading p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.pulse-live{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:99px;background:var(--surface);padding:7px 10px;color:var(--muted);font-size:10px;font-weight:750;white-space:nowrap}
+.pulse-live span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.pulse-layout{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:15px;align-items:stretch}
+.pulse-map-wrap{min-width:0;border:1px solid var(--line);border-radius:17px;background:var(--surface);overflow:hidden}
+.pulse-map-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-bottom:1px solid var(--line)}
+.map-area{font-size:12px;font-weight:750}
+.map-reset{border:1px solid var(--line);background:var(--surface);color:var(--brand);border-radius:9px;padding:7px 10px;min-height:36px;font-size:11px;font-weight:750;cursor:pointer}
+#pulse-map{height:390px;width:100%;background:#e7edf0;position:relative;z-index:0}
+.map-loading{padding:22px;color:#344054;font-size:12px}
+.map-legend{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:13px 15px;border-top:1px solid var(--line)}
+.map-legend span{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:650}
+.legend-dot{width:10px;height:10px;display:inline-block;border-radius:50%;box-shadow:0 0 0 3px #0000000a}
+.legend-dot.urgent{background:#DC2626}.legend-dot.progress{background:#2563EB}.legend-dot.monitored{background:#D97706}.legend-dot.resolved{background:#059669}
+.map-disclaimer{padding:0 15px 13px;margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.pulse-summary{border-radius:17px;padding:17px;background:var(--deep);color:#fff;display:flex;flex-direction:column;gap:17px}
+.pulse-summary-label{font-size:12px;font-weight:750;display:flex;flex-direction:column;gap:4px}.pulse-summary-label span{font-size:10px;color:#c8d9e2;font-weight:500}
+.pulse-stat{display:flex;align-items:center;gap:11px}.pulse-stat-icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:17px;font-weight:800;background:#ffffff15;color:#fff}
+.pulse-stat-icon.urgent{background:#7f1d1d;color:#fecaca}.pulse-stat-icon.progress{background:#1e3a8a;color:#bfdbfe}.pulse-stat-icon.monitored{background:#78350f;color:#fde68a}
+.pulse-stat div{display:grid;gap:1px}.pulse-stat strong{font:750 24px/1.1 Montserrat,sans-serif}.pulse-stat div span{font-size:11px;color:#d4e2e8}
+.pulse-summary-foot{margin-top:auto;padding-top:12px;border-top:1px solid #ffffff30;font-size:10px;color:#d4e2e8}
+.nearby-reports{margin-top:28px}
+.nearby-reports .section-title{align-items:flex-end;margin-bottom:15px}
+.nearby-reports .section-title h3{font-size:18px;margin:0}
+.nearby-reports .section-title p{font-size:11px;color:var(--muted);margin:4px 0 0}
+.report-filter-label{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);font-weight:650}
+.report-filter-label select{min-height:40px;max-width:160px;padding:7px 27px 7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--text);font-size:12px}
+.nearby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.nearby-report{min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);cursor:pointer;transition:border-color .15s ease,transform .15s ease}
+.nearby-report[hidden]{display:none}
+.nearby-report.selected{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.nearby-report-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.report-type{font-size:10px;font-weight:750;color:var(--muted)}
+.report-status{display:inline-flex;align-items:center;border-radius:99px;padding:4px 7px;font-size:10px;font-weight:750;white-space:nowrap}
+.report-status.urgent{background:#FEE2E2;color:#991B1B}.report-status.progress{background:#DBEAFE;color:#1D4ED8}.report-status.monitored{background:#FEF3C7;color:#92400E}.report-status.resolved{background:#D1FAE5;color:#065F46}
+[data-theme=dark] .report-status.urgent{background:#4C1D1D;color:#FECACA}[data-theme=dark] .report-status.progress{background:#172554;color:#BFDBFE}[data-theme=dark] .report-status.monitored{background:#451A03;color:#FDE68A}[data-theme=dark] .report-status.resolved{background:#064E3B;color:#A7F3D0}
+.nearby-report h4{font:700 13px/1.4 Montserrat,sans-serif;letter-spacing:-.015em;margin:12px 0 5px}
+.report-location{font-size:11px;color:var(--muted);margin:0 0 13px}
+.report-meta{border-top:1px solid var(--line);padding-top:9px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:9px;color:var(--muted)}
+.pulse-empty{font-size:12px;color:var(--muted);padding:18px;border:1px dashed var(--line);border-radius:12px}
+#pulse-map .leaflet-popup-content-wrapper{border-radius:12px}#pulse-map .leaflet-popup-content{font:12px/1.5 Inter, sans-serif;margin:12px 14px}
+.map-popup strong{display:block;font-family:Montserrat,sans-serif;margin-bottom:3px}.map-popup span{color:#5A6574}
+.pulse-pin{border:2px solid #fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;color:#fff;font:800 11px/1 Inter,sans-serif;box-shadow:0 2px 8px #0f172a55}
+.pulse-pin.urgent{background:#DC2626}.pulse-pin.progress{background:#2563EB}.pulse-pin.monitored{background:#D97706}.pulse-pin.resolved{background:#059669}
+@media(max-width:980px){.pulse-layout{grid-template-columns:minmax(0,1fr) 160px}.nearby-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.pulse-section{margin:25px 0 28px}.pulse-heading{align-items:flex-start;flex-direction:column;gap:9px;margin-bottom:14px}.pulse-heading h2{font-size:22px}.pulse-layout{grid-template-columns:1fr;gap:11px}.pulse-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:13px}.pulse-summary-label{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}.pulse-stat{gap:7px}.pulse-stat-icon{width:30px;height:30px;flex:none}.pulse-stat strong{font-size:20px}.pulse-stat div span{font-size:10px}.pulse-summary-foot{grid-column:1/-1;margin-top:0;padding-top:9px}#pulse-map{height:330px}.nearby-reports{margin-top:22px}.nearby-grid{grid-template-columns:1fr;gap:9px}.nearby-report{padding:13px}.nearby-report h4{margin-top:9px}.nearby-reports .section-title{align-items:flex-start;flex-direction:column;gap:12px}.report-filter-label{width:100%;justify-content:space-between}.report-filter-label select{flex:1;max-width:65%}}
+@media(max-width:370px){.pulse-summary{padding:10px;gap:8px}.pulse-stat{gap:5px}.pulse-stat-icon{width:26px;height:26px}.pulse-stat strong{font-size:18px}.pulse-stat div span{font-size:9px}.pulse-live{font-size:9px}#pulse-map{height:290px}}
+@media(prefers-reduced-motion:reduce){.nearby-report{transition:none}}
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body><a class="skip" href="#main">Skip to main content</a>
 <div class="layout">
@@ -89,6 +143,45 @@
 
 </section>
 <section class="quick-actions-panel" id="actions"><div class="section-title"><h2>Quick actions</h2><a class="subtle-link" href="#actions">View all <span aria-hidden="true">→</span></a></div><div class="quick-grid"><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Report issue</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><span>My cases</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8h8l4 4V20H6z"/><path d="M14 4v4h4M9 12h6M9 16h6"/></svg><span>Follow-ups</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.4A4.6 4.6 0 0 1 8.1 13h1.8a4.6 4.6 0 0 1 4.6 4.6V19M16 5.4a3 3 0 0 1 0 5.8M17 13.3a4.5 4.5 0 0 1 3.5 4.4V19"/></svg><span>Community insight</span></div></div></section>
+
+<section class="pulse-section" id="community-pulse" aria-labelledby="pulse-title">
+  <div class="pulse-heading">
+    <div><div class="overline">Community intelligence</div><h2 id="pulse-title">What’s happening where?</h2><p>Live map</p></div>
+    <span class="pulse-live"><span aria-hidden="true"></span> DEMO · Sample reports</span>
+  </div>
+  <div class="pulse-layout">
+    <div class="pulse-map-wrap">
+      <div class="pulse-map-tools"><span class="map-area">Phoenix &amp; surrounding areas</span><button type="button" class="map-reset" id="pulse-reset">Reset map</button></div>
+      <div id="pulse-map" role="region" aria-label="Interactive map of illustrative service reports around Phoenix, Durban"><div class="map-loading">Loading interactive map…</div></div>
+      <div class="map-legend" aria-label="Map legend">
+        <span><i class="legend-dot urgent"></i>Urgent</span><span><i class="legend-dot progress"></i>In progress</span><span><i class="legend-dot monitored"></i>Monitored</span><span><i class="legend-dot resolved"></i>Resolved</span>
+      </div>
+      <p class="map-disclaimer">Illustrative report locations only. These pins are fictional and do not represent verified municipal reports or exact resident locations.</p>
+    </div>
+    <aside class="pulse-summary" aria-label="Sample map summary">
+      <div class="pulse-summary-label">Map snapshot <span>Demo data</span></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon urgent">!</span><div><strong>3</strong><span>Urgent</span></div></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon progress">↻</span><div><strong>4</strong><span>In progress</span></div></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon monitored">◉</span><div><strong>2</strong><span>Monitored</span></div></div>
+      <div class="pulse-summary-foot">9 example reports in this view</div>
+    </aside>
+  </div>
+  <div class="nearby-reports">
+    <div class="section-title"><div><h3>Nearby reports</h3><p>Reports shown on the map</p></div><label class="report-filter-label" for="pulse-filter">Filter reports<select id="pulse-filter"><option value="all">All statuses</option><option value="Urgent">Urgent</option><option value="In progress">In progress</option><option value="Monitored">Monitored</option><option value="Resolved">Resolved</option></select></label></div>
+    <div class="nearby-grid" id="nearby-report-list">
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.793" data-lng="31.018"><div class="nearby-report-top"><span class="report-type">Water &amp; sanitation</span><span class="report-status urgent">Urgent</span></div><h4>Water leak reported</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-101</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.805" data-lng="31.025"><div class="nearby-report-top"><span class="report-type">Roads &amp; transport</span><span class="report-status progress">In progress</span></div><h4>Pothole needs attention</h4><p class="report-location">Westham · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-102</span></div></article>
+      <article class="nearby-report" data-status="Monitored" data-lat="-29.817" data-lng="31.012"><div class="nearby-report-top"><span class="report-type">Street lighting</span><span class="report-status monitored">Monitored</span></div><h4>Streetlight not working</h4><p class="report-location">Mount Edgecombe · Illustrative location</p><div class="report-meta"><span>Reported 2 days ago</span><span>DEMO-103</span></div></article>
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.789" data-lng="31.041"><div class="nearby-report-top"><span class="report-type">Water &amp; sanitation</span><span class="report-status urgent">Urgent</span></div><h4>Possible burst pipe</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-104</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.824" data-lng="31.031"><div class="nearby-report-top"><span class="report-type">Waste collection</span><span class="report-status progress">In progress</span></div><h4>Missed refuse collection</h4><p class="report-location">Redfern · Illustrative location</p><div class="report-meta"><span>Reported 3 days ago</span><span>DEMO-105</span></div></article>
+      <article class="nearby-report" data-status="Monitored" data-lat="-29.779" data-lng="31.006"><div class="nearby-report-top"><span class="report-type">Public safety</span><span class="report-status monitored">Monitored</span></div><h4>Damaged public sign</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported 4 days ago</span><span>DEMO-106</span></div></article>
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.811" data-lng="31.002"><div class="nearby-report-top"><span class="report-type">Roads &amp; transport</span><span class="report-status urgent">Urgent</span></div><h4>Road flooding concern</h4><p class="report-location">Clayfield · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-107</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.798" data-lng="30.993"><div class="nearby-report-top"><span class="report-type">Parks &amp; public spaces</span><span class="report-status progress">In progress</span></div><h4>Overgrown public verge</h4><p class="report-location">Caneside · Illustrative location</p><div class="report-meta"><span>Reported 2 days ago</span><span>DEMO-108</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.831" data-lng="31.015"><div class="nearby-report-top"><span class="report-type">Drainage</span><span class="report-status progress">In progress</span></div><h4>Blocked stormwater drain</h4><p class="report-location">Redfern · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-109</span></div></article>
+    </div>
+    <p id="pulse-empty" class="pulse-empty" hidden>No sample reports match this status.</p>
+  </div>
+</section>
 <div class="content">
 <section class="card" id="issues"><div class="section-title"><h2>Priority service issues</h2><a class="subtle-link" href="#issues">View all →</a></div><div class="filter-row" role="group" aria-label="Filter example issues"><button class="filter active" data-filter="all">All issues</button><button class="filter" data-filter="progress">In progress</button><button class="filter" data-filter="waiting">Awaiting response</button><button class="filter" data-filter="resolved">Resolved</button></div>
 <div class="issue-list" id="issue-list">
@@ -134,4 +227,45 @@ function filterIssues(){const q=search.value.trim().toLowerCase();const cards=[.
 search.addEventListener('input',filterIssues);
 document.querySelectorAll('[data-filter]').forEach(button=>{button.setAttribute('aria-pressed',button.dataset.filter==='all'?'true':'false');button.addEventListener('click',()=>{activeFilter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});filterIssues();});});
 document.querySelectorAll('[data-toast]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showToast(link.dataset.toast);}));
+
+/* Interactive sample map. All report content and coordinates are fictional demo data. */
+(function initCommunityPulse(){
+ const mapNode=document.getElementById('pulse-map');
+ if(!mapNode||mapNode.dataset.initialized)return;
+ mapNode.dataset.initialized='true';
+ const leaflet=document.createElement('script');
+ leaflet.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+ leaflet.integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+ leaflet.crossOrigin='';
+ leaflet.onload=buildMap;
+ leaflet.onerror=()=>{mapNode.innerHTML='<div class="map-loading">The interactive map could not load. Nearby sample reports remain available below.</div>';};
+ document.body.appendChild(leaflet);
+ function buildMap(){
+  if(!window.L)return;
+  const map=L.map(mapNode,{scrollWheelZoom:false}).setView([-29.805,31.018],12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'}).addTo(map);
+  const markers=new Map();
+  const statusClass={'Urgent':'urgent','In progress':'progress','Monitored':'monitored','Resolved':'resolved'};
+  const statusGlyph={'Urgent':'!','In progress':'↻','Monitored':'◉','Resolved':'✓'};
+  const cards=[...document.querySelectorAll('.nearby-report')];
+  cards.forEach(card=>{
+   const status=card.dataset.status,lat=Number(card.dataset.lat),lng=Number(card.dataset.lng);
+   const title=card.querySelector('h4').textContent,type=card.querySelector('.report-type').textContent,loc=card.querySelector('.report-location').textContent,id=card.querySelector('.report-meta span:last-child').textContent;
+   const icon=L.divIcon({className:'',html:'<span class="pulse-pin '+statusClass[status]+'">'+statusGlyph[status]+'</span>',iconSize:[26,26],iconAnchor:[13,13]});
+   const marker=L.marker([lat,lng],{icon,title:title,alt:title}).addTo(map);
+   marker.bindPopup('<div class="map-popup"><strong>'+title+'</strong><span>'+type+' · '+status+'</span><br><span>'+loc+' · '+id+'</span></div>');
+   markers.set(card,marker);
+   card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');map.setView([lat,lng],Math.max(map.getZoom(),14));marker.openPopup();});
+   marker.on('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');});
+  });
+  const filter=document.getElementById('pulse-filter');
+  filter.addEventListener('change',()=>{
+   let visible=0;
+   cards.forEach(card=>{const show=filter.value==='all'||card.dataset.status===filter.value;card.hidden=!show;if(show){visible++;if(!map.hasLayer(markers.get(card)))markers.get(card).addTo(map);}else if(map.hasLayer(markers.get(card)))map.removeLayer(markers.get(card));});
+   document.getElementById('pulse-empty').hidden=visible!==0;
+  });
+  document.getElementById('pulse-reset').addEventListener('click',()=>{filter.value='all';filter.dispatchEvent(new Event('change'));cards.forEach(card=>card.classList.remove('selected'));map.setView([-29.805,31.018],12);map.closePopup();});
+  const group=L.featureGroup([...markers.values()]);map.fitBounds(group.getBounds().pad(.16));setTimeout(()=>map.invalidateSize(),150);
+ }
+})();
 </script></body></html>
