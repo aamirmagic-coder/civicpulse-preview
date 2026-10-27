@@ -262,6 +262,53 @@ body{background:var(--canvas);color:var(--text)}
  .drawer-head img{width:80px;height:80px}
 }
 @media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+/* Sukuma! community-first visual polish */
+:root{--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 14px 38px #07374412}
+[data-theme=dark]{--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 14px 38px #0004}
+body{background:radial-gradient(ellipse at 85% 0%,color-mix(in srgb,var(--brand) 7%,transparent),transparent 34%),var(--canvas)}
+.layout{max-width:1600px}
+.main{padding-top:clamp(16px,2.3vw,34px)}
+.sidebar{background:linear-gradient(180deg,#073744,#092d38 78%,#102f39);padding-top:27px}
+.nav a{border:1px solid transparent;transition:background .18s ease,border-color .18s ease}
+.nav a.active{background:#ffffff19;border-color:#ffffff18}
+.heading.hero-seascape{border-radius:0 0 24px 24px;overflow:hidden;box-shadow:0 22px 50px #07374422}
+#overview .hero-seascape{border-radius:0 0 26px 26px}
+.hero-seascape:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(110deg,#062b39d9 0%,#07374485 48%,#07374408 100%);pointer-events:none}
+.hero-copy{max-width:760px}
+.hero-seascape h1{letter-spacing:-.055em;text-wrap:balance}
+.hero-cta{background:var(--accent);border-color:var(--accent);border-radius:12px;box-shadow:0 8px 22px #071b2033;font-weight:750}
+.hero-cta:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.hero-pill{backdrop-filter:blur(12px)}
+.metrics{gap:15px}
+.metrics .card,.content>.card,.stack>.card{border-radius:19px;box-shadow:0 7px 26px #0737440b;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.metrics .card:hover,.content>.card:hover,.stack>.card:hover{box-shadow:0 14px 34px #07374412;border-color:color-mix(in srgb,var(--brand) 38%,var(--line))}
+.metric-value{letter-spacing:-.06em}
+.metric-icon{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-radius:12px}
+.section-title h2{letter-spacing:-.035em}
+.filter-row{gap:8px}
+.filter{padding:8px 13px;border-radius:999px}
+.issue{background:color-mix(in srgb,var(--surface) 94%,var(--canvas));border-radius:15px;padding:16px}
+.issue h3{font-size:14px;line-height:1.4}
+.status{padding:6px 10px}
+.quick{border-radius:14px;background:color-mix(in srgb,var(--surface) 92%,var(--soft));}
+.quick b{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-radius:10px}
+.insight{background:linear-gradient(145deg,#073744,#0b5962);box-shadow:0 14px 34px #07374420!important}
+.public-card .feed-item{padding:13px 0}
+.community-banner{border-radius:20px;overflow:hidden;box-shadow:0 14px 38px #07374418}
+.notice{line-height:1.65}
+.button,.icon-button,.avatar,.filter,.quick{transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.button.primary{background:var(--accent);border-color:var(--accent)}
+.button.primary:hover{filter:brightness(1.04)}
+.search-popout{backdrop-filter:blur(18px)}
+.nav-drawer{background:linear-gradient(180deg,#073744,#092d38)}
+.mobile-nav{box-shadow:0 -8px 28px #0737440a;background:color-mix(in srgb,var(--surface) 92%,transparent)}
+.mobile-nav a.active{color:var(--brand)}
+a{ text-underline-offset:3px}
+@media(min-width:761px){.content{gap:18px}.stack{gap:17px}.card{padding:20px}}
+@media(max-width:760px){.main{padding-top:10px}.topbar{margin-bottom:18px}.heading.hero-seascape{border-radius:0 0 20px 20px}.metrics{gap:10px}.metrics .card,.content>.card,.stack>.card{border-radius:16px}.issue{padding:13px}.community-banner{border-radius:17px}}
+@media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card,.button,.icon-button,.avatar,.filter,.quick,.hero-cta{transition:none!important}}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
