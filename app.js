@@ -1,6 +1,5 @@
 /* Sukuma! local-first preview. Do not store sensitive data here. */
 const KEY='civicpulse-v1';
-const FALLBACK_KEY='jarvis-second-brain-v1';
 const MODULES={
  tasks:{label:'Tasks',key:'tasks',description:'Track actions and follow-through.'},
  issues:{label:'Issues',key:'issues',description:'Local issue notes only; not connected to a public reporting service.'},
@@ -25,7 +24,7 @@ class SukumaApp{
  constructor(){this.state=this.loadState();this.currentView='dashboard';this.searchTerm='';this.preferences=this.loadPreferences();this.aiEndpoint='';this.aiAuthenticated=false;this.aiMessages=[];this.speechRecognition=null;this.deferredInstallPrompt=null;this.initTheme();this.bindEvents();this.bindInstallPrompt();this.bindAssistant();this.updateCounters();this.log('Workspace opened');}
  loadPreferences(){try{const p=JSON.parse(localStorage.getItem('civicpulse-preferences')||'{}');return {aiEnabled:false,...(p&&typeof p==='object'?p:{})};}catch{return {aiEnabled:false};}}
  savePreferences(){try{localStorage.setItem('civicpulse-preferences',JSON.stringify(this.preferences));return true;}catch{this.notify('Could not save preferences on this device.');return false;}}
- loadState(){try{const raw=localStorage.getItem(KEY)||localStorage.getItem(FALLBACK_KEY)||'{}';const parsed=JSON.parse(raw);const out={...DEFAULTS,...(parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:{})};for(const k of Object.keys(DEFAULTS))if(!Array.isArray(out[k]))out[k]=[];return out;}catch{return {...DEFAULTS};}}
+ loadState(){try{const raw=localStorage.getItem(KEY)||'{}';const parsed=JSON.parse(raw);const out={...DEFAULTS,...(parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:{})};for(const k of Object.keys(DEFAULTS))if(!Array.isArray(out[k]))out[k]=[];return out;}catch{return {...DEFAULTS};}}
  saveState(){try{localStorage.setItem(KEY,JSON.stringify(this.state));return true;}catch{this.notify('Could not save. Browser storage may be full or disabled.');return false;}}
  log(action){this.state.audit.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),title:action,createdAt:new Date().toISOString()});if(this.state.audit.length>300)this.state.audit=this.state.audit.slice(-300);this.saveState();}
  notify(message){let node=document.getElementById('app-notice');if(!node){node=document.createElement('div');node.id='app-notice';node.setAttribute('role','status');node.style.cssText='position:fixed;z-index:90;top:76px;left:50%;transform:translateX(-50%);max-width:calc(100% - 28px);padding:11px 15px;border:1px solid var(--border);border-radius:12px;background:var(--bg-elevated);color:var(--text);box-shadow:var(--shadow);font-size:.84rem';document.body.appendChild(node);}node.textContent=message;node.hidden=false;clearTimeout(this.noticeTimer);this.noticeTimer=setTimeout(()=>node.hidden=true,2800);}
