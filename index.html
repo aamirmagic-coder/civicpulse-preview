@@ -309,6 +309,44 @@ a{ text-underline-offset:3px}
 @media(max-width:760px){.main{padding-top:10px}.topbar{margin-bottom:18px}.heading.hero-seascape{border-radius:0 0 20px 20px}.metrics{gap:10px}.metrics .card,.content>.card,.stack>.card{border-radius:16px}.issue{padding:13px}.community-banner{border-radius:17px}}
 @media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card,.button,.icon-button,.avatar,.filter,.quick,.hero-cta{transition:none!important}}
 
+
+/* Calm, playful Sukuma! design pass: lighter surfaces, consistent type, tighter footer */
+:root{--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 8px 24px #0737440b}
+[data-theme=dark]{--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 8px 24px #0003}
+body{background:var(--canvas)}
+/* Less boxed-in: rely on spacing, typography and dividers instead of nested cards. */
+.metrics .card,.content>.card,.stack>.card{box-shadow:none;border-color:transparent;background:transparent;border-radius:10px}
+.metrics .card{background:color-mix(in srgb,var(--surface) 62%,transparent);border-bottom:1px solid var(--line);border-radius:0;padding:18px 16px}
+.metrics .card:before{width:2px;opacity:.55}
+.content>.card,.stack>.card{padding:clamp(14px,1.8vw,22px);border-top:1px solid var(--line);border-radius:0}
+.issue{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 4px}
+.issue:hover{background:color-mix(in srgb,var(--brand) 4%,transparent);border-color:var(--line)}
+.quick-tile{border-radius:12px!important;box-shadow:none!important}
+.pulse-community-card,.pulse-map-wrap,.pulse-summary,.nearby-report,.public-placeholder{box-shadow:none!important}
+.nearby-report{border-radius:12px}
+.public-card .feed-item{border-bottom:1px solid var(--line)}
+.community-banner{box-shadow:none}
+.insight{border-radius:14px!important}
+.heading.hero-seascape,#overview .hero-seascape{border-radius:0 0 18px 18px}
+.hero-seascape:before{background:linear-gradient(100deg,#062b39d6 0%,#07374474 55%,#0737440a 100%)}
+:root{--type-heading:clamp(21px,2vw,26px);--type-subheading:15px}
+h1,h2,h3,h4{color:var(--text)}
+h1{font-size:var(--type-heading)}
+.section-title h2,.pulse-heading h2,.community-banner h2,.public-card .section-title h2{font-family:Montserrat,Inter,sans-serif;font-size:var(--type-heading);line-height:1.25;font-weight:750;letter-spacing:-.04em;color:var(--text)}
+.section-title h3,.nearby-reports .section-title h3{font-family:Montserrat,Inter,sans-serif;font-size:18px;line-height:1.3;font-weight:700;letter-spacing:-.025em;color:var(--text)}
+.card-subtitle,.pulse-heading p,.community-banner-copy p,.public-card>p,.section-title p{font-size:var(--type-subheading);line-height:1.55;color:var(--muted)}
+.heading.hero-seascape h1,.heading.hero-seascape .hero-welcome,.heading.hero-seascape .hero-subheading{color:#fff}
+.heading.hero-seascape h1{font-size:clamp(30px,4vw,50px);line-height:1.1}
+.overline{font-size:11px;letter-spacing:.12em;font-weight:750}
+.banner-flame{color:var(--accent);opacity:.72;filter:drop-shadow(0 4px 12px #e9785633)}
+#settings.notice{max-width:560px;margin:12px auto 20px;padding:0 16px;text-align:center;line-height:1.65;font-size:11px;color:var(--muted);text-wrap:balance}
+#settings.notice:before{content:"✳";display:block;color:var(--accent);font-size:17px;line-height:1.4;margin-bottom:3px}
+main.main{padding-bottom:22px}
+.mobile-nav{bottom:0}
+@media(min-width:761px){.main{padding-bottom:22px}.content{gap:24px}.stack{gap:18px}.metrics{gap:18px}.metrics .card{padding:18px 16px}}
+@media(max-width:760px){.main{padding-bottom:14px}.metrics .card{padding:14px 10px 14px 13px}.content>.card,.stack>.card{padding:14px 2px}.section-title h2,.pulse-heading h2,.community-banner h2,.public-card .section-title h2{font-size:22px}.section-title h3,.nearby-reports .section-title h3{font-size:17px}#settings.notice{margin:8px auto 12px;max-width:340px;padding:0 18px;font-size:10px;line-height:1.55}.mobile-nav{padding-top:5px;padding-bottom:max(5px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card{transition:none!important}}
+
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
