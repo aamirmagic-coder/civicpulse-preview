@@ -139,6 +139,50 @@
 .public-placeholder strong{font-size:12px}.public-placeholder span{font-size:11px;line-height:1.5;color:var(--muted)}
 .public-card>p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
 @media(max-width:760px){.pulse-community-card .pulse-layout{display:flex;flex-direction:column}.pulse-community-card .pulse-summary{border-left:0;border-top:1px solid var(--line)}.pulse-community-card .nearby-reports{padding:15px}.nearby-grid{grid-template-columns:1fr}}
+
+/* Brand motifs, contrast refinements and community-first navigation */
+:root{--brand:#1640AF;--brand-strong:#12358f;--flame:#F97316;--flame-soft:#FFF0E6;--page:#F6F8FC;--surface:#FFFFFF;--text:#182030;--muted:#586477;--line:#D7DEEA;--focus:#F97316}
+[data-theme="dark"]{--brand:#7DA2FF;--brand-strong:#A8C0FF;--flame:#FF9B57;--flame-soft:#382719;--page:#0B0F19;--surface:#151E31;--text:#F4F7FC;--muted:#C0CAD9;--line:#34425A;--focus:#FFB020}
+body{background:var(--page);color:var(--text)}
+h1,h2,h3,h4{color:var(--text)}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.section-title h2,.pulse-heading h2{letter-spacing:-.035em}
+.section-title:after{content:"";display:block;position:absolute}
+.card,.quick-tile,.pulse-community-card{border-color:var(--line)}
+.card{position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:4px;height:36px;background:var(--flame);border-radius:0 0 4px 0;opacity:.9}
+.button,.hero-cta{background:var(--brand-strong);color:#fff}
+[data-theme="dark"] .button,[data-theme="dark"] .hero-cta{background:#315ED6;color:#fff}
+.pill,.report-status,.status{font-weight:700}
+.report-status.urgent,.status.waiting{background:#FCE8E6;color:#9B1C1C}
+.report-status.progress,.status{background:#E6EEFF;color:#163D9C}
+.report-status.monitored{background:#FFF0D6;color:#7A4600}
+.report-status.resolved,.status.resolved{background:#DDF7E8;color:#12643D}
+[data-theme="dark"] .report-status.urgent,[data-theme="dark"] .status.waiting{background:#48272C;color:#FFB4AE}
+[data-theme="dark"] .report-status.progress,[data-theme="dark"] .status{background:#263B68;color:#C4D4FF}
+[data-theme="dark"] .report-status.monitored{background:#4A3823;color:#FFD28A}
+[data-theme="dark"] .report-status.resolved,[data-theme="dark"] .status.resolved{background:#183D32;color:#9BE6C0}
+.community-banner{position:relative;display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,1.15fr);min-height:245px;overflow:hidden;border-radius:0;margin:0 calc(-1 * var(--main-pad,24px)) 30px;background:#12358f;color:#fff}
+.community-banner-image{min-height:245px;background:linear-gradient(90deg,rgba(11,25,60,.04),rgba(11,25,60,.25)),url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85') center 55%/cover no-repeat}
+.community-banner-copy{position:relative;align-self:center;padding:30px clamp(22px,4vw,52px);background:linear-gradient(115deg,#12358f,#1640AF);color:#fff}
+.banner-kicker{display:inline-block;color:#FFD1B0;font:700 10px/1.4 Inter,sans-serif;letter-spacing:.14em;margin-bottom:10px}
+.community-banner h2{font:700 clamp(22px,2.6vw,32px)/1.2 Montserrat,sans-serif;color:#fff;margin:0 0 10px;max-width:520px}
+.community-banner p{font-size:13px;line-height:1.65;color:#E8EEFF;max-width:520px;margin:0 0 18px}
+.banner-link{display:inline-flex;align-items:center;gap:12px;color:#fff;font-size:12px;font-weight:700;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:7px}
+.banner-flame{position:absolute;right:22px;top:10px;color:#F97316;font-size:42px;opacity:.9}
+.public-card .section-title{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:13px}
+.public-card .section-title h2{font-size:16px}
+.public-placeholder{border-color:var(--line);background:color-mix(in srgb,var(--surface) 88%,var(--brand) 12%)}
+.mobile-nav{position:fixed;z-index:1000;left:0;right:0;bottom:0;display:flex;flex-wrap:nowrap;gap:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));background:transparent;border:0;box-shadow:none;backdrop-filter:none}
+.mobile-nav::-webkit-scrollbar{display:none}
+.mobile-nav a{flex:0 0 76px;min-width:76px;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:12px;color:var(--muted);text-decoration:none;font-size:10px;font-weight:600;background:transparent;padding:5px 8px}
+.mobile-nav a span{font-size:19px;line-height:1.1}
+.mobile-nav a.active{color:var(--brand);background:transparent;position:relative}
+.mobile-nav a.active:after{content:"";position:absolute;bottom:0;left:28%;right:28%;height:3px;border-radius:3px;background:var(--flame)}
+body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+@media(min-width:761px){.community-banner{margin-left:calc(-1 * var(--content-gutter,28px));margin-right:calc(-1 * var(--content-gutter,28px))}.mobile-nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,760px);justify-content:center;padding:8px 16px calc(8px + env(safe-area-inset-bottom))}.mobile-nav a{flex:0 0 92px;min-width:92px}}
+@media(max-width:760px){.community-banner{grid-template-columns:1fr;margin-left:-16px;margin-right:-16px;min-height:0}.community-banner-image{min-height:145px}.community-banner-copy{padding:22px 20px 25px}.banner-flame{top:8px;right:14px;font-size:32px}.community-banner h2{font-size:23px}.mobile-nav{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -159,6 +203,11 @@
 <div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><img src="assets/sukuma-app-icon.png" alt="Sukuma! phoenix mark"><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
 <section id="overview"><div class="heading hero-seascape"><div class="hero-copy"><div class="overline">Community accountability workspace</div><p class="hero-welcome" id="hero-welcome">Good morning!</p><h1>A cleaner, safer, stronger city.</h1><p class="hero-subheading">Report issues, track progress and hold your municipality accountable together.</p><a class="button hero-cta" href="#issues">Report an issue <span aria-hidden="true">→</span></a></div><div class="hero-weather" id="hero-weather" aria-live="polite"><span class="weather-city">Durban, South Africa</span><span class="weather-temp">Weather loading…</span><span class="weather-detail">Today</span></div><span class="pill hero-pill">Preview · sample data</span></div>
 
+</section>
+<section class="community-banner" aria-labelledby="community-banner-title">
+ <div class="community-banner-image" role="img" aria-label="Sunlit South African neighbourhood street with trees and homes"></div>
+ <div class="community-banner-copy"><span class="banner-kicker">SUKUMA! · COMMUNITY FIRST</span><h2 id="community-banner-title">Small actions. Stronger communities.</h2><p>See what is happening nearby, share service concerns and help build a city that works for everyone.</p><a class="banner-link" href="#community-pulse">Explore community pulse <span aria-hidden="true">→</span></a></div>
+ <span class="banner-flame" aria-hidden="true">✳</span>
 </section>
 <section class="quick-actions-panel" id="actions"><div class="section-title"><h2>Quick actions</h2><a class="subtle-link" href="#actions">View all <span aria-hidden="true">→</span></a></div><div class="quick-grid"><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Report issue</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><span>My cases</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8h8l4 4V20H6z"/><path d="M14 4v4h4M9 12h6M9 16h6"/></svg><span>Follow-ups</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.4A4.6 4.6 0 0 1 8.1 13h1.8a4.6 4.6 0 0 1 4.6 4.6V19M16 5.4a3 3 0 0 1 0 5.8M17 13.3a4.5 4.5 0 0 1 3.5 4.4V19"/></svg><span>Community insight</span></div></div></section>
 
@@ -216,8 +265,8 @@
 <section class="card insight" id="community"><div class="overline">Community intelligence</div><div class="section-title" style="margin-top:7px"><h2>Growing trends</h2><span aria-hidden="true">↗</span></div><p>Service delivery patterns. This concept shows how verified service trends could be summarised. The examples below are illustrative, not actual municipal statistics.</p><div class="bar-list"><div><div class="bar-label"><span>Water & sanitation</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div><div><div class="bar-label"><span>Roads & streetlights</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div><div><div class="bar-label"><span>Waste collection</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div></div></section>
 <section class="card public-card" id="announcements"><div class="section-title"><div><h2>Public Service Announcements</h2><p class="card-subtitle">Did you know?</p></div><span aria-hidden="true">ⓘ</span></div><p>Important service notices and practical information for residents.</p><div class="public-placeholder"><strong>Announcements will appear here</strong><span>Official notices only once a verified source is connected.</span></div></section>
 <section class="card public-card" id="events"><div class="section-title"><h2>Upcoming community events</h2><span aria-hidden="true">▦</span></div><p>Community meetings, clean-ups, public consultations and local activities.</p><div class="public-placeholder"><strong>No verified events listed yet</strong><span>Event details will be published after confirmation.</span></div></section>
-<section class="card public-card" id="jobs"><div class="section-title"><h2>Opportunities for job seekers</h2><span aria-hidden="true">↗</span></div><p>A future community jobs board could share verified vacancies and let residents submit CVs securely.</p><div class="public-placeholder"><strong>Job seeker portal — planned</strong><span>CV submissions are not enabled in this preview. A live version needs consent, secure storage, access controls, retention and deletion rules.</span></div></section>
-<section class="card" id="reports"><div class="section-title"><h2>Accountability notes</h2></div><p style="font-size:12px;color:var(--muted);margin:0">Designed to make ownership, case history and next actions easy to scan. This preview stores no information.</p></section>
+<section class="card public-card" id="jobs"><div class="section-title"><h2>Opportunities for job seekers</h2><span aria-hidden="true">↗</span></div><p>A future community jobs board could share verified vacancies and offer secure CV submission for job seekers.</p><div class="public-placeholder"><strong>Job seeker portal — planned</strong><span>Secure CV submission is planned, not active in this preview. Before launch: obtain clear consent, encrypt files in transit and at rest, restrict recruiter access, define retention and deletion periods, and provide a way to withdraw consent.</span></div></section>
+
 </aside></div>
 <p class="notice" id="settings">Design preview only · No live systems connected · Do not enter personal, resident, political or financial information.</p>
 </main></div>
