@@ -1,78 +1,767 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en-ZA" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#F6F0E7">
-  <meta name="description" content="Sukuma! — community feedback, service delivery and accountability workspace.">
-  <title>Sukuma! — Community Accountability</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="assets/sukuma-app-icon.png">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E5E7EB"><meta name="description" content="Sukuma! dashboard design preview — illustrative interface, not live municipal data.">
+<title>Sukuma! — Dashboard Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--brand:#2563EB;--deep:#1640AF;--accent:#F97316;--canvas:#E5E7EB;--surface:#F9FAFB;--soft:#E5E7EB;--text:#1F2937;--muted:#5A6574;--line:#CBD5E1;--green:#007D9B;--service-orange:#FB923C;--shadow:0 12px 34px #1F29371a}
+[data-theme=dark]{color-scheme:dark;--brand:#007D9B;--deep:#151E31;--accent:#FFB020;--canvas:#0B0F19;--surface:#151E31;--soft:#182030;--text:#F3F4F6;--muted:#5A6574;--line:#303B4F;--green:#007D9B;--service-orange:#FB923C;--shadow:0 12px 34px #0005}
+.status.waiting{background:#FFF1E7;color:#9A3412}.status.resolved{background:#DCEAFE;color:#1640AF}[data-theme=dark] .status.waiting{background:#3B2A1B;color:#FFB020}[data-theme=dark] .status.resolved{background:#12384A;color:#8CD7EA}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--text);font:14px/1.5 Inter,system-ui,sans-serif}h1,h2,h3{font-family:Montserrat,Inter,sans-serif;letter-spacing:-.035em}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:9;background:var(--surface);padding:12px}.layout{max-width:1500px;min-height:100vh;margin:auto;display:grid;grid-template-columns:248px minmax(0,1fr)}.sidebar{background:var(--deep);color:#fff;padding:25px 17px;display:flex;flex-direction:column;gap:30px}.logo{padding:3px 9px 4px}.logo img{width:166px;height:auto;display:block;object-fit:contain}.workspace-label{color:#a9c2c8;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:700;padding:0 12px 10px}.nav{display:grid;gap:5px}.nav a{color:#d0e0e3;text-decoration:none;padding:11px 12px;border-radius:10px;display:flex;align-items:center;gap:12px;font-weight:600}.nav a.active,.nav a:hover{background:#ffffff17;color:#fff}.nav a.active{box-shadow:inset 3px 0 var(--accent)}.nav-icon{width:22px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;border:1px solid #ffffff2a;background:#ffffff0d;border-radius:14px;padding:14px;color:#d0e0e3;font-size:12px}.side-bottom strong{color:#fff;display:block;margin-bottom:4px}.main{min-width:0;padding:26px clamp(16px,3vw,42px) 90px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px}.breadcrumb{color:var(--muted);font-size:12px}.tools{display:flex;align-items:center;gap:8px}.search{width:235px;max-width:38vw;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);padding:10px 12px}.button{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:10px;padding:9px 12px;font-weight:650;cursor:pointer}.button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px}.overline{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750}.heading h1{font-size:clamp(25px,3vw,36px);line-height:1.2;margin:7px 0}.heading p{margin:0;color:var(--muted)}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 11px;font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}.card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow);min-width:0}.metric-top{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--muted);font-size:12px;font-weight:650}.metric-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--brand);font-size:16px}.metric-value{font:750 clamp(25px,2.5vw,34px)/1.2 Montserrat,sans-serif;margin:14px 0 7px}.metric-note{font-size:11px;color:var(--muted)}.content{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.9fr);gap:16px;align-items:start}.stack{display:grid;gap:15px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}.section-title h2{font-size:16px;margin:0}.subtle-link{color:var(--brand);font-weight:750;font-size:12px;text-decoration:none}.filter-row{display:flex;align-items:center;gap:7px;margin-bottom:13px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer}.filter.active{background:var(--soft);color:var(--brand);border-color:transparent}.issue-list{display:grid;gap:10px}.empty-state{border:1px dashed var(--line);border-radius:12px;padding:22px 14px;text-align:center;color:var(--muted);font-size:12px}.empty-state[hidden]{display:none}.issue{border:1px solid var(--line);border-radius:13px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}.issue h3{font-size:13px;margin:4px 0}.issue p{font-size:11px;color:var(--muted);margin:0}.case-id{font-size:10px;font-weight:750;letter-spacing:.08em;color:var(--muted)}.status{border-radius:999px;padding:5px 8px;font-size:10px;font-weight:750;align-self:start;white-space:nowrap;background:var(--soft);color:var(--brand)}.status.waiting{background:#FFF1E7;color:#9A3412}.status.resolved{background:#DCEAFE;color:#1640AF}[data-theme=dark] .status.waiting{background:#3B2A1B;color:#FFB020}[data-theme=dark] .status.resolved{background:#12384A;color:#8CD7EA}.issue-foot{grid-column:1/-1;border-top:1px solid var(--line);padding-top:9px;margin-top:3px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:10px}.priority{display:flex;align-items:center;gap:6px;font-weight:750}.priority i{width:7px;height:7px;border-radius:50%;background:var(--accent)}.priority.low i{background:var(--green)}.activity{display:grid}.activity-row{display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.activity-row:last-child{border-bottom:0;padding-bottom:0}.activity-symbol{height:31px;width:31px;border-radius:10px;background:var(--soft);display:grid;place-items:center;color:var(--brand)}.activity-row p{font-size:11px;margin:0 0 3px}.activity-row small{font-size:10px;color:var(--muted)}.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.quick{display:flex;align-items:center;gap:9px;text-align:left;text-decoration:none;color:var(--text);border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:11px;font-size:11px;font-weight:700}.quick b{display:grid;place-items:center;width:29px;height:29px;flex:none;background:var(--soft);color:var(--brand);border-radius:9px;font-size:15px}.insight{background:var(--deep);color:white;border:0}.insight .section-title h2{color:white}.insight .overline{color:#b8d1d5}.insight p{color:#d3e0e2;font-size:12px;margin:0 0 14px}.insight .button{background:transparent;color:white;border-color:#ffffff4d}.bar-list{display:grid;gap:12px}.bar-label{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin-bottom:5px}.bar-track{height:6px;background:var(--soft);border-radius:99px;overflow:hidden}.bar-fill{height:100%;background:var(--accent);border-radius:99px}.notice{font-size:10px;color:var(--muted);margin-top:15px}.mobile-nav{display:none}.toast{position:fixed;bottom:22px;right:22px;z-index:20;background:var(--deep);color:#fff;border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);max-width:calc(100vw - 30px);font-size:12px}
+@media(max-width:1080px){.layout{grid-template-columns:215px minmax(0,1fr)}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.content{grid-template-columns:minmax(0,1.2fr) minmax(250px,.9fr)}.card{padding:15px}}
+@media(max-width:760px){.layout{display:block}.sidebar{display:none}.main{padding:15px 13px 100px}.topbar{margin-bottom:23px}.breadcrumb{display:none}.search{width:43vw;font-size:12px}.tools{gap:6px}.button{padding:9px 10px}.heading{align-items:flex-start;flex-direction:column;gap:11px;margin-bottom:17px}.heading h1{font-size:27px}.heading p{font-size:12px}.metrics{gap:9px;margin-bottom:12px}.card{padding:13px;border-radius:15px}.metric-top{font-size:10px;align-items:flex-start}.metric-icon{width:29px;height:29px;font-size:14px}.metric-value{font-size:25px;margin:11px 0 5px}.metric-note{font-size:9px}.content{grid-template-columns:1fr;gap:12px}.stack{gap:12px}.issue{padding:12px}.issue h3{font-size:12px}.mobile-nav{display:grid;position:fixed;z-index:8;left:0;right:0;bottom:0;grid-template-columns:repeat(5,1fr);padding:8px 4px max(8px,env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--line);backdrop-filter:blur(16px)}.mobile-nav a{text-decoration:none;color:var(--muted);display:grid;justify-items:center;gap:3px;font-size:9px;font-weight:700;padding:4px 0}.mobile-nav a.active{color:var(--brand)}.mobile-nav span{font-size:17px}.notice{margin-bottom:12px}}
+@media(max-width:370px){.search{width:38vw}.metric-value{font-size:22px}.metric-top{font-size:9px}.metric-note{font-size:8px}.pill{font-size:9px}.issue{grid-template-columns:minmax(0,1fr)}.status{justify-self:start}.issue-foot{grid-column:1}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Fast-track visual refinement: stronger hierarchy, calmer surfaces, clearer interaction states */
+.heading{padding:clamp(20px,3vw,32px);border-radius:20px;background:linear-gradient(125deg,var(--deep),#165b67);color:#fff;position:relative;overflow:hidden;box-shadow:0 18px 38px #0b333f20}
+.heading:after{content:"";position:absolute;width:250px;height:250px;border:1px solid #ffffff24;border-radius:50%;right:-65px;top:-135px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff06;pointer-events:none}
+.heading .overline,.heading p{color:#d1e4e5}.heading h1{font-size:clamp(27px,3.2vw,40px);max-width:680px}.heading .pill{position:relative;z-index:1;background:#ffffff15;border-color:#ffffff36;color:#fff}.heading .pill:before{background:#f39a6b}
+.metrics .card{transition:transform .18s ease,border-color .18s ease;position:relative;overflow:hidden}.metrics .card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:.85}.metrics .card:hover{transform:translateY(-2px);border-color:#9ab7bc}
+.section-title{margin-bottom:17px}.section-title h2{font-size:17px}.filter{min-height:34px}.filter:hover,.button:hover,.quick:hover{border-color:var(--accent)}.filter.active{box-shadow:inset 0 0 0 1px var(--brand)}.issue{transition:border-color .15s ease,background .15s ease}.issue:hover{border-color:#9ab7bc;background:color-mix(in srgb,var(--surface) 94%,var(--soft))}.issue h3{font-size:14px;letter-spacing:-.015em}.case-id{color:var(--muted)}.quick{min-height:58px;transition:transform .15s ease,border-color .15s ease}.quick:hover{transform:translateY(-1px)}.insight{background:linear-gradient(145deg,#0b333f,#155764)}.bar-track{background:#ffffff24}.bar-fill{background:#f39a6b}
+.mobile-nav a{min-height:44px}.mobile-nav a:focus-visible{outline-offset:-2px}
+@media(max-width:760px){.heading{padding:21px 18px;border-radius:17px}.heading h1{font-size:27px;max-width:330px}.heading:after{right:-150px}.metrics .card{padding:13px 11px 13px 14px}.section-title h2{font-size:15px}.issue h3{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.metrics .card,.issue,.quick{transition:none}}
+
+
+/* Responsive header and navigation drawer */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.topbar{position:relative;min-height:54px;margin-bottom:30px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.header-left,.header-actions{display:flex;align-items:center;gap:10px;min-width:0}.header-logo{display:flex;align-items:center;min-width:0}.header-logo img{display:block;width:232px;max-width:34vw;height:auto;max-height:62px;object-fit:contain;object-position:left center;background:transparent}[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.icon-button{width:42px;height:42px;flex:none;display:grid;place-content:center;gap:4px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--text);cursor:pointer;font-size:23px;line-height:1}
+.menu-trigger span{display:block;width:18px;height:2px;border-radius:2px;background:currentColor}.theme-button{font-size:20px}.login-button{white-space:nowrap}
+.avatar{width:40px;height:40px;flex:none;border:0;border-radius:50%;background:var(--soft);color:var(--brand);font-weight:800;font-family:Montserrat,sans-serif;cursor:pointer}.avatar[hidden]{display:none}
+.search-wrap{position:relative}.search-trigger{font-size:28px}.search-popout{position:absolute;z-index:15;right:-50px;top:50px;width:min(340px,calc(100vw - 26px));padding:10px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 45px #102a3330}.search-popout[hidden]{display:none}.search-popout .search{width:100%;max-width:none;min-width:0}.search-close{width:35px;height:38px;flex:none;border:0;background:transparent;color:var(--muted);font-size:24px;cursor:pointer}
+.drawer-scrim{position:fixed;inset:0;z-index:30;background:#071b20a8;backdrop-filter:blur(2px)}.drawer-scrim[hidden]{display:none}.nav-drawer{position:fixed;z-index:31;inset:0 auto 0 0;width:min(320px,86vw);padding:20px 17px;display:flex;flex-direction:column;gap:17px;background:var(--deep);color:#fff;box-shadow:20px 0 60px #0002;transform:translateX(-105%);visibility:hidden;transition:transform .22s ease,visibility .22s}.nav-drawer.open{transform:translateX(0);visibility:visible}.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:0 3px 17px;border-bottom:1px solid #ffffff27}.drawer-head img{width:58px;height:58px;object-fit:contain;border-radius:14px;background:#fff}.drawer-head .icon-button{background:#ffffff12;border-color:#ffffff30;color:#fff;font-size:26px}.drawer-label{padding:0 9px;color:#b6cdd1;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:.13em}.drawer-nav{display:grid;gap:5px}.drawer-nav a{min-height:46px;display:flex;align-items:center;gap:13px;padding:10px 12px;border-radius:11px;color:#d8e6e8;text-decoration:none;font-weight:650}.drawer-nav a span{width:22px;text-align:center;font-size:18px}.drawer-nav a.active,.drawer-nav a:hover{background:#ffffff18;color:#fff}.drawer-nav a.active{box-shadow:inset 3px 0 var(--accent)}.drawer-foot{margin-top:auto;padding:14px 10px;border-top:1px solid #ffffff27;color:#b6cdd1;font-size:11px}
+
+@media(max-width:760px){.topbar{min-height:48px;margin-bottom:22px;gap:8px}.header-left,.header-actions{gap:6px}.header-logo img{width:178px;max-width:39vw;max-height:50px}.icon-button{width:39px;height:39px;border-radius:11px}.avatar{width:36px;height:36px}.login-button{padding:8px 9px;font-size:11px}.breadcrumb{display:none!important}.search-popout{right:-95px;top:47px;width:min(340px,calc(100vw - 20px))}}
+@media(max-width:370px){.header-logo img{width:148px;max-width:36vw}.header-actions{gap:4px}.icon-button{width:35px;height:36px}.avatar{width:33px;height:33px}.login-button{padding:7px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.nav-drawer{transition:none}}
+
+/* Durban seascape welcome hero */
+.heading.hero-seascape{min-height:330px;padding:clamp(22px,3vw,36px);margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:22px;background:linear-gradient(90deg,rgba(5,25,43,.78) 0%,rgba(5,25,43,.42) 55%,rgba(5,25,43,.08) 100%),url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=85") center 52%/cover no-repeat;color:#fff;isolation:isolate}
+.heading.hero-seascape:after{display:none}.hero-copy{position:relative;z-index:1;max-width:700px}.hero-welcome{font-size:clamp(16px,1.7vw,21px);font-weight:600;color:#fff!important;margin:0 0 10px!important}.hero-seascape h1{font-size:clamp(30px,3.4vw,44px);line-height:1.13;max-width:640px;margin:0 0 12px}.hero-seascape .hero-subheading{font-size:clamp(13px,1.3vw,16px);color:#f2f7fa!important;margin:0 0 22px;max-width:540px}.hero-cta{display:inline-flex;align-items:center;gap:16px;background:#F97316;color:#fff;border-color:#F97316;text-decoration:none;min-height:46px;padding:11px 17px;box-shadow:0 6px 20px #071b2055}.hero-cta span{font-size:18px}.hero-weather{position:absolute;right:22px;bottom:20px;z-index:2;display:grid;gap:2px;min-width:145px;max-width:190px;padding:11px 14px;border:1px solid #ffffff55;border-radius:14px;background:#081b2bbf;color:#fff;backdrop-filter:blur(12px);box-shadow:0 8px 24px #071b2033}.weather-city{font-size:11px;font-weight:750;letter-spacing:.02em}.weather-temp{font:700 23px/1.35 Montserrat,sans-serif}.weather-detail{font-size:10px;color:#e2edf2}.hero-pill{position:absolute;right:22px;top:20px;background:#071b2b88!important;border-color:#ffffff55!important;color:#fff!important}
+@media(max-width:760px){.heading.hero-seascape{min-height:340px;padding:23px 18px 105px;margin-bottom:16px;align-items:flex-start;background-position:center;background-image:linear-gradient(90deg,rgba(5,25,43,.72),rgba(5,25,43,.23)),url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85")}.hero-seascape h1{font-size:29px;max-width:300px}.hero-seascape .hero-subheading{max-width:300px;font-size:12px}.hero-welcome{font-size:16px}.hero-weather{right:14px;bottom:13px;min-width:130px;padding:8px 11px}.weather-temp{font-size:20px}.hero-pill{right:12px;top:12px;font-size:9px}.hero-cta{min-height:44px}}
+
+/* Full-bleed hero sizing and proportionate typography */
+#overview{margin-left:calc(-1 * clamp(16px,3vw,42px));margin-right:calc(-1 * clamp(16px,3vw,42px))}#overview .hero-seascape{width:100%;min-height:clamp(300px,31vw,420px);margin:0 0 22px;border-radius:0;padding:clamp(26px,5vw,64px) clamp(20px,5vw,72px);background-position:center;background-size:cover}.hero-seascape h1{font-size:clamp(32px,4.2vw,56px);max-width:760px;line-height:1.08}.hero-welcome{font-size:clamp(17px,1.8vw,23px)}.hero-cta{font-size:14px}.weather-icon{display:inline-block;font-family:Inter,sans-serif;font-size:23px;vertical-align:middle;margin-right:3px}.hero-weather{right:clamp(14px,2.2vw,28px);bottom:clamp(14px,2.2vw,28px)}
+@media(max-width:760px){#overview{margin-left:-13px;margin-right:-13px}#overview .hero-seascape{min-height:350px;margin-bottom:16px;padding:62px 18px 112px;border-radius:0;background-position:center;background-size:cover}.hero-seascape h1{font-size:clamp(30px,8vw,38px);max-width:340px}.hero-welcome{font-size:17px}.hero-cta{font-size:13px}.hero-weather{right:13px;bottom:13px}.hero-pill{top:12px;right:12px}}
+@media(min-width:761px){#overview .hero-seascape{margin-top:0}}
+
+/* Quick actions: four equal, centered, non-navigating tiles */
+.quick-actions-panel .section-title{margin-bottom:16px}
+.quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.quick-tile{min-width:0;min-height:126px;padding:17px 10px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);font-size:12px;font-weight:700;line-height:1.35}
+.quick-icon{width:28px;height:28px;fill:none;stroke:var(--brand);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.quick-tile:nth-child(1) .quick-icon,.quick-tile:nth-child(4) .quick-icon{color:var(--accent);stroke:var(--accent)}
+@media(max-width:760px){.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-tile{min-height:112px;font-size:12px}.quick-icon{width:27px;height:27px}}
+@media(max-width:370px){.quick-tile{min-height:102px;padding:12px 7px;font-size:11px}}
+
+/* Quick actions use larger square cards with icon and label centred inside */
+.quick-actions-panel{margin:0 0 18px;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.quick-tile{aspect-ratio:1/1;min-height:0;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text);font-size:clamp(12px,1.1vw,14px);font-weight:700;line-height:1.35;box-shadow:none}
+.quick-icon{width:clamp(28px,3vw,36px);height:clamp(28px,3vw,36px);fill:none;stroke:var(--brand);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.quick-tile:nth-child(1) .quick-icon,.quick-tile:nth-child(4) .quick-icon{stroke:var(--accent)}
+@media(max-width:760px){.quick-actions-panel{margin-bottom:14px}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quick-tile{aspect-ratio:1/1;padding:12px;gap:12px;font-size:12px}.quick-icon{width:30px;height:30px}}
+@media(max-width:370px){.quick-grid{gap:8px}.quick-tile{padding:9px;font-size:11px;gap:9px}.quick-icon{width:27px;height:27px}}
+
+/* Community pulse interactive map and nearby reports */
+.pulse-section{margin:32px 0 34px;padding-top:2px}
+.pulse-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:18px}
+.pulse-heading h2{font:750 clamp(21px,2.3vw,28px)/1.2 Montserrat,sans-serif;letter-spacing:-.035em;margin:5px 0}
+.pulse-heading p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.pulse-live{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:99px;background:var(--surface);padding:7px 10px;color:var(--muted);font-size:10px;font-weight:750;white-space:nowrap}
+.pulse-live span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.pulse-layout{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:15px;align-items:stretch}
+.pulse-map-wrap{min-width:0;border:1px solid var(--line);border-radius:17px;background:var(--surface);overflow:hidden}
+.pulse-map-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border-bottom:1px solid var(--line)}
+.map-area{font-size:12px;font-weight:750}
+.map-reset{border:1px solid var(--line);background:var(--surface);color:var(--brand);border-radius:9px;padding:7px 10px;min-height:36px;font-size:11px;font-weight:750;cursor:pointer}
+#pulse-map{height:390px;width:100%;background:#e7edf0;position:relative;z-index:0}
+.map-loading{padding:22px;color:#344054;font-size:12px}
+.map-legend{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:13px 15px;border-top:1px solid var(--line)}
+.map-legend span{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:650}
+.legend-dot{width:10px;height:10px;display:inline-block;border-radius:50%;box-shadow:0 0 0 3px #0000000a}
+.legend-dot.urgent{background:#DC2626}.legend-dot.progress{background:#2563EB}.legend-dot.monitored{background:#D97706}.legend-dot.resolved{background:#059669}
+.map-disclaimer{padding:0 15px 13px;margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+.pulse-summary{border-radius:17px;padding:17px;background:var(--deep);color:#fff;display:flex;flex-direction:column;gap:17px}
+.pulse-summary-label{font-size:12px;font-weight:750;display:flex;flex-direction:column;gap:4px}.pulse-summary-label span{font-size:10px;color:#c8d9e2;font-weight:500}
+.pulse-stat{display:flex;align-items:center;gap:11px}.pulse-stat-icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:17px;font-weight:800;background:#ffffff15;color:#fff}
+.pulse-stat-icon.urgent{background:#7f1d1d;color:#fecaca}.pulse-stat-icon.progress{background:#1e3a8a;color:#bfdbfe}.pulse-stat-icon.monitored{background:#78350f;color:#fde68a}
+.pulse-stat div{display:grid;gap:1px}.pulse-stat strong{font:750 24px/1.1 Montserrat,sans-serif}.pulse-stat div span{font-size:11px;color:#d4e2e8}
+.pulse-summary-foot{margin-top:auto;padding-top:12px;border-top:1px solid #ffffff30;font-size:10px;color:#d4e2e8}
+.nearby-reports{margin-top:28px}
+.nearby-reports .section-title{align-items:flex-end;margin-bottom:15px}
+.nearby-reports .section-title h3{font-size:18px;margin:0}
+.nearby-reports .section-title p{font-size:11px;color:var(--muted);margin:4px 0 0}
+.report-filter-label{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);font-weight:650}
+.report-filter-label select{min-height:40px;max-width:160px;padding:7px 27px 7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--text);font-size:12px}
+.nearby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.nearby-report{min-width:0;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);cursor:pointer;transition:border-color .15s ease,transform .15s ease}
+.nearby-report[hidden]{display:none}
+.nearby-report.selected{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.nearby-report-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.report-type{font-size:10px;font-weight:750;color:var(--muted)}
+.report-status{display:inline-flex;align-items:center;border-radius:99px;padding:4px 7px;font-size:10px;font-weight:750;white-space:nowrap}
+.report-status.urgent{background:#FEE2E2;color:#991B1B}.report-status.progress{background:#DBEAFE;color:#1D4ED8}.report-status.monitored{background:#FEF3C7;color:#92400E}.report-status.resolved{background:#D1FAE5;color:#065F46}
+[data-theme=dark] .report-status.urgent{background:#4C1D1D;color:#FECACA}[data-theme=dark] .report-status.progress{background:#172554;color:#BFDBFE}[data-theme=dark] .report-status.monitored{background:#451A03;color:#FDE68A}[data-theme=dark] .report-status.resolved{background:#064E3B;color:#A7F3D0}
+.nearby-report h4{font:700 13px/1.4 Montserrat,sans-serif;letter-spacing:-.015em;margin:12px 0 5px}
+.report-location{font-size:11px;color:var(--muted);margin:0 0 13px}
+.report-meta{border-top:1px solid var(--line);padding-top:9px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:9px;color:var(--muted)}
+.pulse-empty{font-size:12px;color:var(--muted);padding:18px;border:1px dashed var(--line);border-radius:12px}
+#pulse-map .leaflet-popup-content-wrapper{border-radius:12px}#pulse-map .leaflet-popup-content{font:12px/1.5 Inter, sans-serif;margin:12px 14px}
+.map-popup strong{display:block;font-family:Montserrat,sans-serif;margin-bottom:3px}.map-popup span{color:#5A6574}
+.pulse-pin{border:2px solid #fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;color:#fff;font:800 11px/1 Inter,sans-serif;box-shadow:0 2px 8px #0f172a55}
+.pulse-pin.urgent{background:#DC2626}.pulse-pin.progress{background:#2563EB}.pulse-pin.monitored{background:#D97706}.pulse-pin.resolved{background:#059669}
+@media(max-width:980px){.pulse-layout{grid-template-columns:minmax(0,1fr) 160px}.nearby-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.pulse-section{margin:25px 0 28px}.pulse-heading{align-items:flex-start;flex-direction:column;gap:9px;margin-bottom:14px}.pulse-heading h2{font-size:22px}.pulse-layout{grid-template-columns:1fr;gap:11px}.pulse-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:13px}.pulse-summary-label{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}.pulse-stat{gap:7px}.pulse-stat-icon{width:30px;height:30px;flex:none}.pulse-stat strong{font-size:20px}.pulse-stat div span{font-size:10px}.pulse-summary-foot{grid-column:1/-1;margin-top:0;padding-top:9px}#pulse-map{height:330px}.nearby-reports{margin-top:22px}.nearby-grid{grid-template-columns:1fr;gap:9px}.nearby-report{padding:13px}.nearby-report h4{margin-top:9px}.nearby-reports .section-title{align-items:flex-start;flex-direction:column;gap:12px}.report-filter-label{width:100%;justify-content:space-between}.report-filter-label select{flex:1;max-width:65%}}
+@media(max-width:370px){.pulse-summary{padding:10px;gap:8px}.pulse-stat{gap:5px}.pulse-stat-icon{width:26px;height:26px}.pulse-stat strong{font-size:18px}.pulse-stat div span{font-size:9px}.pulse-live{font-size:9px}#pulse-map{height:290px}}
+@media(prefers-reduced-motion:reduce){.nearby-report{transition:none}}
+
+/* Community-facing dashboard refinements */
+.pulse-community-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow,0 8px 26px rgba(15,23,42,.06));}
+.pulse-community-card .pulse-layout{padding:0;gap:0}
+.pulse-community-card .pulse-map-wrap{border:0;border-radius:0;overflow:hidden}
+.pulse-community-card .pulse-summary{border:0;border-left:1px solid var(--line);border-radius:0}
+.pulse-community-card .nearby-reports{margin:0;padding:22px;border-top:1px solid var(--line)}
+.nearby-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nearby-report[hidden]{display:none!important}
+.nearby-report.is-collapsed{display:none}
+.nearby-more-wrap{display:flex;justify-content:center;margin-top:16px}
+.nearby-more{background:transparent;color:var(--brand);border:1px solid var(--line)}
+.pulse-heading{margin-bottom:16px}
+.card-subtitle{font-size:12px;color:var(--muted);margin:5px 0 0}
+.public-placeholder{display:flex;flex-direction:column;gap:5px;padding:14px;border:1px dashed var(--line);border-radius:12px;margin-top:14px}
+.public-placeholder strong{font-size:12px}.public-placeholder span{font-size:11px;line-height:1.5;color:var(--muted)}
+.public-card>p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+@media(max-width:760px){.pulse-community-card .pulse-layout{display:flex;flex-direction:column}.pulse-community-card .pulse-summary{border-left:0;border-top:1px solid var(--line)}.pulse-community-card .nearby-reports{padding:15px}.nearby-grid{grid-template-columns:1fr}}
+
+/* Brand motifs, contrast refinements and community-first navigation */
+:root{--brand:#1640AF;--brand-strong:#12358f;--flame:#F97316;--flame-soft:#FFF0E6;--page:#F6F8FC;--surface:#FFFFFF;--text:#182030;--muted:#586477;--line:#D7DEEA;--focus:#F97316}
+[data-theme="dark"]{--brand:#7DA2FF;--brand-strong:#A8C0FF;--flame:#FF9B57;--flame-soft:#382719;--page:#0B0F19;--surface:#151E31;--text:#F4F7FC;--muted:#C0CAD9;--line:#34425A;--focus:#FFB020}
+body{background:var(--page);color:var(--text)}
+h1,h2,h3,h4{color:var(--text)}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.section-title h2,.pulse-heading h2{letter-spacing:-.035em}
+.section-title:after{content:"";display:block;position:absolute}
+.card,.quick-tile,.pulse-community-card{border-color:var(--line)}
+.card{position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:4px;height:36px;background:var(--flame);border-radius:0 0 4px 0;opacity:.9}
+.button,.hero-cta{background:var(--brand-strong);color:#fff}
+[data-theme="dark"] .button,[data-theme="dark"] .hero-cta{background:#315ED6;color:#fff}
+.pill,.report-status,.status{font-weight:700}
+.report-status.urgent,.status.waiting{background:#FCE8E6;color:#9B1C1C}
+.report-status.progress,.status{background:#E6EEFF;color:#163D9C}
+.report-status.monitored{background:#FFF0D6;color:#7A4600}
+.report-status.resolved,.status.resolved{background:#DDF7E8;color:#12643D}
+[data-theme="dark"] .report-status.urgent,[data-theme="dark"] .status.waiting{background:#48272C;color:#FFB4AE}
+[data-theme="dark"] .report-status.progress,[data-theme="dark"] .status{background:#263B68;color:#C4D4FF}
+[data-theme="dark"] .report-status.monitored{background:#4A3823;color:#FFD28A}
+[data-theme="dark"] .report-status.resolved,[data-theme="dark"] .status.resolved{background:#183D32;color:#9BE6C0}
+.community-banner{position:relative;display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,1.15fr);min-height:245px;overflow:hidden;border-radius:0;margin:0 calc(-1 * var(--main-pad,24px)) 30px;background:#12358f;color:#fff}
+.community-banner-image{min-height:245px;background:linear-gradient(90deg,rgba(11,25,60,.04),rgba(11,25,60,.25)),url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85') center 55%/cover no-repeat}
+.community-banner-copy{position:relative;align-self:center;padding:30px clamp(22px,4vw,52px);background:linear-gradient(115deg,#087F8C,#075B68);color:#fff}
+.banner-kicker{display:inline-block;color:#FFD1B0;font:700 10px/1.4 Inter,sans-serif;letter-spacing:.14em;margin-bottom:10px}
+.community-banner h2{font:700 clamp(22px,2.6vw,32px)/1.2 Montserrat,sans-serif;color:#fff;margin:0 0 10px;max-width:520px}
+.community-banner p{font-size:13px;line-height:1.65;color:#E8EEFF;max-width:520px;margin:0 0 18px}
+.banner-link{display:inline-flex;align-items:center;gap:12px;color:#fff;font-size:12px;font-weight:700;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:7px}
+.banner-flame{position:absolute;right:22px;top:10px;color:#F97316;font-size:42px;opacity:.9}
+.public-card .section-title{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:13px}
+.public-card .section-title h2{font-size:16px}
+.public-placeholder{border-color:var(--line);background:color-mix(in srgb,var(--surface) 88%,var(--brand) 12%)}
+.mobile-nav{position:fixed;z-index:1000;left:0;right:0;bottom:0;display:flex;flex-wrap:nowrap;gap:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));background:transparent;border:0;box-shadow:none;backdrop-filter:none}
+.mobile-nav::-webkit-scrollbar{display:none}
+.mobile-nav a{flex:0 0 76px;min-width:76px;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:12px;color:var(--muted);text-decoration:none;font-size:10px;font-weight:600;background:transparent;padding:5px 8px}
+.mobile-nav a span{font-size:19px;line-height:1.1}
+.mobile-nav a.active{color:var(--brand);background:transparent;position:relative}
+.mobile-nav a.active:after{content:"";position:absolute;bottom:0;left:28%;right:28%;height:3px;border-radius:3px;background:var(--flame)}
+body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+@media(min-width:761px){.community-banner{margin-left:calc(-1 * var(--content-gutter,28px));margin-right:calc(-1 * var(--content-gutter,28px))}.mobile-nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,760px);justify-content:center;padding:8px 16px calc(8px + env(safe-area-inset-bottom))}.mobile-nav a{flex:0 0 92px;min-width:92px}}
+@media(max-width:760px){.community-banner{grid-template-columns:1fr;margin-left:-16px;margin-right:-16px;min-height:0}.community-banner-image{min-height:145px}.community-banner-copy{padding:22px 20px 25px}.banner-flame{top:8px;right:14px;font-size:32px}.community-banner h2{font-size:23px}.mobile-nav{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Sukuma! temporary civic palette — centralised tokens and consistent component mapping */
+.community-banner-image{background-image:linear-gradient(90deg,rgba(5,25,43,.08),rgba(5,25,43,.28)),url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=85");background-position:center 52%;background-size:cover;background-repeat:no-repeat}
+@media(max-width:760px){.community-banner-image{background-position:center 52%}}
+:root{
+ color-scheme:light;
+ --brand:#2E63EB; --deep:#2E63EB; --accent:#F97316; --canvas:#FFFFFF;
+ --surface:#F3F4F6; --soft:#F3F4F6; --text:#2E63EB; --muted:#4B5563;
+ --line:#C75135; --green:#00C19B; --service-orange:#F97316;
+ --focus:#F97316; --shadow:0 8px 24px #1F29370D;
+}
+[data-theme="dark"]{
+ color-scheme:dark;
+ --brand:#00DFFF; --deep:#1F2937; --accent:#FB923C; --canvas:#1F2937;
+ --surface:#1F2937; --soft:#263445; --text:#F9FAFB; --muted:#D1D5DB;
+ --line:#F59E0B; --green:#4ade80; --service-orange:#FB923C;
+ --focus:#F59E0B; --shadow:0 10px 30px #0004;
+}
+body{background:var(--canvas);color:var(--text)}
+.card,.quick,.issue,.filter,.search-dock{border-color:var(--line)}
+.heading h1,.section-title h2,.issue h3,.metric-value{color:var(--brand)}
+.heading.hero-seascape h1,.heading.hero-seascape .hero-welcome{color:#fff!important}
+.heading.hero-seascape{border:0}
+.button.primary,.hero-cta{background:var(--accent);border-color:var(--accent);color:#172033}
+[data-theme="dark"] .button.primary,[data-theme="dark"] .hero-cta{background:#FB923C;border-color:#FB923C;color:#1F2937}
+.status{background:#FFF0E6;color:#9A3412}
+.status.waiting{background:#FFF0E6;color:#9A3412}
+.status.resolved{background:#DCEAFE;color:#1640AF}
+[data-theme="dark"] .status,[data-theme="dark"] .status.waiting{background:#4A3020;color:#FDBA74}
+[data-theme="dark"] .status.resolved{background:#153B32;color:#4ade80}
+.metric-icon,.quick b,.activity-symbol{color:var(--green)}
+[data-theme="dark"] .metric-icon,[data-theme="dark"] .quick b,[data-theme="dark"] .activity-symbol{color:#4ade80}
+.insight{background:#2E63EB;color:#fff}
+[data-theme="dark"] .insight{background:#172334;border:1px solid #F59E0B}
+.insight .section-title h2,.insight .overline,.insight p{color:#fff}
+.bar-fill{background:#F97316}
+[data-theme="dark"] .bar-fill{background:#FB923C}
+.community-banner-copy{background:#2E63EB}
+[data-theme="dark"] .community-banner-copy{background:#1F2937;border-top:1px solid #F59E0B}
+.community-banner{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* Solid, full-width bottom navigation with safe-area support */
+.mobile-nav{background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -5px 20px #0B122014;backdrop-filter:none}
+.mobile-nav a{color:var(--muted)}
+.mobile-nav a.active{color:var(--brand)}
+.mobile-nav a.active:after{background:var(--accent)}
+[data-theme="dark"] .mobile-nav{background:#1F2937;border-top-color:#F59E0B}
+[data-theme="dark"] .mobile-nav a.active{color:#00DFFF}
+.search-dock{margin:0 0 24px;padding:15px 17px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.search-dock-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;color:var(--brand);font-weight:750}
+.search-dock-label span{font-size:26px;line-height:1}
+.search-dock-control{display:flex;gap:9px}
+.search-dock-control .search{flex:1;width:auto;max-width:none;min-width:0;background:var(--canvas);border-color:var(--line);border-radius:10px}
+.search-dock-control .button{min-width:84px}
+.community-feed{display:grid;gap:0;margin-top:16px}
+.feed-item{display:grid;grid-template-columns:36px minmax(0,1fr);gap:11px;padding:15px 0;border-top:1px solid var(--line)}
+.feed-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--green);font-size:17px}
+.event-icon{color:var(--accent)}
+.feed-item strong{display:block;color:var(--brand);font-size:13px;margin:1px 0 4px}
+.feed-item p{margin:0 0 6px;color:var(--muted);font-size:12px;line-height:1.55}
+.feed-meta{font-size:10px;color:var(--muted);font-weight:650}
+[data-theme="dark"] .feed-item strong{color:#00DFFF}
+[data-theme="dark"] .feed-icon{color:#4ade80}
+@media(max-width:760px){.search-dock{margin:0 0 17px;padding:13px;border-radius:13px}.search-dock-control .button{min-width:72px}.community-banner{margin-top:4px}}
+
+/* Logo presentation: use the supplied theme-specific artwork without blend filters that distort brand colours. */
+.logo{padding:0 4px 4px;min-height:64px;display:flex;align-items:center}
+.logo img{width:208px;max-width:100%;height:auto;max-height:82px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.header-logo{flex:0 1 auto;min-height:62px}
+.header-logo picture{display:flex;align-items:center;min-width:0}
+.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.drawer-head{align-items:center;min-height:90px}
+.drawer-head img{width:76px;height:76px;object-fit:contain;border-radius:0;background:transparent;padding:0}
+@media(max-width:760px){
+ .logo img{width:188px;max-height:70px}
+ .header-logo{min-height:54px}
+ .header-logo img{width:218px;max-width:43vw;max-height:64px}
+ .drawer-head img{width:80px;height:80px}
+}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+/* Sukuma! community-first visual polish */
+:root{--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 14px 38px #07374412}
+[data-theme=dark]{--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 14px 38px #0004}
+body{background:radial-gradient(ellipse at 85% 0%,color-mix(in srgb,var(--brand) 7%,transparent),transparent 34%),var(--canvas)}
+.layout{max-width:1600px}
+.main{padding-top:clamp(16px,2.3vw,34px)}
+.sidebar{background:linear-gradient(180deg,#073744,#092d38 78%,#102f39);padding-top:27px}
+.nav a{border:1px solid transparent;transition:background .18s ease,border-color .18s ease}
+.nav a.active{background:#ffffff19;border-color:#ffffff18}
+.heading.hero-seascape{border-radius:0 0 24px 24px;overflow:hidden;box-shadow:0 22px 50px #07374422}
+#overview .hero-seascape{border-radius:0 0 26px 26px}
+.hero-seascape:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(110deg,#062b39d9 0%,#07374485 48%,#07374408 100%);pointer-events:none}
+.hero-copy{max-width:760px}
+.hero-seascape h1{letter-spacing:-.055em;text-wrap:balance}
+.hero-cta{background:var(--accent);border-color:var(--accent);border-radius:12px;box-shadow:0 8px 22px #071b2033;font-weight:750}
+.hero-cta:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.hero-pill{backdrop-filter:blur(12px)}
+.metrics{gap:15px}
+.metrics .card,.content>.card,.stack>.card{border-radius:19px;box-shadow:0 7px 26px #0737440b;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.metrics .card:hover,.content>.card:hover,.stack>.card:hover{box-shadow:0 14px 34px #07374412;border-color:color-mix(in srgb,var(--brand) 38%,var(--line))}
+.metric-value{letter-spacing:-.06em}
+.metric-icon{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-radius:12px}
+.section-title h2{letter-spacing:-.035em}
+.filter-row{gap:8px}
+.filter{padding:8px 13px;border-radius:999px}
+.issue{background:color-mix(in srgb,var(--surface) 94%,var(--canvas));border-radius:15px;padding:16px}
+.issue h3{font-size:14px;line-height:1.4}
+.status{padding:6px 10px}
+.quick{border-radius:14px;background:color-mix(in srgb,var(--surface) 92%,var(--soft));}
+.quick b{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-radius:10px}
+.insight{background:linear-gradient(145deg,#073744,#0b5962);box-shadow:0 14px 34px #07374420!important}
+.public-card .feed-item{padding:13px 0}
+.community-banner{border-radius:20px;overflow:hidden;box-shadow:0 14px 38px #07374418}
+.notice{line-height:1.65}
+.button,.icon-button,.avatar,.filter,.quick{transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.button.primary{background:var(--accent);border-color:var(--accent)}
+.button.primary:hover{filter:brightness(1.04)}
+.search-popout{backdrop-filter:blur(18px)}
+.nav-drawer{background:linear-gradient(180deg,#073744,#092d38)}
+.mobile-nav{box-shadow:0 -8px 28px #0737440a;background:color-mix(in srgb,var(--surface) 92%,transparent)}
+.mobile-nav a.active{color:var(--brand)}
+a{ text-underline-offset:3px}
+@media(min-width:761px){.content{gap:18px}.stack{gap:17px}.card{padding:20px}}
+@media(max-width:760px){.main{padding-top:10px}.topbar{margin-bottom:18px}.heading.hero-seascape{border-radius:0 0 20px 20px}.metrics{gap:10px}.metrics .card,.content>.card,.stack>.card{border-radius:16px}.issue{padding:13px}.community-banner{border-radius:17px}}
+@media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card,.button,.icon-button,.avatar,.filter,.quick,.hero-cta{transition:none!important}}
+
+
+/* Calm, playful Sukuma! design pass: lighter surfaces, consistent type, tighter footer */
+:root{--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 8px 24px #0737440b}
+[data-theme=dark]{--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 8px 24px #0003}
+body{background:var(--canvas)}
+/* Less boxed-in: rely on spacing, typography and dividers instead of nested cards. */
+.metrics .card,.content>.card,.stack>.card{box-shadow:none;border-color:transparent;background:transparent;border-radius:10px}
+.metrics .card{background:color-mix(in srgb,var(--surface) 62%,transparent);border-bottom:1px solid var(--line);border-radius:0;padding:18px 16px}
+.metrics .card:before{width:2px;opacity:.55}
+.content>.card,.stack>.card{padding:clamp(14px,1.8vw,22px);border-top:1px solid var(--line);border-radius:0}
+.issue{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 4px}
+.issue:hover{background:color-mix(in srgb,var(--brand) 4%,transparent);border-color:var(--line)}
+.quick-tile{border-radius:12px!important;box-shadow:none!important}
+.pulse-community-card,.pulse-map-wrap,.pulse-summary,.nearby-report,.public-placeholder{box-shadow:none!important}
+.nearby-report{border-radius:12px}
+.public-card .feed-item{border-bottom:1px solid var(--line)}
+.community-banner{box-shadow:none}
+.insight{border-radius:14px!important}
+.heading.hero-seascape,#overview .hero-seascape{border-radius:0 0 18px 18px}
+.hero-seascape:before{background:linear-gradient(100deg,#062b39d6 0%,#07374474 55%,#0737440a 100%)}
+:root{--type-heading:clamp(21px,2vw,26px);--type-subheading:15px}
+h1,h2,h3,h4{color:var(--text)}
+h1{font-size:var(--type-heading)}
+.section-title h2,.pulse-heading h2,.community-banner h2,.public-card .section-title h2{font-family:Montserrat,Inter,sans-serif;font-size:var(--type-heading);line-height:1.25;font-weight:750;letter-spacing:-.04em;color:var(--text)}
+.section-title h3,.nearby-reports .section-title h3{font-family:Montserrat,Inter,sans-serif;font-size:18px;line-height:1.3;font-weight:700;letter-spacing:-.025em;color:var(--text)}
+.card-subtitle,.pulse-heading p,.community-banner-copy p,.public-card>p,.section-title p{font-size:var(--type-subheading);line-height:1.55;color:var(--muted)}
+.heading.hero-seascape h1,.heading.hero-seascape .hero-welcome,.heading.hero-seascape .hero-subheading{color:#fff}
+.heading.hero-seascape h1{font-size:clamp(30px,4vw,50px);line-height:1.1}
+.overline{font-size:11px;letter-spacing:.12em;font-weight:750}
+.banner-flame{color:var(--accent);opacity:.72;filter:drop-shadow(0 4px 12px #e9785633)}
+#settings.notice{max-width:560px;margin:12px auto 20px;padding:0 16px;text-align:center;line-height:1.65;font-size:11px;color:var(--muted);text-wrap:balance}
+#settings.notice:before{content:"✳";display:block;color:var(--accent);font-size:17px;line-height:1.4;margin-bottom:3px}
+main.main{padding-bottom:22px}
+.mobile-nav{bottom:0}
+@media(min-width:761px){.main{padding-bottom:22px}.content{gap:24px}.stack{gap:18px}.metrics{gap:18px}.metrics .card{padding:18px 16px}}
+@media(max-width:760px){.main{padding-bottom:14px}.metrics .card{padding:14px 10px 14px 13px}.content>.card,.stack>.card{padding:14px 2px}.section-title h2,.pulse-heading h2,.community-banner h2,.public-card .section-title h2{font-size:22px}.section-title h3,.nearby-reports .section-title h3{font-size:17px}#settings.notice{margin:8px auto 12px;max-width:340px;padding:0 18px;font-size:10px;line-height:1.55}.mobile-nav{padding-top:5px;padding-bottom:max(5px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card{transition:none!important}}
+
+/* Layout lock-in: explicit public-facing information hierarchy and brand controls */
+.header-logo img{width:clamp(220px,24vw,290px);max-width:38vw;max-height:72px;background:transparent}
+.header-left{gap:13px}
+.theme-button{min-height:52px;min-width:132px;display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 13px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);cursor:pointer;box-shadow:0 3px 12px #0b333f0a}
+.theme-glyph{font-size:25px;line-height:1;color:var(--brand)}
+.theme-copy{display:grid;text-align:left;line-height:1.2;gap:3px}
+.theme-copy strong{font-size:12px;font-weight:800}
+.theme-copy small{font-size:10px;color:var(--muted);white-space:nowrap}
+.theme-button:hover{border-color:var(--accent)}
+.drawer-head img{width:76px;height:76px;object-fit:contain;background:transparent;border-radius:0}
+.section-title{padding-inline:4px}
+#issues>.section-title{padding-left:8px;padding-right:2px}
+#issues>.section-title h2{margin-left:3px}
+#issues>.section-title .subtle-link{margin-right:3px}
+#announcements>.section-title{padding-left:8px;padding-right:3px}
+#announcements>.section-title h2{margin-left:3px}
+#community>.section-title{padding-left:1px;padding-right:3px}
+#community>.section-title h2{margin-left:-2px}
+#jobs>.section-title{padding-left:8px;padding-right:3px}
+#jobs>.section-title h2{margin-left:3px}
+.community-banner-copy .banner-kicker{color:var(--text)}
+.community-banner-copy>p{color:var(--text)}
+[data-theme=dark] .community-banner-copy .banner-kicker{color:#fff}
+[data-theme=dark] .community-banner-copy>p{color:#f2f7fa}
+@media(max-width:760px){
+.header-logo img{width:clamp(150px,39vw,190px);max-width:42vw;max-height:54px}
+.header-left{gap:5px}
+.theme-button{min-width:92px;min-height:44px;padding:5px 7px;gap:6px;border-radius:11px}
+.theme-glyph{font-size:21px}
+.theme-copy strong{font-size:10px}
+.theme-copy small{font-size:9px}
+.header-actions{gap:5px}
+.login-button{padding:8px 8px}
+#issues>.section-title{padding-left:10px;padding-right:0}
+#issues>.section-title .subtle-link{margin-right:2px}
+#announcements>.section-title,#jobs>.section-title{padding-left:10px}
+#community>.section-title{padding-left:0}
+}
+@media(max-width:370px){.theme-button{min-width:78px;padding:5px}.theme-copy small{font-size:8px}.header-logo img{width:140px;max-width:35vw}}
+/* Contrast repair and contextual help foundations */
+.header-logo img{background:transparent!important;mix-blend-mode:normal!important;box-shadow:none!important;border:0!important}
+[data-theme=dark] .header-logo img{background:transparent!important;mix-blend-mode:normal!important}
+.drawer-logo-surface{width:84px;height:84px;display:grid;place-items:center;border-radius:18px;background:#073744;padding:8px}
+.drawer-logo-surface img{display:block;width:100%;height:100%;object-fit:contain;background:transparent!important;mix-blend-mode:normal!important}
+[data-theme=dark] .drawer-logo-surface{background:#F4F1EC}
+#community.insight{color:var(--text)!important;background:var(--surface)!important}
+#community.insight .overline,#community.insight h2,#community.insight p,#community.insight .bar-label,#community.insight .bar-label span,#community.insight .bar-label strong{color:var(--text)!important}
+#community.insight .section-title{padding-left:0!important;margin-left:-3px!important}
+#community.insight .bar-track{background:var(--soft)}
+#community.insight .bar-fill{background:var(--brand)}
+.community-banner-copy{background:linear-gradient(115deg,#073744,#0B5965)!important;color:#fff!important}
+.community-banner-copy .banner-kicker,.community-banner-copy h2,.community-banner-copy>p{color:#fff!important}
+.community-banner-copy .banner-kicker{color:#FFD1B0!important}
+[data-theme=dark] .community-banner-copy{background:linear-gradient(115deg,#061B24,#0B3440)!important}
+.context-help{margin:12px 0;padding:12px 14px;border-left:3px solid var(--brand);border-radius:0 10px 10px 0;background:var(--soft);color:var(--text);font-size:13px;line-height:1.55}
+.context-help strong{display:block;margin-bottom:4px;color:var(--text)}
+.help-center{margin:14px 0 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text)}
+.help-center h2{font-size:20px;margin:0 0 6px}
+.help-center p{font-size:13px;line-height:1.55;color:var(--muted)}
+.help-search{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--canvas);color:var(--text);font:inherit}
+.help-topic{padding:12px 0;border-bottom:1px solid var(--line)}
+.help-topic:last-child{border-bottom:0}
+.help-topic summary{cursor:pointer;font-weight:750;color:var(--text)}
+.help-topic p{margin:8px 0 0}
+@media(max-width:760px){.drawer-logo-surface{width:76px;height:76px}#community.insight .section-title{margin-left:-4px!important}}
+/* Accessibility and knowledge-base layer */
+[data-theme=dark] .header-logo img{mix-blend-mode:multiply;background:transparent}
+.drawer-head{background:var(--deep);border-radius:14px;padding:12px;min-height:94px}
+.drawer-head img{width:82px;height:82px;object-fit:contain;background:transparent}
+#community{color:var(--text)}
+#community .overline,#community .section-title h2,#community p,#community .bar-label,#community .bar-label strong{color:var(--text)!important}
+#community .community-intro{color:var(--text)!important;line-height:1.6}
+#community .inline-help{margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--brand);background:var(--soft);color:var(--text);font-size:12px;line-height:1.55;border-radius:0 8px 8px 0}
+#community .section-title h2{margin-left:-3px}
+.community-banner-copy{background:linear-gradient(115deg,#F4F1EC,#E4EFED);color:#12343B}
+.community-banner-copy .banner-kicker{color:#087F8C}
+.community-banner h2{color:#12343B!important}
+.community-banner-copy>p{color:#294A50!important}
+.community-banner .banner-link{color:#12343B}
+[data-theme=dark] .community-banner-copy{background:linear-gradient(115deg,#102A34,#183B45)}
+[data-theme=dark] .community-banner-copy .banner-kicker,[data-theme=dark] .community-banner h2,[data-theme=dark] .community-banner-copy>p,[data-theme=dark] .community-banner .banner-link{color:#F4F5F0!important}
+.help-centre{margin:26px 0 10px;padding:clamp(18px,3vw,30px);background:var(--surface);border-top:3px solid var(--brand);border-radius:16px;color:var(--text)}
+.help-heading h2{font:750 clamp(22px,2.3vw,28px)/1.25 Montserrat,Inter,sans-serif;margin:5px 0 8px;color:var(--text)}
+.help-heading p,.help-note{font-size:14px;line-height:1.6;color:var(--muted);max-width:760px}
+.help-search-label{display:block;margin:18px 0 7px;font-size:13px;font-weight:750}
+.help-search-row{display:flex;gap:8px;align-items:stretch}
+.help-search-row input{min-width:0;flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--canvas);color:var(--text);font:inherit}
+.help-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.help-result{padding:14px 15px;background:var(--canvas);border-radius:10px}
+.help-result h3{font:700 15px/1.4 Montserrat,Inter,sans-serif;margin:0 0 7px;color:var(--text)}
+.help-result p{font-size:13px;line-height:1.6;margin:0;color:var(--muted)}
+.help-result[hidden]{display:none}
+.help-note{margin:15px 0 0;font-size:12px}
+@media(max-width:600px){.help-search-row{flex-direction:column}.help-search-row .button{width:100%}.help-results{grid-template-columns:1fr}.help-centre{margin-top:18px}}
+/* Accessibility and knowledge discovery refinements */
+[data-theme="light"] .drawer-head{background:#073744!important;border-radius:16px;padding:14px}
+[data-theme="light"] .drawer-head img{background:#fff;border-radius:10px;padding:5px}
+[data-theme="dark"] .header-logo img{background:transparent!important;mix-blend-mode:normal!important}
+.header-logo picture{display:block;background:transparent!important}
+#community.insight{color:var(--text)!important}
+#community .overline,#community .section-title h2,#community p,#community .bar-label,#community .bar-label span,#community .bar-label strong{color:var(--text)!important;opacity:1}
+#community .section-title{padding-left:0!important}
+.community-banner-copy{background:linear-gradient(115deg,#0b5965,#087f8c)!important}
+.community-banner-copy .banner-kicker,.community-banner-copy h2,.community-banner-copy>p{color:#fff!important}
+.context-help{margin:14px 0;padding:14px 16px;border-left:3px solid var(--brand);border-radius:0 12px 12px 0;background:var(--soft);color:var(--text);font-size:13px;line-height:1.6}
+.context-help strong{display:block;font-family:Montserrat,sans-serif;font-size:15px;margin-bottom:4px}
+.knowledge-search-results{display:none;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
+.knowledge-search-results[data-open="true"]{display:block}
+.knowledge-search-results h3{margin:0 0 8px;font:700 15px Montserrat,sans-serif}
+.knowledge-search-results a{display:block;padding:9px 2px;border-bottom:1px solid var(--line);color:var(--brand);font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.knowledge-search-results a:last-child{border-bottom:0}
+.knowledge-search-results p{margin:6px 0;font-size:13px;line-height:1.5;color:var(--text)}
+.inline-help{padding:10px 12px;margin:10px 0;background:var(--soft);border-radius:10px;color:var(--text)!important;font-size:12px;line-height:1.55}
+@media(max-width:760px){.community-banner-copy{background:#087f8c!important}.context-help{font-size:12px}}
+/* Follow-up: stronger brand contrast, working theme control, readable trends and event suggestion */
+.header-logo img{width:clamp(250px,30vw,340px);max-width:52vw;max-height:76px;background:transparent!important;mix-blend-mode:normal!important}
+[data-theme=dark] .header-logo img{background:transparent!important;mix-blend-mode:normal!important}
+.header-left{gap:0}
+.theme-button{min-width:118px;min-height:48px}
+.theme-copy small{white-space:normal}
+#community .section-title.trend-title{padding-left:8px}
+#community .section-title.trend-title h2{margin-left:4px}
+#community .community-intro,#community .inline-help,#community .bar-label,#community .bar-label span,#community .bar-label strong{color:var(--text)!important;opacity:1}
+#community .community-intro,#community .inline-help{padding-left:8px;padding-right:6px}
+#community .bar-list{padding-left:8px;padding-right:6px}
+.trend-chart{margin:10px 8px 0;padding:10px 10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.trend-chart svg{display:block;width:100%;height:150px;overflow:visible}
+.trend-grid{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+.trend-line{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.trend-water{stroke:#0D9488}.trend-roads{stroke:#E97856}.trend-waste{stroke:#7C83DB}
+.trend-axis{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin:0 2px 9px}
+.trend-legend{display:grid;gap:6px;font-size:11px;color:var(--text)}
+.trend-legend span{display:flex;align-items:center;gap:7px}
+.trend-legend i{display:inline-block;width:17px;height:3px;border-radius:3px}
+.water-key{background:#0D9488}.roads-key{background:#E97856}.waste-key{background:#7C83DB}
+.trend-note{margin:9px 0 0;color:var(--muted);font-size:10px;line-height:1.45}
+.community-banner-copy{background:linear-gradient(115deg,#087F8C,#075B68)!important}
+.community-banner-copy .banner-kicker,.community-banner-copy>p{color:#fff!important}
+.event-submit-open{margin:4px 0 14px}
+.event-submit-form{padding:16px;margin:8px 0 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text)}
+.event-submit-form h3{margin:0 0 6px;font:700 17px Montserrat,sans-serif}
+.event-submit-form p{font-size:12px;line-height:1.5;color:var(--muted)}
+.event-submit-form label{display:block;margin:12px 0 5px;font-size:12px;font-weight:700;color:var(--text)}
+.event-submit-form input,.event-submit-form textarea{width:100%;min-height:42px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--canvas);color:var(--text);font:14px Inter,sans-serif}
+.event-form-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.event-submit-form[hidden]{display:none}
+@media(max-width:760px){.header-logo img{width:clamp(180px,52vw,230px);max-width:58vw;max-height:58px}.header-actions{gap:5px}.theme-button{min-width:96px}.theme-copy small{font-size:9px}}
+
+/* Runtime resilience and contrast fixes */
+#community .overline,#community .trend-title,#community .community-intro,#community .inline-help,#community .trend-axis,#community .trend-legend,#community .trend-note{margin-left:10px;margin-right:4px}
+#community .trend-chart{margin-left:10px;margin-right:4px}
+[data-theme=dark] .header-logo img{mix-blend-mode:normal!important;background:transparent!important}
+#hero-weather .weather-detail{display:block}
+/* Stabilise preview controls and refine brand mark and trends alignment */
+.header-logo img{width:clamp(250px,30vw,340px)!important;max-width:45vw!important;max-height:76px!important;mix-blend-mode:normal!important;background:transparent!important}
+.header-left{gap:0!important}
+#community .trend-title{padding-left:12px!important;padding-right:8px!important}
+#community .community-intro,#community .inline-help,#community .bar-list{margin-left:12px!important;padding-left:10px!important}
+#community .trend-chart{margin-left:22px!important;margin-right:8px!important}
+@media(max-width:760px){.header-logo img{width:clamp(180px,45vw,230px)!important;max-width:48vw!important;max-height:58px!important}.header-actions{gap:5px}}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+/* TEMPORARY palette inspired by the supplied deep-teal and warm-neutral references. */
+:root{color-scheme:light;--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 12px 34px #07374412}
+[data-theme=dark]{color-scheme:dark;--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 12px 34px #0005}
+.status.waiting{background:#FFF0E8;color:#8C3926}.status.resolved{background:#DDF3EB;color:#155C50}
+[data-theme=dark] .status.waiting{background:#4B302A;color:#FFB39A}[data-theme=dark] .status.resolved{background:#153F3E;color:#8DE1D3}
+.heading.hero-seascape{--accent:#E97856}
+.hero-cta{background:var(--accent);border-color:var(--accent)}
+.metrics .card:before{background:var(--accent)}
+.bar-fill{background:var(--accent)}
+.insight{background:linear-gradient(145deg,#073744,#087F8C)}
+[data-theme=dark] .insight{background:linear-gradient(145deg,#082B36,#124D58)}
+/* Logo sizing and matte blending for supplied light/dark variants. Artwork files are preserved unchanged. */
+.logo{padding:0 3px 5px;min-height:74px;display:flex;align-items:center}
+.logo img{width:204px;max-width:100%;max-height:82px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img{mix-blend-mode:screen}
+.header-logo{min-height:62px;flex:0 1 auto}
+.header-logo img{width:270px;max-width:42vw;max-height:76px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{min-height:94px;align-items:center}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;padding:0;mix-blend-mode:multiply}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){
+ .logo img{width:190px;max-height:72px}
+ .header-logo{min-height:54px}
+ .header-logo img{width:220px;max-width:43vw;max-height:64px}
+ .drawer-head img{width:84px;height:84px}
+}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+
+
+/* TEMPORARY palette inspired by supplied reference: deep ocean navy, cool white, teal and coral. */
+:root{color-scheme:light;--brand:#087E8B;--deep:#082335;--accent:#F26B5B;--canvas:#F2F7F8;--surface:#FFFFFF;--soft:#E1EFF0;--text:#102A36;--muted:#526975;--line:#CCDDE1;--green:#168B72;--service-orange:#E98B45;--shadow:0 12px 34px #08233512}
+[data-theme=dark]{color-scheme:dark;--brand:#55D6C2;--deep:#071923;--accent:#FF8A78;--canvas:#08141D;--surface:#10232E;--soft:#183743;--text:#F2FAFC;--muted:#B2C7D0;--line:#2C4652;--green:#55D6A5;--service-orange:#FFB36B;--shadow:0 12px 34px #0005}
+.heading{background:linear-gradient(125deg,var(--deep),#087E8B)}
+.insight{background:linear-gradient(145deg,#082335,#0C5963)}
+.bar-fill{background:var(--accent)}
+.heading .overline,.heading p{color:#E0F4F5}
+[data-theme=dark] .heading .overline,[data-theme=dark] .heading p{color:#D6E8EC}
+/* Logo sizing and theme-aware blending; original artwork is preserved. */
+.logo{padding:0 4px 4px;min-height:70px;display:flex;align-items:center}
+.logo img{width:210px;max-width:100%;height:auto;max-height:84px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.header-logo{flex:0 1 auto;min-height:64px}
+.header-logo picture{display:flex;align-items:center;min-width:0}
+.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img,[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{align-items:center;min-height:92px}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;mix-blend-mode:multiply;padding:0}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){.logo img{width:190px;max-height:72px}.header-logo{min-height:56px}.header-logo img{width:218px;max-width:43vw;max-height:64px}.drawer-head img{width:82px;height:82px}}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+</style>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="app-header">
-    <a class="brand-wrapper" href="./" aria-label="Sukuma! home">
-      <img class="app-brand-logo" src="assets/sukuma-horizontal-light.png" alt="Sukuma!">
-    </a>
-    <div class="header-actions">
-      <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search local records</span><input id="global-search" type="search" placeholder="Search records" autocomplete="off"></label>
-      <button class="icon-btn" id="theme-toggle-btn" type="button" aria-label="Switch colour theme" title="Switch theme"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
-      <button class="secondary-btn install-btn" id="install-app-btn" type="button" hidden>Install</button>
+<body><a class="skip" href="#main">Skip to main content</a>
+<div class="layout">
+<aside class="sidebar" aria-label="Primary navigation">
+<div class="logo"><img src="assets/sukuma-horizontal-light.png" alt="Sukuma!"></div>
+<div><div class="workspace-label">Workspace</div><nav class="nav"><a class="active" href="#overview" aria-current="page"><span class="nav-icon">▦</span>Overview</a><a href="#issues"><span class="nav-icon">◎</span>Service issues</a><a href="#announcements"><span class="nav-icon">ⓘ</span>Announcements</a><a href="#actions"><span class="nav-icon">✓</span>Tasks & follow-ups</a><a href="#community-pulse"><span class="nav-icon">⌖</span>Community pulse</a></nav></div>
+<div><div class="workspace-label">Workspace tools</div><nav class="nav"><a href="#reports"><span class="nav-icon">▤</span>Reports</a><a href="#settings"><span class="nav-icon">⚙</span>Settings</a></nav></div>
+<div class="side-bottom"><strong>Preview environment</strong>Illustrative interface only. No live municipal data or resident records are connected.</div>
+</aside>
+<main class="main" id="main">
+<header class="topbar">
+<div class="header-left"><a class="header-logo" href="#overview" aria-label="Sukuma! home"><picture><source id="logo-source" srcset="assets/sukuma-horizontal-light.png"><img id="header-logo-img" src="assets/sukuma-horizontal-light.png" alt="Sukuma!" style="background:transparent"></picture></a></div>
+<div class="header-actions"><button class="theme-button" id="theme" type="button" aria-label="Switch to dark theme" title="Switch to dark theme"><span class="theme-glyph" aria-hidden="true">◐</span><span class="theme-copy"><strong>Theme</strong><small id="theme-mode-label">Light / Dark</small></span></button><button class="button login-button" id="login" type="button">Log in</button><button class="avatar" id="profile" type="button" aria-label="User profile, signed in as SU" title="Demo profile" hidden>SU</button></div>
+<div class="breadcrumb">Sukuma! <span aria-hidden="true">/</span> Workspace <span aria-hidden="true">/</span> Overview</div>
+</header>
+<div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><div class="drawer-logo-surface"><img id="drawer-logo-img" src="assets/sukuma-stacked-dark-proof.png" alt="Sukuma! logo"></div><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#help"><span>?</span>Help &amp; knowledge base</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
+<section id="overview"><div class="heading hero-seascape"><div class="hero-copy"><div class="overline">Community accountability workspace</div><p class="hero-welcome" id="hero-welcome">Good morning!</p><h1>A cleaner, safer, stronger city.</h1><p class="hero-subheading">Report issues, track progress and hold your municipality accountable together.</p><a class="button hero-cta" href="#issues">Report an issue <span aria-hidden="true">→</span></a></div><div class="hero-weather" id="hero-weather" aria-live="polite"><span class="weather-city">Durban, South Africa</span><span class="weather-temp">Weather loading…</span><span class="weather-detail">Today</span></div><span class="pill hero-pill">Preview · sample data</span></div>
+
+</section><div class="search-dock" aria-label="Dashboard search"><div class="search-dock-label"><label for="search">Search issues and updates</label><span aria-hidden="true">⌕</span></div><div class="search-dock-control"><input id="search" class="search" type="search" placeholder="Search service issues…" autocomplete="off"><button class="button primary" id="search-submit" type="button">Search</button></div></div><div class="knowledge-search-results" id="knowledge-search-results" aria-live="polite" data-open="false"></div>
+
+<section class="quick-actions-panel" id="actions"><div class="section-title"><h2>Quick actions</h2><a class="subtle-link" href="#actions">View all <span aria-hidden="true">→</span></a></div><div class="quick-grid"><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Report issue</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><span>My cases</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8h8l4 4V20H6z"/><path d="M14 4v4h4M9 12h6M9 16h6"/></svg><span>Follow-ups</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.4A4.6 4.6 0 0 1 8.1 13h1.8a4.6 4.6 0 0 1 4.6 4.6V19M16 5.4a3 3 0 0 1 0 5.8M17 13.3a4.5 4.5 0 0 1 3.5 4.4V19"/></svg><span>Community insight</span></div></div></section>
+
+<section class="context-help" aria-label="About this page"><strong>What is this page for?</strong> Use this overview to explore community service concerns, understand current information, and find the right next step. The map and trend examples are illustrative until verified municipal data sources are connected.</section>
+<section class="pulse-section" id="community-pulse" aria-labelledby="pulse-title">
+  <div class="pulse-heading">
+    <div><div class="overline">Community intelligence</div><h2 id="pulse-title">Community pulse</h2><p>Local service reports at a glance</p></div>
+    <span class="pulse-live"><span aria-hidden="true"></span> DEMO · Sample reports</span>
+  </div>
+  <div class="pulse-community-card"><div class="pulse-layout">
+    <div class="pulse-map-wrap">
+      <div class="pulse-map-tools"><span class="map-area">Phoenix &amp; surrounding areas</span><button type="button" class="map-reset" id="pulse-reset">Reset map</button></div>
+      <div id="pulse-map" role="region" aria-label="Interactive map of illustrative service reports around Phoenix, Durban"><div class="map-loading">Loading interactive map…</div></div>
+      <div class="map-legend" aria-label="Map legend">
+        <span><i class="legend-dot urgent"></i>Urgent</span><span><i class="legend-dot progress"></i>In progress</span><span><i class="legend-dot monitored"></i>Monitored</span><span><i class="legend-dot resolved"></i>Resolved</span>
+      </div>
+      <p class="map-disclaimer">Illustrative report locations only. These pins are fictional and do not represent verified municipal reports or exact resident locations.</p>
     </div>
-  </header>
-  <main id="main-content">
-    <section class="welcome-row">
-      <div><p class="eyebrow">COMMUNITY ACCOUNTABILITY</p><h1 id="page-heading">Your community desk</h1><p class="intro" id="page-subtitle">Keep issues visible. Track action. Follow through.</p></div>
-      <span class="workspace-state"><span class="state-dot"></span> Private device workspace</span>
-    </section>
-    <section class="hero-panel" aria-labelledby="hero-title">
-      <div class="hero-copy"><span class="hero-label">FROM REPORT TO RESOLUTION</span><h2 id="hero-title">Make every concern<br>count.</h2><p>Organise service-delivery concerns, record follow-ups and keep community work moving.</p><button class="primary-action-btn" id="quick-capture-btn" type="button"><span aria-hidden="true">＋</span> Capture an update</button></div>
-      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div><div class="art-hill hill-one"></div><div class="art-hill hill-two"></div><div class="art-path"></div><span class="art-mark">S!</span></div>
-    </section>
-    <nav class="quick-nav-scroll" aria-label="Workspace sections">
-      <button class="pill-tab active" data-target="dashboard" type="button">Overview</button>
-      <button class="pill-tab" data-target="issues" type="button">Service issues</button>
-      <button class="pill-tab" data-target="tasks" type="button">Follow-ups</button>
-      <button class="pill-tab" data-target="projects" type="button">Projects</button>
-      <button class="pill-tab" data-target="field" type="button">Field notes</button>
-      <button class="pill-tab" data-target="people" type="button">Contacts</button>
-      <button class="pill-tab" data-target="more" type="button">More tools</button>
-    </nav>
-    <section id="dashboard-view" class="dashboard-view">
-      <div class="section-heading"><div><p class="eyebrow">WORK IN VIEW</p><h2>Workspace overview</h2></div><span class="small muted">Live counts from this browser</span></div>
-      <div class="metric-grid">
-        <button class="metric-card metric-featured" data-open="issues" type="button"><span class="metric-icon" aria-hidden="true">!</span><span class="metric-label">Open service issues</span><strong class="metric-value" id="count-issues">0</strong><span class="metric-foot">Local reports <span aria-hidden="true">↗</span></span></button>
-        <button class="metric-card" data-open="tasks" type="button"><span class="metric-icon" aria-hidden="true">✓</span><span class="metric-label">Open follow-ups</span><strong class="metric-value" id="count-tasks">0</strong><span class="metric-foot" id="badge-tasks">0 completed</span></button>
-        <button class="metric-card" data-open="projects" type="button"><span class="metric-icon" aria-hidden="true">↗</span><span class="metric-label">Projects tracked</span><strong class="metric-value" id="count-projects">0</strong><span class="metric-foot">Delivery & outcomes</span></button>
-        <button class="metric-card" data-open="field" type="button"><span class="metric-icon" aria-hidden="true">⌖</span><span class="metric-label">Field notes</span><strong class="metric-value" id="count-team">0</strong><span class="metric-foot">Saved locally</span></button>
-      </div>
-      <div class="content-grid">
-        <section class="panel priority-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE THE NEXT STEP</p><h3>Move work forward</h3></div><span class="panel-symbol" aria-hidden="true">↗</span></div><p class="muted">Capture a service issue, note an action, or record a follow-up while the details are fresh.</p><div class="shortcut-list"><button type="button" class="shortcut-row" data-open="issues"><span class="shortcut-icon issue-icon" aria-hidden="true">!</span><span><strong>Log a service issue</strong><small>Record the concern and what needs to happen</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="tasks"><span class="shortcut-icon task-icon" aria-hidden="true">✓</span><span><strong>Add a follow-up</strong><small>Keep the next action visible</small></span><span class="row-arrow" aria-hidden="true">→</span></button><button type="button" class="shortcut-row" data-open="field"><span class="shortcut-icon field-icon" aria-hidden="true">⌖</span><span><strong>Save a field note</strong><small>Capture observations for later review</small></span><span class="row-arrow" aria-hidden="true">→</span></button></div></section>
-        <aside class="panel integrity-panel"><div class="integrity-mark" aria-hidden="true">S!</div><p class="eyebrow">BUILT FOR FOLLOW-THROUGH</p><h3>Clear notes.<br>Visible action.</h3><p class="muted">Use the workspace to organise work without overstating what has been verified or resolved.</p><div class="integrity-rule"><span class="rule-dot"></span><span>Keep reported concerns separate from verified outcomes.</span></div></aside>
-      </div>
-      <section class="assistant-card panel" aria-labelledby="assistant-heading">
-        <div class="assistant-heading"><div><p class="eyebrow">OPTIONAL TOOL</p><h3 id="assistant-heading">Sukuma! Assistant</h3><p class="muted">Draft plans and organise next steps. AI stays disconnected until you configure a service.</p></div><span class="ai-status" id="ai-status">Not connected</span></div>
-        <div id="ai-messages" class="ai-messages" aria-live="polite"><p class="ai-message assistant-message">I can help structure a plan once an approved free AI service is connected. Avoid entering personal or sensitive resident information.</p></div>
-        <form id="ai-chat-form" class="ai-chat-form"><label class="sr-only" for="ai-prompt">Message Sukuma! Assistant</label><textarea id="ai-prompt" rows="2" maxlength="3000" placeholder="What would you like to plan?" required></textarea><div class="voice-input-actions"><button class="secondary-btn" id="voice-input-btn" type="button">Dictate</button><button class="primary-action-btn" type="submit">Ask assistant</button></div></form>
-        <div class="assistant-tools"><button class="secondary-btn" id="ai-config-btn" type="button">Configure AI</button><button class="secondary-btn" id="voice-read-btn" type="button">Read reply aloud</button><button class="secondary-btn" id="voice-stop-btn" type="button">Stop voice</button><button class="secondary-btn" id="whatsapp-share-btn" type="button">Prepare WhatsApp draft</button></div>
-        <p class="small muted">No paid fallback. Voice input may use your browser's speech service. WhatsApp opens a draft; you choose the recipient and send it yourself.</p>
-        <div id="ai-config-panel" class="ai-config-panel" hidden><label for="ai-endpoint">Development Worker URL</label><input id="ai-endpoint" type="url" inputmode="url" placeholder="https://your-worker.example.workers.dev" autocomplete="url"><label for="ai-password">Workspace password</label><input id="ai-password" type="password" maxlength="512" autocomplete="current-password" placeholder="Worker password"><div class="assistant-tools"><button class="primary-action-btn" type="button" id="ai-connect-btn">Connect</button><button class="secondary-btn" type="button" id="ai-disconnect-btn">Disconnect</button></div><p class="small muted">Use a dedicated development Worker only. Never enter production credentials here.</p></div>
-      </section>
-      <section class="panel data-panel"><div><p class="eyebrow">YOUR WORKSPACE</p><h3>Local data & portability</h3><p class="muted">Records stay in this browser. Export a backup before changing devices.</p></div><div class="backup-actions"><button class="secondary-btn" id="export-btn" type="button">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="import-input" accept="application/json,.json" hidden></label></div></section>
-      <p class="preview-warning"><strong>Preview limitation:</strong> This is not connected to a municipality, public issue map or shared database. Records are stored in browser storage and are not encrypted. Do not enter sensitive resident, political or financial information.</p>
-    </section>
-    <section id="module-view" hidden>
-      <div class="module-toolbar"><div><p class="eyebrow" id="module-kicker">WORKSPACE</p><h2 id="module-title">Service issues</h2><p class="muted" id="module-description"></p></div><button class="secondary-btn" id="back-dashboard-btn" type="button">Back to overview</button></div>
-      <form id="record-form" class="record-form"><label class="sr-only" for="record-title">Record title</label><input id="record-title" maxlength="180" placeholder="Short summary or action" required><label class="sr-only" for="record-details">Details</label><textarea id="record-details" maxlength="2000" placeholder="Details, location description or next steps (avoid personal data)" rows="3"></textarea><div class="record-form-meta"><label><span class="sr-only">Date</span><input id="record-date" type="date" aria-label="Record date"></label><label><span class="sr-only">Amount</span><input id="record-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Amount (optional)" aria-label="Amount"></label></div><button class="primary-action-btn" type="submit">＋ Save record</button></form>
-      <div id="record-list" class="record-list"></div><div id="module-empty" class="empty-state">No records yet. Add the first item above.</div>
-    </section>
-  </main>
-  <nav class="bottom-dock" aria-label="Primary navigation"><button class="dock-item active" data-target="dashboard" type="button"><span aria-hidden="true">⌂</span>Overview</button><button class="dock-item" data-target="issues" type="button"><span aria-hidden="true">!</span>Issues</button><button class="dock-item" data-target="tasks" type="button"><span aria-hidden="true">✓</span>Follow-ups</button><button class="dock-item" data-target="more" type="button"><span aria-hidden="true">•••</span>More</button></nav>
-  <script src="app.js"></script>
-</body>
-</html>
+    <aside class="pulse-summary" aria-label="Sample map summary">
+      <div class="pulse-summary-label">Map snapshot <span>Demo data</span></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon urgent">!</span><div><strong>3</strong><span>Urgent</span></div></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon progress">↻</span><div><strong>4</strong><span>In progress</span></div></div>
+      <div class="pulse-stat"><span class="pulse-stat-icon monitored">◉</span><div><strong>2</strong><span>Monitored</span></div></div>
+      <div class="pulse-summary-foot">9 example reports in this view</div>
+    </aside>
+  </div>
+  <div class="nearby-reports">
+    <div class="section-title"><div><h3>Nearby reports</h3><p>Showing up to five reports</p></div><label class="report-filter-label" for="pulse-filter">Filter reports<select id="pulse-filter"><option value="all">All statuses</option><option value="Urgent">Urgent</option><option value="In progress">In progress</option><option value="Monitored">Monitored</option><option value="Resolved">Resolved</option></select></label></div>
+    <div class="nearby-grid" id="nearby-report-list">
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.793" data-lng="31.018"><div class="nearby-report-top"><span class="report-type">Water &amp; sanitation</span><span class="report-status urgent">Urgent</span></div><h4>Water leak reported</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-101</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.805" data-lng="31.025"><div class="nearby-report-top"><span class="report-type">Roads &amp; transport</span><span class="report-status progress">In progress</span></div><h4>Pothole needs attention</h4><p class="report-location">Westham · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-102</span></div></article>
+      <article class="nearby-report" data-status="Monitored" data-lat="-29.817" data-lng="31.012"><div class="nearby-report-top"><span class="report-type">Street lighting</span><span class="report-status monitored">Monitored</span></div><h4>Streetlight not working</h4><p class="report-location">Mount Edgecombe · Illustrative location</p><div class="report-meta"><span>Reported 2 days ago</span><span>DEMO-103</span></div></article>
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.789" data-lng="31.041"><div class="nearby-report-top"><span class="report-type">Water &amp; sanitation</span><span class="report-status urgent">Urgent</span></div><h4>Possible burst pipe</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-104</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.824" data-lng="31.031"><div class="nearby-report-top"><span class="report-type">Waste collection</span><span class="report-status progress">In progress</span></div><h4>Missed refuse collection</h4><p class="report-location">Redfern · Illustrative location</p><div class="report-meta"><span>Reported 3 days ago</span><span>DEMO-105</span></div></article>
+      <article class="nearby-report" data-status="Monitored" data-lat="-29.779" data-lng="31.006"><div class="nearby-report-top"><span class="report-type">Public safety</span><span class="report-status monitored">Monitored</span></div><h4>Damaged public sign</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported 4 days ago</span><span>DEMO-106</span></div></article>
+      <article class="nearby-report" data-status="Urgent" data-lat="-29.811" data-lng="31.002"><div class="nearby-report-top"><span class="report-type">Roads &amp; transport</span><span class="report-status urgent">Urgent</span></div><h4>Road flooding concern</h4><p class="report-location">Clayfield · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-107</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.798" data-lng="30.993"><div class="nearby-report-top"><span class="report-type">Parks &amp; public spaces</span><span class="report-status progress">In progress</span></div><h4>Overgrown public verge</h4><p class="report-location">Caneside · Illustrative location</p><div class="report-meta"><span>Reported 2 days ago</span><span>DEMO-108</span></div></article>
+      <article class="nearby-report" data-status="In progress" data-lat="-29.831" data-lng="31.015"><div class="nearby-report-top"><span class="report-type">Drainage</span><span class="report-status progress">In progress</span></div><h4>Blocked stormwater drain</h4><p class="report-location">Redfern · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-109</span></div></article>
+    </div>
+    <p id="pulse-empty" class="pulse-empty" hidden>No sample reports match this status.</p>
+    <div class="nearby-more-wrap"><button class="button nearby-more" id="nearby-more" type="button" aria-expanded="false">Show all reports</button></div>
+  </div>
+  </div>
+</section>
+<div class="content">
+<section class="card" id="issues"><div class="section-title"><h2>Priority service issues</h2><a class="subtle-link" href="#issues">View all →</a></div><div class="filter-row" role="group" aria-label="Filter example issues"><button class="filter active" data-filter="all">All issues</button><button class="filter" data-filter="progress">In progress</button><button class="filter" data-filter="waiting">Awaiting response</button><button class="filter" data-filter="resolved">Resolved</button></div>
+<div class="issue-list" id="issue-list">
+<article class="issue" data-status="progress" data-search="water supply interruption service delivery high priority cape town"><div><div class="case-id">EXAMPLE CASE · DEMO-001</div><h3>Water supply interruption</h3><p>Cape Town · Illustrative area, not a real case</p></div><span class="status">In progress</span><div class="issue-foot"><span class="priority"><i></i>High priority · example</span><span>Follow-up: sample timeline</span></div></article>
+<article class="issue" data-status="waiting" data-search="streetlight not working public safety eThekwini durban"><div><div class="case-id">EXAMPLE CASE · DEMO-002</div><h3>Streetlight not working</h3><p>eThekwini · Illustrative area, not a real case</p></div><span class="status waiting">Awaiting response</span><div class="issue-foot"><span class="priority"><i></i>Standard priority · example</span><span>Follow-up: sample timeline</span></div></article>
+<article class="issue" data-status="resolved" data-search="missed refuse collection waste management durban"><div><div class="case-id">EXAMPLE CASE · DEMO-003</div><h3>Missed refuse collection</h3><p>eThekwini · Illustrative area, not a real case</p></div><span class="status resolved">Resolved</span><div class="issue-foot"><span class="priority low"><i></i>Closed · example only</span><span>Example history available</span></div></article>
+<article class="issue" data-status="progress" data-search="pothole road maintenance transport cape town"><div><div class="case-id">EXAMPLE CASE · DEMO-004</div><h3>Road surface needs attention</h3><p>Cape Town · Illustrative area, not a real case</p></div><span class="status">In progress</span><div class="issue-foot"><span class="priority"><i></i>Standard priority · example</span><span>Follow-up: sample timeline</span></div></article>
+</div><p class="empty-state" id="no-results" role="status" hidden>No example issues match these filters. Try another search or select “All issues”.</p><p class="notice">All issue titles, IDs, statuses and metrics are fictional placeholders used to demonstrate the layout.</p></section>
+<aside class="stack">
+
+
+<section class="card insight" id="community"><div class="overline">Community intelligence</div><div class="section-title trend-title" style="margin-top:7px"><h2>Growing trends</h2><span aria-hidden="true">↗</span></div><p class="community-intro">This view compares the number of unique complaints received by each service department across a rolling 90-day cycle. It helps show whether reported issues are increasing or decreasing, not whether service quality has improved by itself.</p><p class="inline-help"><strong>How to read this:</strong> A rising line means more unique complaints were recorded than in the previous period; a falling line means fewer. Duplicate reports should be excluded. These preview values are illustrative, not municipal data.</p><div class="trend-chart" role="img" aria-label="Illustrative 90-day trend chart showing unique complaint counts by department"><svg viewBox="0 0 360 160" preserveAspectRatio="none" aria-hidden="true"><path class="trend-grid" d="M28 20H350 M28 55H350 M28 90H350 M28 125H350"/><path class="trend-line trend-water" d="M30 95 L90 82 L150 88 L210 60 L270 48 L345 30"/><path class="trend-line trend-roads" d="M30 48 L90 60 L150 72 L210 82 L270 92 L345 102"/><path class="trend-line trend-waste" d="M30 120 L90 110 L150 118 L210 100 L270 112 L345 88"/></svg><div class="trend-axis"><span>90 days ago</span><span>Today</span></div><div class="trend-legend"><span><i class="water-key"></i>Water &amp; sanitation</span><span><i class="roads-key"></i>Roads &amp; streetlights</span><span><i class="waste-key"></i>Waste collection</span></div><p class="trend-note">Illustrative shape only. Live trend direction requires dated, deduplicated complaint records.</p></div><div class="bar-list" hidden><div><div class="bar-label"><span>Water & sanitation</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div><div><div class="bar-label"><span>Roads & streetlights</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div><div><div class="bar-label"><span>Waste collection</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div></div><div class="context-help"><strong>How to read these trends</strong> The bars are illustrative examples, not measured complaint counts. A resolution rate means the percentage of recorded cases marked resolved during a stated reporting period; check the period and status definitions before comparing rates.</div></section>
+<section class="card public-card" id="announcements"><div class="section-title"><div><h2>Community updates</h2><p class="card-subtitle">Public notices &amp; upcoming events</p></div></div><p>Read dated municipal notices and confirmed local events. Community-submitted events must be reviewed before they can appear in this feed.</p><button class="button primary event-submit-open" id="event-submit-open" type="button">Suggest a community event <span aria-hidden="true">＋</span></button><form id="event-submit-form" class="event-submit-form" hidden><h3>Suggest an upcoming event</h3><p>Share the details for review. Submitting this form in the preview stores the draft only in this browser; it does not notify an administrator yet.</p><label for="event-title">Event name</label><input id="event-title" name="title" required maxlength="120"><label for="event-date">Date and time</label><input id="event-date" name="date" type="datetime-local" required><label for="event-location">Location</label><input id="event-location" name="location" required maxlength="160"><label for="event-details">What should residents know?</label><textarea id="event-details" name="details" rows="3" required maxlength="1000"></textarea><label for="event-contact">Contact details (optional)</label><input id="event-contact" name="contact" maxlength="160"><div class="event-form-actions"><button type="submit" class="button primary">Save event draft</button><button type="button" class="button" id="event-submit-cancel">Cancel</button></div><p id="event-submit-status" class="inline-help" role="status" aria-live="polite"></p></form><div class="community-feed"><article class="feed-item"><span class="feed-icon notice-icon" aria-hidden="true">ⓘ</span><div><strong>Public service announcements</strong><p>Verified municipal notices will appear here when an official source is connected.</p><span class="feed-meta">Source: pending verification</span></div></article><article class="feed-item"><span class="feed-icon event-icon" aria-hidden="true">▦</span><div><strong>Upcoming community events</strong><p>Confirmed community meetings, clean-ups and public consultations will be listed here.</p><span class="feed-meta">No verified events listed yet</span></div></article></div></section>
+
+<section class="card public-card" id="jobs"><div class="section-title"><h2>Opportunities for job seekers</h2><span aria-hidden="true">↗</span></div><p>A future community jobs board could share verified vacancies and offer secure CV submission for job seekers.</p><div class="public-placeholder"><strong>Job seeker portal — planned</strong><span>Secure CV submission is planned, not active in this preview. Before launch: obtain clear consent, encrypt files in transit and at rest, restrict recruiter access, define retention and deletion periods, and provide a way to withdraw consent.</span></div></section>
+<section class="community-banner" aria-labelledby="community-banner-title">
+ <div class="community-banner-image" role="img" aria-label="Durban beachfront and city skyline on the KwaZulu-Natal coast"></div>
+ <div class="community-banner-copy"><span class="banner-kicker">SUKUMA! · We build together</span><h2 id="community-banner-title">Small actions. Stronger communities.</h2><p>See what is happening nearby, share service concerns and help build a city that works for everyone.</p><a class="banner-link" href="#community-pulse">Explore community pulse <span aria-hidden="true">→</span></a></div>
+ <span class="banner-flame" aria-hidden="true">✳</span>
+</section>
+
+</aside></div>
+<section class="help-center" id="help" aria-labelledby="help-title"><h2 id="help-title">About Sukuma! &amp; help</h2><p>Sukuma! helps communities record service concerns, follow available updates and understand accountability processes. This preview does not connect to live municipal systems.</p><label class="sr-only" for="help-search">Search help topics</label><input class="help-search" id="help-search" type="search" placeholder="Search help topics" autocomplete="off"><div id="help-topics"><details class="help-topic"><summary>What happens after a report is submitted?</summary><p>The next steps depend on the reporting workflow that is implemented and the receiving authority's process. This preview does not submit reports or send confirmations.</p></details><details class="help-topic"><summary>What does each report status mean?</summary><p>Status definitions should be shown beside the status selector in the reporting workflow. This preview does not yet operate a live case-status workflow.</p></details><details class="help-topic"><summary>What if the municipality does not respond?</summary><p>Keep your reference number and dates of any correspondence. Escalation routes and follow-up timelines must be confirmed for the relevant authority before Sukuma! gives specific instructions.</p></details><details class="help-topic"><summary>Privacy and personal information</summary><p>This preview is not connected to live systems. Do not enter personal, resident, political or financial information.</p></details></div></section>
+<section class="help-centre" id="help" aria-labelledby="help-title"><div class="help-heading"><div class="overline">Sukuma! knowledge base</div><h2 id="help-title">Understand how it works</h2><p>Search plain-language explanations, definitions and frequently asked questions. Guidance here is limited to verified preview behaviour.</p></div><label class="help-search-label" for="help-search">Search help topics</label><div class="help-search-row"><input id="help-search" type="search" placeholder="Try “resolution rate” or “after I report”" autocomplete="off"><button class="button primary" id="help-search-submit" type="button">Search help</button></div><div id="help-results" class="help-results" aria-live="polite"><article class="help-result"><h3>What is Sukuma! for?</h3><p>Sukuma! is being designed to help communities raise service concerns, understand reported issues and follow accountability. This preview is not connected to live municipal systems.</p></article><article class="help-result"><h3>What does “resolution rate” mean?</h3><p>The percentage of recorded cases marked as resolved during the selected reporting period. Check the reporting period and case-status definitions before comparing results. No verified resolution-rate figure is available in this preview.</p></article><article class="help-result"><h3>What happens after a complaint is submitted?</h3><p>The submission and follow-up process has not yet been connected or verified in this preview. We will document the actual steps before describing them as available.</p></article><article class="help-result"><h3>What do issue statuses mean?</h3><p>Status definitions and any consequences need to be confirmed against the implemented workflow before this preview can promise specific next steps.</p></article></div><p class="help-note">Help content will grow alongside the app. Explanations shown in context will also be searchable here.</p></section><p class="notice" id="settings">Design preview only · No live systems connected · Do not enter personal, resident, political or financial information.</p>
+</main></div>
+<nav class="mobile-nav" aria-label="Mobile navigation"><a class="active" href="#overview"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Issues</a><a href="#actions"><span>＋</span>Actions</a><a href="#announcements"><span>ⓘ</span>Notices</a><a href="#community"><span>⌖</span>Insights</a><a href="#help"><span>?</span>Help</a></nav>
+<script>
+
+function updateHeroWelcome(){const el=document.getElementById('hero-welcome');if(!el)return;const hour=new Date().getHours();const greeting=hour<12?'Good morning':hour<18?'Good afternoon':'Good evening';el.textContent=signedIn?greeting+', SU':greeting+'!';}
+
+// Community event suggestion: local-only draft until an authenticated admin review workflow is connected.
+const eventOpen=document.getElementById('event-submit-open'),eventForm=document.getElementById('event-submit-form'),eventCancel=document.getElementById('event-submit-cancel'),eventStatus=document.getElementById('event-submit-status');
+if(eventOpen&&eventForm){eventOpen.addEventListener('click',()=>{eventForm.hidden=false;document.getElementById('event-title').focus();});if(eventCancel)eventCancel.addEventListener('click',()=>{eventForm.reset();eventForm.hidden=true;if(eventStatus)eventStatus.textContent='';});eventForm.addEventListener('submit',e=>{e.preventDefault();if(!eventForm.reportValidity())return;const data=Object.fromEntries(new FormData(eventForm).entries());const drafts=JSON.parse(localStorage.getItem('sukuma-event-drafts')||'[]');drafts.push({...data,submittedAt:new Date().toISOString(),status:'Draft — awaiting admin workflow'});localStorage.setItem('sukuma-event-drafts',JSON.stringify(drafts));eventForm.reset();if(eventStatus)eventStatus.textContent='Draft saved in this browser. It has not been sent to an administrator or published.';});}
+async function updateHeroWeather(){const el=document.getElementById('hero-weather');if(!el)return;try{const response=await fetch('https://api.open-meteo.com/v1/forecast?latitude=-29.8587&longitude=31.0218&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=Africa%2FJohannesburg&forecast_days=1');if(!response.ok)throw new Error('Weather unavailable');const data=await response.json();const current=data.current;const codes={0:['Clear sky','☀️'],1:['Mainly clear','🌤️'],2:['Partly cloudy','⛅'],3:['Overcast','☁️'],45:['Fog','🌫️'],48:['Rime fog','🌫️'],51:['Light drizzle','🌦️'],53:['Drizzle','🌦️'],55:['Heavy drizzle','🌧️'],61:['Light rain','🌧️'],63:['Rain','🌧️'],65:['Heavy rain','🌧️'],80:['Rain showers','🌦️'],81:['Rain showers','🌧️'],82:['Heavy showers','🌧️'],95:['Thunderstorm','⛈️'],96:['Thunderstorm with hail','⛈️'],99:['Thunderstorm with hail','⛈️']};const condition=codes[current.weather_code]||['Current conditions','🌡️'];const high=data.daily?.temperature_2m_max?.[0],low=data.daily?.temperature_2m_min?.[0];el.innerHTML='<span class="weather-city">Durban, South Africa</span><span class="weather-temp"><span class="weather-icon" aria-hidden="true">'+condition[1]+'</span> '+Math.round(current.temperature_2m)+'°C</span><span class="weather-detail">'+condition[0]+' · H '+Math.round(high)+'° / L '+Math.round(low)+'°</span>';}catch(error){el.innerHTML='<span class="weather-city">Durban, South Africa</span><span class="weather-temp"><span class="weather-icon" aria-hidden="true">🌡️</span> Weather unavailable</span><span class="weather-detail">Live forecast unavailable · try again later</span><button type="button" class="weather-retry" id="weather-retry">Retry weather</button>';const retry=document.getElementById('weather-retry');if(retry)retry.addEventListener('click',updateHeroWeather);}}
+
+const root=document.documentElement;
+const themeButton=document.getElementById('theme');
+function syncThemeAssets(){const dark=root.dataset.theme==='dark';const horizontalLogo=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';const logo=document.getElementById('header-logo-img');logo.src=horizontalLogo;logo.style.mixBlendMode=dark?'screen':'normal';logo.style.background='transparent';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeButton.title=dark?'Switch to light theme':'Switch to dark theme';const label=document.getElementById('theme-mode-label');if(label)label.textContent=dark?'Dark mode on':'Light mode on';}
+const helpSearch=document.getElementById('help-search');if(helpSearch)helpSearch.addEventListener('input',()=>{const q=helpSearch.value.trim().toLowerCase();document.querySelectorAll('#help-topics .help-topic').forEach(topic=>{topic.hidden=!topic.textContent.toLowerCase().includes(q);});});
+if(themeButton){themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';syncThemeAssets();});syncThemeAssets();}
+const drawer=document.getElementById('nav-drawer'),scrim=document.getElementById('drawer-scrim'),menuOpen=document.getElementById('menu-open');
+function setDrawer(open){drawer.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));menuOpen.setAttribute('aria-expanded',String(open));scrim.hidden=!open;document.body.style.overflow=open?'hidden':'';if(open)document.getElementById('menu-close').focus();else menuOpen.focus();}
+if(menuOpen){menuOpen.addEventListener('click',()=>setDrawer(true));document.getElementById('menu-close').addEventListener('click',()=>setDrawer(false));}scrim.addEventListener('click',()=>setDrawer(false));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(drawer.classList.contains('open'))setDrawer(false);closeSearch();}});
+const search=document.getElementById('search');
+const searchSubmit=document.getElementById('search-submit');
+searchSubmit?.addEventListener('click',()=>{filterIssues();document.getElementById('issues').scrollIntoView({behavior:'smooth',block:'start'});});
+const loginButton=document.getElementById('login'),profileButton=document.getElementById('profile');let signedIn=false;
+loginButton.addEventListener('click',()=>{signedIn=!signedIn;updateHeroWelcome();loginButton.textContent=signedIn?'Log out':'Log in';profileButton.hidden=!signedIn;profileButton.textContent='SU';profileButton.setAttribute('aria-label','User profile, signed in as SU');profileButton.title='Signed in as demo user SU';showToast(signedIn?'Demo sign-in only. No account or session is connected.':'Demo signed out. No account or session was connected.');});
+profileButton.addEventListener('click',()=>showToast(signedIn?'Demo profile: SU. Authentication is not connected.':'You are signed out. Log in is a visual demo only.'));
+function showToast(message){const old=document.querySelector('.toast');if(old)old.remove();const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');toast.textContent=message;document.body.appendChild(toast);setTimeout(()=>toast.remove(),3200);}
+syncThemeAssets();
+updateHeroWelcome();updateHeroWeather();
+let activeFilter='all';
+function filterIssues(){const q=search.value.trim().toLowerCase();const cards=[...document.querySelectorAll('.issue')];let visible=0;cards.forEach(card=>{const matchesText=(card.innerText+' '+card.dataset.search).toLowerCase().includes(q);const matchesFilter=activeFilter==='all'||card.dataset.status===activeFilter;card.hidden=!(matchesText&&matchesFilter);if(!card.hidden)visible++;});document.getElementById('no-results').hidden=visible!==0;}
+const knowledgeBase=[
+{title:'Resolution rate',keywords:['resolution rate','resolved','resolution','metric','percentage'],summary:'The percentage of recorded cases marked as resolved during the selected reporting period. Check the reporting period and case-status definitions before comparing results.',href:'#service-metrics'},
+{title:'How to report a problem',keywords:['report','complaint','submit','submission','required information'],summary:'Before submitting, provide a clear description, the service location at a safe level of detail, and any relevant evidence. Do not include unnecessary personal information.',href:'#issues'},
+{title:'What happens after submission?',keywords:['after submission','next step','follow up','municipality','response','no response'],summary:'This preview does not yet confirm a live submission workflow or automated follow-ups. The final steps must be documented against verified application behaviour.',href:'#issues'},
+{title:'Issue statuses explained',keywords:['status','in progress','resolved','open','monitored'],summary:'Statuses describe the latest recorded stage of a case. Definitions and any status changes must be shown alongside the case history; sample statuses in this preview are illustrative.',href:'#issues'},
+{title:'Community pulse and trends',keywords:['community pulse','map','trend','growing trends','community intelligence'],summary:'The map and trend panel demonstrate how service reports could be explored. Current pins, categories and trend values are illustrative, not verified municipal records.',href:'#community-pulse'},
+{title:'Privacy and personal information',keywords:['privacy','popia','personal information','data','consent'],summary:'Share only information needed to understand the service concern. Sukuma! must apply appropriate access controls, retention rules and lawful deletion processes before handling real resident data.',href:'#settings'},
+{title:'Municipal notices and sources',keywords:['notice','announcement','source','date','official'],summary:'A public notice should show its issuing organisation, publication date, source link and any relevant expiry or update date. Unverified notices should not be presented as official.',href:'#announcements'}
+];
+function renderKnowledgeResults(){const box=document.getElementById('knowledge-search-results');const q=search.value.trim().toLowerCase();if(!q){box.dataset.open='false';box.innerHTML='';return;}const results=knowledgeBase.filter(item=>(item.title+' '+item.keywords.join(' ')+' '+item.summary).toLowerCase().includes(q));box.dataset.open='true';box.innerHTML='<h3>Help & knowledge base</h3>'+ (results.length?results.map(item=>'<a href="'+item.href+'">'+item.title+'</a><p>'+item.summary+'</p>').join(''):'<p>No exact help result found. Try “resolution rate”, “status”, “privacy”, “report” or “municipal notice”.</p>');}
+search.addEventListener('input',()=>{filterIssues();renderKnowledgeResults();});
+document.getElementById('search-submit').addEventListener('click',renderKnowledgeResults);
+
+document.querySelectorAll('[data-filter]').forEach(button=>{button.setAttribute('aria-pressed',button.dataset.filter==='all'?'true':'false');button.addEventListener('click',()=>{activeFilter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});filterIssues();});});
+document.querySelectorAll('[data-toast]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showToast(link.dataset.toast);}));
+
+/* Interactive sample map. All report content and coordinates are fictional demo data. */
+let nearbyExpanded=false;
+const nearbyCards=[...document.querySelectorAll('.nearby-report')];
+const nearbyMore=document.getElementById('nearby-more');
+function applyNearbyLimit(){
+ const filtered=nearbyCards.filter(card=>!card.hidden);
+ filtered.forEach((card,index)=>card.classList.toggle('is-collapsed',!nearbyExpanded&&index>=5));
+ nearbyMore.hidden=filtered.length<=5;
+ nearbyMore.textContent=nearbyExpanded?'Show fewer reports':'Show all '+filtered.length+' reports';
+ nearbyMore.setAttribute('aria-expanded',String(nearbyExpanded));
+}
+nearbyMore.addEventListener('click',()=>{nearbyExpanded=!nearbyExpanded;applyNearbyLimit();});
+applyNearbyLimit();
+
+(function initCommunityPulse(){
+ const mapNode=document.getElementById('pulse-map');
+ if(!mapNode||mapNode.dataset.initialized==='true')return;mapNode.dataset.initialized='true';
+ const leaflet=document.createElement('script');
+ leaflet.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+ leaflet.integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+ leaflet.crossOrigin='';
+ leaflet.onload=buildMap;
+ leaflet.onerror=()=>{mapNode.innerHTML='<div class="map-loading"><strong>Map unavailable right now.</strong><br>Nearby sample reports remain available in the list below. Check your connection and reload to retry the map.</div>';mapNode.dataset.initialized='failed';const retry=document.createElement('button');retry.type='button';retry.className='map-reset';retry.textContent='Retry map';retry.addEventListener('click',()=>{mapNode.dataset.initialized='';mapNode.innerHTML='<div class="map-loading">Loading interactive map…</div>';initCommunityPulse();});mapNode.appendChild(retry);};
+ document.body.appendChild(leaflet);
+ function buildMap(){
+  if(!window.L)return;
+  const map=L.map(mapNode,{scrollWheelZoom:false}).setView([-29.805,31.018],12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'}).addTo(map);
+  const markers=new Map();
+  const statusClass={'Urgent':'urgent','In progress':'progress','Monitored':'monitored','Resolved':'resolved'};
+  const statusGlyph={'Urgent':'!','In progress':'↻','Monitored':'◉','Resolved':'✓'};
+  const cards=[...document.querySelectorAll('.nearby-report')];
+  cards.forEach(card=>{
+   const status=card.dataset.status,lat=Number(card.dataset.lat),lng=Number(card.dataset.lng);
+   const title=card.querySelector('h4').textContent,type=card.querySelector('.report-type').textContent,loc=card.querySelector('.report-location').textContent,id=card.querySelector('.report-meta span:last-child').textContent;
+   const icon=L.divIcon({className:'',html:'<span class="pulse-pin '+statusClass[status]+'">'+statusGlyph[status]+'</span>',iconSize:[26,26],iconAnchor:[13,13]});
+   const marker=L.marker([lat,lng],{icon,title:title,alt:title}).addTo(map);
+   marker.bindPopup('<div class="map-popup"><strong>'+title+'</strong><span>'+type+' · '+status+'</span><br><span>'+loc+' · '+id+'</span></div>');
+   markers.set(card,marker);
+   card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');map.setView([lat,lng],Math.max(map.getZoom(),14));marker.openPopup();});
+   marker.on('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');});
+  });
+  const filter=document.getElementById('pulse-filter');
+  filter.addEventListener('change',()=>{
+   let visible=0;
+   cards.forEach(card=>{const show=filter.value==='all'||card.dataset.status===filter.value;card.hidden=!show;if(show){visible++;if(!map.hasLayer(markers.get(card)))markers.get(card).addTo(map);}else if(map.hasLayer(markers.get(card)))map.removeLayer(markers.get(card));});
+   document.getElementById('pulse-empty').hidden=visible!==0;
+   nearbyExpanded=false;applyNearbyLimit();
+  });
+  document.getElementById('pulse-reset').addEventListener('click',()=>{filter.value='all';filter.dispatchEvent(new Event('change'));cards.forEach(card=>card.classList.remove('selected'));map.setView([-29.805,31.018],12);map.closePopup();});
+  const group=L.featureGroup([...markers.values()]);map.fitBounds(group.getBounds().pad(.16));setTimeout(()=>map.invalidateSize(),150);
+ }
+})();
+
+// Knowledge base search: local keyword matching across plain-language FAQs.
+const helpSearch=document.getElementById('help-search');
+const helpResults=document.getElementById('help-results');
+const helpSearchSubmit=document.getElementById('help-search-submit');
+function searchHelp(){
+ const query=(helpSearch.value||'').trim().toLowerCase();
+ const cards=Array.from(helpResults.querySelectorAll('.help-result'));
+ let shown=0;
+ cards.forEach(card=>{const text=card.textContent.toLowerCase();const match=!query||text.includes(query)||query.split(' ').some(term=>term.length>2&&text.includes(term));card.hidden=!match;if(match)shown++;});
+ let empty=helpResults.querySelector('.help-empty');
+ if(!shown){if(!empty){empty=document.createElement('p');empty.className='help-empty';empty.textContent='No exact match yet. Try a related term, such as report, status, privacy or resolution rate.';helpResults.append(empty);}empty.hidden=false;}else if(empty){empty.hidden=true;}
+}
+helpSearchSubmit.addEventListener('click',searchHelp);
+helpSearch.addEventListener('input',searchHelp);
+helpSearch.addEventListener('keydown',e=>{if(e.key==='Enter')searchHelp();});
+</script></body></html>
