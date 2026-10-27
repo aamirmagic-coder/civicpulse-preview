@@ -461,3 +461,28 @@ applyNearbyLimit();
  .drawer-head img{width:84px;height:84px}
 }
 @media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+<style>
+
+/* TEMPORARY palette inspired by supplied reference: deep ocean navy, cool white, teal and coral. */
+:root{color-scheme:light;--brand:#087E8B;--deep:#082335;--accent:#F26B5B;--canvas:#F2F7F8;--surface:#FFFFFF;--soft:#E1EFF0;--text:#102A36;--muted:#526975;--line:#CCDDE1;--green:#168B72;--service-orange:#E98B45;--shadow:0 12px 34px #08233512}
+[data-theme=dark]{color-scheme:dark;--brand:#55D6C2;--deep:#071923;--accent:#FF8A78;--canvas:#08141D;--surface:#10232E;--soft:#183743;--text:#F2FAFC;--muted:#B2C7D0;--line:#2C4652;--green:#55D6A5;--service-orange:#FFB36B;--shadow:0 12px 34px #0005}
+.heading{background:linear-gradient(125deg,var(--deep),#087E8B)}
+.insight{background:linear-gradient(145deg,#082335,#0C5963)}
+.bar-fill{background:var(--accent)}
+.heading .overline,.heading p{color:#E0F4F5}
+[data-theme=dark] .heading .overline,[data-theme=dark] .heading p{color:#D6E8EC}
+/* Logo sizing and theme-aware blending; original artwork is preserved. */
+.logo{padding:0 4px 4px;min-height:70px;display:flex;align-items:center}
+.logo img{width:210px;max-width:100%;height:auto;max-height:84px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.header-logo{flex:0 1 auto;min-height:64px}
+.header-logo picture{display:flex;align-items:center;min-width:0}
+.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img,[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{align-items:center;min-height:92px}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;mix-blend-mode:multiply;padding:0}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){.logo img{width:190px;max-height:72px}.header-logo{min-height:56px}.header-logo img{width:218px;max-width:43vw;max-height:64px}.drawer-head img{width:82px;height:82px}}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
+
+</style>
