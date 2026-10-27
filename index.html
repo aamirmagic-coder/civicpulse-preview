@@ -246,6 +246,24 @@ body{background:var(--canvas);color:var(--text)}
 [data-theme="dark"] .feed-item strong{color:#00DFFF}
 [data-theme="dark"] .feed-icon{color:#4ade80}
 @media(max-width:760px){.search-dock{margin:0 0 17px;padding:13px;border-radius:13px}.search-dock-control .button{min-width:72px}.community-banner{margin-top:4px}}
+
+/* Logo presentation: preserve supplied artwork, remove visible white matte through blending, and scale for legibility. */
+.logo{padding:0 4px 4px;min-height:64px;display:flex;align-items:center}
+.logo img{width:208px;max-width:100%;height:auto;max-height:82px;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+.header-logo{flex:0 1 auto;min-height:62px}
+.header-logo picture{display:flex;align-items:center;min-width:0}
+.header-logo img{width:278px;max-width:42vw;max-height:78px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme="dark"] .logo img,[data-theme="dark"] .header-logo img{mix-blend-mode:screen}
+.drawer-head{align-items:center;min-height:90px}
+.drawer-head img{width:76px;height:76px;object-fit:contain;border-radius:0;background:transparent;mix-blend-mode:multiply;padding:0}
+[data-theme="dark"] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){
+ .logo img{width:188px;max-height:70px}
+ .header-logo{min-height:54px}
+ .header-logo img{width:218px;max-width:43vw;max-height:64px}
+ .drawer-head img{width:80px;height:80px}
+}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -342,7 +360,7 @@ async function updateHeroWeather(){const el=document.getElementById('hero-weathe
 
 const root=document.documentElement;
 const themeButton=document.getElementById('theme');
-function syncThemeAssets(){const dark=root.dataset.theme==='dark';document.getElementById('header-logo-img').src=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeButton.title=dark?'Switch to light theme':'Switch to dark theme';}
+function syncThemeAssets(){const dark=root.dataset.theme==='dark';document.getElementById('header-logo-img').src=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';const sidebarLogo=document.querySelector('.logo img');if(sidebarLogo)sidebarLogo.src=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeButton.title=dark?'Switch to light theme':'Switch to dark theme';}
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';syncThemeAssets();});
 const drawer=document.getElementById('nav-drawer'),scrim=document.getElementById('drawer-scrim'),menuOpen=document.getElementById('menu-open');
 function setDrawer(open){drawer.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));menuOpen.setAttribute('aria-expanded',String(open));scrim.hidden=!open;document.body.style.overflow=open?'hidden':'';if(open)document.getElementById('menu-close').focus();else menuOpen.focus();}
