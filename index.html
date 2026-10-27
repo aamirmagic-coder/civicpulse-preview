@@ -433,3 +433,31 @@ applyNearbyLimit();
  }
 })();
 </script></body></html>
+/* TEMPORARY palette inspired by the supplied deep-teal and warm-neutral references. */
+:root{color-scheme:light;--brand:#087F8C;--deep:#073744;--accent:#E97856;--canvas:#F4F1EC;--surface:#FFFEFC;--soft:#E7EEEC;--text:#18343B;--muted:#526B70;--line:#CDDAD7;--green:#397A57;--service-orange:#E97856;--shadow:0 12px 34px #07374412}
+[data-theme=dark]{color-scheme:dark;--brand:#55C8C1;--deep:#082B36;--accent:#FF9B78;--canvas:#071A22;--surface:#102A34;--soft:#183B45;--text:#F4F5F0;--muted:#B4C7C8;--line:#2D4B54;--green:#7BCB91;--service-orange:#FFB078;--shadow:0 12px 34px #0005}
+.status.waiting{background:#FFF0E8;color:#8C3926}.status.resolved{background:#DDF3EB;color:#155C50}
+[data-theme=dark] .status.waiting{background:#4B302A;color:#FFB39A}[data-theme=dark] .status.resolved{background:#153F3E;color:#8DE1D3}
+.heading.hero-seascape{--accent:#E97856}
+.hero-cta{background:var(--accent);border-color:var(--accent)}
+.metrics .card:before{background:var(--accent)}
+.bar-fill{background:var(--accent)}
+.insight{background:linear-gradient(145deg,#073744,#087F8C)}
+[data-theme=dark] .insight{background:linear-gradient(145deg,#082B36,#124D58)}
+/* Logo sizing and matte blending for supplied light/dark variants. Artwork files are preserved unchanged. */
+.logo{padding:0 3px 5px;min-height:74px;display:flex;align-items:center}
+.logo img{width:204px;max-width:100%;max-height:82px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .logo img{mix-blend-mode:screen}
+.header-logo{min-height:62px;flex:0 1 auto}
+.header-logo img{width:270px;max-width:42vw;max-height:76px;height:auto;object-fit:contain;object-position:left center;background:transparent;mix-blend-mode:multiply}
+[data-theme=dark] .header-logo img{mix-blend-mode:screen}
+.drawer-head{min-height:94px;align-items:center}
+.drawer-head img{width:82px;height:82px;object-fit:contain;border-radius:0;background:transparent;padding:0;mix-blend-mode:multiply}
+[data-theme=dark] .drawer-head img{mix-blend-mode:screen}
+@media(max-width:760px){
+ .logo img{width:190px;max-height:72px}
+ .header-logo{min-height:54px}
+ .header-logo img{width:220px;max-width:43vw;max-height:64px}
+ .drawer-head img{width:84px;height:84px}
+}
+@media(max-width:370px){.header-logo img{width:174px;max-width:40vw;max-height:56px}}
