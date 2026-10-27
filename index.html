@@ -121,6 +121,24 @@
 @media(max-width:760px){.pulse-section{margin:25px 0 28px}.pulse-heading{align-items:flex-start;flex-direction:column;gap:9px;margin-bottom:14px}.pulse-heading h2{font-size:22px}.pulse-layout{grid-template-columns:1fr;gap:11px}.pulse-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:13px}.pulse-summary-label{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}.pulse-stat{gap:7px}.pulse-stat-icon{width:30px;height:30px;flex:none}.pulse-stat strong{font-size:20px}.pulse-stat div span{font-size:10px}.pulse-summary-foot{grid-column:1/-1;margin-top:0;padding-top:9px}#pulse-map{height:330px}.nearby-reports{margin-top:22px}.nearby-grid{grid-template-columns:1fr;gap:9px}.nearby-report{padding:13px}.nearby-report h4{margin-top:9px}.nearby-reports .section-title{align-items:flex-start;flex-direction:column;gap:12px}.report-filter-label{width:100%;justify-content:space-between}.report-filter-label select{flex:1;max-width:65%}}
 @media(max-width:370px){.pulse-summary{padding:10px;gap:8px}.pulse-stat{gap:5px}.pulse-stat-icon{width:26px;height:26px}.pulse-stat strong{font-size:18px}.pulse-stat div span{font-size:9px}.pulse-live{font-size:9px}#pulse-map{height:290px}}
 @media(prefers-reduced-motion:reduce){.nearby-report{transition:none}}
+
+/* Community-facing dashboard refinements */
+.pulse-community-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow,0 8px 26px rgba(15,23,42,.06));}
+.pulse-community-card .pulse-layout{padding:0;gap:0}
+.pulse-community-card .pulse-map-wrap{border:0;border-radius:0;overflow:hidden}
+.pulse-community-card .pulse-summary{border:0;border-left:1px solid var(--line);border-radius:0}
+.pulse-community-card .nearby-reports{margin:0;padding:22px;border-top:1px solid var(--line)}
+.nearby-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nearby-report[hidden]{display:none!important}
+.nearby-report.is-collapsed{display:none}
+.nearby-more-wrap{display:flex;justify-content:center;margin-top:16px}
+.nearby-more{background:transparent;color:var(--brand);border:1px solid var(--line)}
+.pulse-heading{margin-bottom:16px}
+.card-subtitle{font-size:12px;color:var(--muted);margin:5px 0 0}
+.public-placeholder{display:flex;flex-direction:column;gap:5px;padding:14px;border:1px dashed var(--line);border-radius:12px;margin-top:14px}
+.public-placeholder strong{font-size:12px}.public-placeholder span{font-size:11px;line-height:1.5;color:var(--muted)}
+.public-card>p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+@media(max-width:760px){.pulse-community-card .pulse-layout{display:flex;flex-direction:column}.pulse-community-card .pulse-summary{border-left:0;border-top:1px solid var(--line)}.pulse-community-card .nearby-reports{padding:15px}.nearby-grid{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -128,7 +146,7 @@
 <div class="layout">
 <aside class="sidebar" aria-label="Primary navigation">
 <div class="logo"><img src="assets/sukuma-horizontal-light.png" alt="Sukuma!"></div>
-<div><div class="workspace-label">Workspace</div><nav class="nav"><a class="active" href="#overview" aria-current="page"><span class="nav-icon">▦</span>Overview</a><a href="#issues"><span class="nav-icon">◎</span>Service issues</a><a href="#activity"><span class="nav-icon">◷</span>Case history</a><a href="#actions"><span class="nav-icon">✓</span>Tasks & follow-ups</a><a href="#community"><span class="nav-icon">⌖</span>Community intelligence</a></nav></div>
+<div><div class="workspace-label">Workspace</div><nav class="nav"><a class="active" href="#overview" aria-current="page"><span class="nav-icon">▦</span>Overview</a><a href="#issues"><span class="nav-icon">◎</span>Service issues</a><a href="#announcements"><span class="nav-icon">ⓘ</span>Announcements</a><a href="#actions"><span class="nav-icon">✓</span>Tasks & follow-ups</a><a href="#community-pulse"><span class="nav-icon">⌖</span>Community pulse</a></nav></div>
 <div><div class="workspace-label">Workspace tools</div><nav class="nav"><a href="#reports"><span class="nav-icon">▤</span>Reports</a><a href="#settings"><span class="nav-icon">⚙</span>Settings</a></nav></div>
 <div class="side-bottom"><strong>Preview environment</strong>Illustrative interface only. No live municipal data or resident records are connected.</div>
 </aside>
@@ -138,7 +156,7 @@
 <div class="header-actions"><div class="search-wrap"><button class="icon-button search-trigger" id="search-open" type="button" aria-label="Open search" aria-expanded="false" aria-controls="search-popout">⌕</button><div class="search-popout" id="search-popout" hidden><label class="sr-only" for="search">Search example issues</label><input id="search" class="search" type="search" placeholder="Search issues…" autocomplete="off"><button class="search-close" id="search-close" type="button" aria-label="Close search">×</button></div></div><button class="icon-button theme-button" id="theme" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">◐</button><button class="button login-button" id="login" type="button">Log in</button><button class="avatar" id="profile" type="button" aria-label="User profile, signed in as SU" title="Demo profile" hidden>SU</button></div>
 <div class="breadcrumb">Sukuma! <span aria-hidden="true">/</span> Workspace <span aria-hidden="true">/</span> Overview</div>
 </header>
-<div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><img src="assets/sukuma-app-icon.png" alt="Sukuma! phoenix mark"><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#activity"><span>◷</span>Case history</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community"><span>⌖</span>Community intelligence</a><a href="#reports"><span>▤</span>Reports</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
+<div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><img src="assets/sukuma-app-icon.png" alt="Sukuma! phoenix mark"><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
 <section id="overview"><div class="heading hero-seascape"><div class="hero-copy"><div class="overline">Community accountability workspace</div><p class="hero-welcome" id="hero-welcome">Good morning!</p><h1>A cleaner, safer, stronger city.</h1><p class="hero-subheading">Report issues, track progress and hold your municipality accountable together.</p><a class="button hero-cta" href="#issues">Report an issue <span aria-hidden="true">→</span></a></div><div class="hero-weather" id="hero-weather" aria-live="polite"><span class="weather-city">Durban, South Africa</span><span class="weather-temp">Weather loading…</span><span class="weather-detail">Today</span></div><span class="pill hero-pill">Preview · sample data</span></div>
 
 </section>
@@ -146,10 +164,10 @@
 
 <section class="pulse-section" id="community-pulse" aria-labelledby="pulse-title">
   <div class="pulse-heading">
-    <div><div class="overline">Community intelligence</div><h2 id="pulse-title">What’s happening where?</h2><p>Live map</p></div>
+    <div><div class="overline">Community intelligence</div><h2 id="pulse-title">Community pulse</h2><p>Local service reports at a glance</p></div>
     <span class="pulse-live"><span aria-hidden="true"></span> DEMO · Sample reports</span>
   </div>
-  <div class="pulse-layout">
+  <div class="pulse-community-card"><div class="pulse-layout">
     <div class="pulse-map-wrap">
       <div class="pulse-map-tools"><span class="map-area">Phoenix &amp; surrounding areas</span><button type="button" class="map-reset" id="pulse-reset">Reset map</button></div>
       <div id="pulse-map" role="region" aria-label="Interactive map of illustrative service reports around Phoenix, Durban"><div class="map-loading">Loading interactive map…</div></div>
@@ -167,7 +185,7 @@
     </aside>
   </div>
   <div class="nearby-reports">
-    <div class="section-title"><div><h3>Nearby reports</h3><p>Reports shown on the map</p></div><label class="report-filter-label" for="pulse-filter">Filter reports<select id="pulse-filter"><option value="all">All statuses</option><option value="Urgent">Urgent</option><option value="In progress">In progress</option><option value="Monitored">Monitored</option><option value="Resolved">Resolved</option></select></label></div>
+    <div class="section-title"><div><h3>Nearby reports</h3><p>Showing up to five reports</p></div><label class="report-filter-label" for="pulse-filter">Filter reports<select id="pulse-filter"><option value="all">All statuses</option><option value="Urgent">Urgent</option><option value="In progress">In progress</option><option value="Monitored">Monitored</option><option value="Resolved">Resolved</option></select></label></div>
     <div class="nearby-grid" id="nearby-report-list">
       <article class="nearby-report" data-status="Urgent" data-lat="-29.793" data-lng="31.018"><div class="nearby-report-top"><span class="report-type">Water &amp; sanitation</span><span class="report-status urgent">Urgent</span></div><h4>Water leak reported</h4><p class="report-location">Phoenix · Illustrative location</p><div class="report-meta"><span>Reported today</span><span>DEMO-101</span></div></article>
       <article class="nearby-report" data-status="In progress" data-lat="-29.805" data-lng="31.025"><div class="nearby-report-top"><span class="report-type">Roads &amp; transport</span><span class="report-status progress">In progress</span></div><h4>Pothole needs attention</h4><p class="report-location">Westham · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-102</span></div></article>
@@ -180,6 +198,8 @@
       <article class="nearby-report" data-status="In progress" data-lat="-29.831" data-lng="31.015"><div class="nearby-report-top"><span class="report-type">Drainage</span><span class="report-status progress">In progress</span></div><h4>Blocked stormwater drain</h4><p class="report-location">Redfern · Illustrative location</p><div class="report-meta"><span>Reported yesterday</span><span>DEMO-109</span></div></article>
     </div>
     <p id="pulse-empty" class="pulse-empty" hidden>No sample reports match this status.</p>
+    <div class="nearby-more-wrap"><button class="button nearby-more" id="nearby-more" type="button" aria-expanded="false">Show all reports</button></div>
+  </div>
   </div>
 </section>
 <div class="content">
@@ -191,14 +211,17 @@
 <article class="issue" data-status="progress" data-search="pothole road maintenance transport cape town"><div><div class="case-id">EXAMPLE CASE · DEMO-004</div><h3>Road surface needs attention</h3><p>Cape Town · Illustrative area, not a real case</p></div><span class="status">In progress</span><div class="issue-foot"><span class="priority"><i></i>Standard priority · example</span><span>Follow-up: sample timeline</span></div></article>
 </div><p class="empty-state" id="no-results" role="status" hidden>No example issues match these filters. Try another search or select “All issues”.</p><p class="notice">All issue titles, IDs, statuses and metrics are fictional placeholders used to demonstrate the layout.</p></section>
 <aside class="stack">
-<section class="card" id="activity"><div class="section-title"><h2>Recent case activity</h2><a class="subtle-link" href="#activity">History</a></div><div class="activity"><div class="activity-row"><span class="activity-symbol">↗</span><div><p><strong>Follow-up logged</strong><br>Example water-supply case</p><small>Sample timeline event</small></div></div><div class="activity-row"><span class="activity-symbol">✉</span><div><p><strong>Response recorded</strong><br>Example streetlight case</p><small>Sample timeline event</small></div></div><div class="activity-row"><span class="activity-symbol">✓</span><div><p><strong>Resolution noted</strong><br>Example refuse case</p><small>Sample timeline event</small></div></div></div></section>
 
-<section class="card insight" id="community"><div class="overline">Community intelligence</div><div class="section-title" style="margin-top:7px"><h2>Service patterns</h2><span aria-hidden="true">↗</span></div><p>Concept preview of how verified service trends could be summarised. The examples below are illustrative, not actual municipal statistics.</p><div class="bar-list"><div><div class="bar-label"><span>Water & sanitation</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div><div><div class="bar-label"><span>Roads & streetlights</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div><div><div class="bar-label"><span>Waste collection</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div></div></section>
+
+<section class="card insight" id="community"><div class="overline">Community intelligence</div><div class="section-title" style="margin-top:7px"><h2>Growing trends</h2><span aria-hidden="true">↗</span></div><p>Service delivery patterns. This concept shows how verified service trends could be summarised. The examples below are illustrative, not actual municipal statistics.</p><div class="bar-list"><div><div class="bar-label"><span>Water & sanitation</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div><div><div class="bar-label"><span>Roads & streetlights</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div><div><div class="bar-label"><span>Waste collection</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div></div></section>
+<section class="card public-card" id="announcements"><div class="section-title"><div><h2>Public Service Announcements</h2><p class="card-subtitle">Did you know?</p></div><span aria-hidden="true">ⓘ</span></div><p>Important service notices and practical information for residents.</p><div class="public-placeholder"><strong>Announcements will appear here</strong><span>Official notices only once a verified source is connected.</span></div></section>
+<section class="card public-card" id="events"><div class="section-title"><h2>Upcoming community events</h2><span aria-hidden="true">▦</span></div><p>Community meetings, clean-ups, public consultations and local activities.</p><div class="public-placeholder"><strong>No verified events listed yet</strong><span>Event details will be published after confirmation.</span></div></section>
+<section class="card public-card" id="jobs"><div class="section-title"><h2>Opportunities for job seekers</h2><span aria-hidden="true">↗</span></div><p>A future community jobs board could share verified vacancies and let residents submit CVs securely.</p><div class="public-placeholder"><strong>Job seeker portal — planned</strong><span>CV submissions are not enabled in this preview. A live version needs consent, secure storage, access controls, retention and deletion rules.</span></div></section>
 <section class="card" id="reports"><div class="section-title"><h2>Accountability notes</h2></div><p style="font-size:12px;color:var(--muted);margin:0">Designed to make ownership, case history and next actions easy to scan. This preview stores no information.</p></section>
 </aside></div>
 <p class="notice" id="settings">Design preview only · No live systems connected · Do not enter personal, resident, political or financial information.</p>
 </main></div>
-<nav class="mobile-nav" aria-label="Mobile navigation"><a class="active" href="#overview"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Issues</a><a href="#actions"><span>＋</span>Actions</a><a href="#activity"><span>◷</span>History</a><a href="#community"><span>⌖</span>Insights</a></nav>
+<nav class="mobile-nav" aria-label="Mobile navigation"><a class="active" href="#overview"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Issues</a><a href="#actions"><span>＋</span>Actions</a><a href="#announcements"><span>ⓘ</span>Notices</a><a href="#community"><span>⌖</span>Insights</a></nav>
 <script>
 
 function updateHeroWelcome(){const el=document.getElementById('hero-welcome');if(!el)return;const hour=new Date().getHours();const greeting=hour<12?'Good morning':hour<18?'Good afternoon':'Good evening';el.textContent=signedIn?greeting+', SU':greeting+'!';}
@@ -229,6 +252,19 @@ document.querySelectorAll('[data-filter]').forEach(button=>{button.setAttribute(
 document.querySelectorAll('[data-toast]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showToast(link.dataset.toast);}));
 
 /* Interactive sample map. All report content and coordinates are fictional demo data. */
+let nearbyExpanded=false;
+const nearbyCards=[...document.querySelectorAll('.nearby-report')];
+const nearbyMore=document.getElementById('nearby-more');
+function applyNearbyLimit(){
+ const filtered=nearbyCards.filter(card=>!card.hidden);
+ filtered.forEach((card,index)=>card.classList.toggle('is-collapsed',!nearbyExpanded&&index>=5));
+ nearbyMore.hidden=filtered.length<=5;
+ nearbyMore.textContent=nearbyExpanded?'Show fewer reports':'Show all '+filtered.length+' reports';
+ nearbyMore.setAttribute('aria-expanded',String(nearbyExpanded));
+}
+nearbyMore.addEventListener('click',()=>{nearbyExpanded=!nearbyExpanded;applyNearbyLimit();});
+applyNearbyLimit();
+
 (function initCommunityPulse(){
  const mapNode=document.getElementById('pulse-map');
  if(!mapNode||mapNode.dataset.initialized)return;
@@ -263,6 +299,7 @@ document.querySelectorAll('[data-toast]').forEach(link=>link.addEventListener('c
    let visible=0;
    cards.forEach(card=>{const show=filter.value==='all'||card.dataset.status===filter.value;card.hidden=!show;if(show){visible++;if(!map.hasLayer(markers.get(card)))markers.get(card).addTo(map);}else if(map.hasLayer(markers.get(card)))map.removeLayer(markers.get(card));});
    document.getElementById('pulse-empty').hidden=visible!==0;
+   nearbyExpanded=false;applyNearbyLimit();
   });
   document.getElementById('pulse-reset').addEventListener('click',()=>{filter.value='all';filter.dispatchEvent(new Event('change'));cards.forEach(card=>card.classList.remove('selected'));map.setView([-29.805,31.018],12);map.closePopup();});
   const group=L.featureGroup([...markers.values()]);map.fitBounds(group.getBounds().pad(.16));setTimeout(()=>map.invalidateSize(),150);
