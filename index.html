@@ -347,6 +347,45 @@ main.main{padding-bottom:22px}
 @media(max-width:760px){.main{padding-bottom:14px}.metrics .card{padding:14px 10px 14px 13px}.content>.card,.stack>.card{padding:14px 2px}.section-title h2,.pulse-heading h2,.community-banner h2,.public-card .section-title h2{font-size:22px}.section-title h3,.nearby-reports .section-title h3{font-size:17px}#settings.notice{margin:8px auto 12px;max-width:340px;padding:0 18px;font-size:10px;line-height:1.55}.mobile-nav{padding-top:5px;padding-bottom:max(5px,env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){.metrics .card,.content>.card,.stack>.card{transition:none!important}}
 
+/* Layout lock-in: explicit public-facing information hierarchy and brand controls */
+.header-logo img{width:clamp(220px,24vw,290px);max-width:38vw;max-height:72px;background:transparent}
+.header-left{gap:13px}
+.theme-button{min-height:52px;min-width:132px;display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 13px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);cursor:pointer;box-shadow:0 3px 12px #0b333f0a}
+.theme-glyph{font-size:25px;line-height:1;color:var(--brand)}
+.theme-copy{display:grid;text-align:left;line-height:1.2;gap:3px}
+.theme-copy strong{font-size:12px;font-weight:800}
+.theme-copy small{font-size:10px;color:var(--muted);white-space:nowrap}
+.theme-button:hover{border-color:var(--accent)}
+.drawer-head img{width:76px;height:76px;object-fit:contain;background:transparent;border-radius:0}
+.section-title{padding-inline:4px}
+#issues>.section-title{padding-left:8px;padding-right:2px}
+#issues>.section-title h2{margin-left:3px}
+#issues>.section-title .subtle-link{margin-right:3px}
+#announcements>.section-title{padding-left:8px;padding-right:3px}
+#announcements>.section-title h2{margin-left:3px}
+#community>.section-title{padding-left:1px;padding-right:3px}
+#community>.section-title h2{margin-left:-2px}
+#jobs>.section-title{padding-left:8px;padding-right:3px}
+#jobs>.section-title h2{margin-left:3px}
+.community-banner-copy .banner-kicker{color:var(--text)}
+.community-banner-copy>p{color:var(--text)}
+[data-theme=dark] .community-banner-copy .banner-kicker{color:#fff}
+[data-theme=dark] .community-banner-copy>p{color:#f2f7fa}
+@media(max-width:760px){
+.header-logo img{width:clamp(150px,39vw,190px);max-width:42vw;max-height:54px}
+.header-left{gap:5px}
+.theme-button{min-width:92px;min-height:44px;padding:5px 7px;gap:6px;border-radius:11px}
+.theme-glyph{font-size:21px}
+.theme-copy strong{font-size:10px}
+.theme-copy small{font-size:9px}
+.header-actions{gap:5px}
+.login-button{padding:8px 8px}
+#issues>.section-title{padding-left:10px;padding-right:0}
+#issues>.section-title .subtle-link{margin-right:2px}
+#announcements>.section-title,#jobs>.section-title{padding-left:10px}
+#community>.section-title{padding-left:0}
+}
+@media(max-width:370px){.theme-button{min-width:78px;padding:5px}.theme-copy small{font-size:8px}.header-logo img{width:140px;max-width:35vw}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -414,10 +453,10 @@ main.main{padding-bottom:22px}
 <main class="main" id="main">
 <header class="topbar">
 <div class="header-left"><button class="icon-button menu-trigger" id="menu-open" type="button" aria-label="Open navigation menu" aria-controls="nav-drawer" aria-expanded="false"><span></span><span></span><span></span></button><a class="header-logo" href="#overview" aria-label="Sukuma! home"><picture><source id="logo-source" srcset="assets/sukuma-horizontal-light.png"><img id="header-logo-img" src="assets/sukuma-horizontal-light.png" alt="Sukuma!"></picture></a></div>
-<div class="header-actions"><button class="icon-button theme-button" id="theme" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">◐</button><button class="button login-button" id="login" type="button">Log in</button><button class="avatar" id="profile" type="button" aria-label="User profile, signed in as SU" title="Demo profile" hidden>SU</button></div>
+<div class="header-actions"><button class="theme-button" id="theme" type="button" aria-label="Switch to dark theme" title="Switch to dark theme"><span class="theme-glyph" aria-hidden="true">◐</span><span class="theme-copy"><strong>Theme</strong><small>Light / Dark</small></span></button><button class="button login-button" id="login" type="button">Log in</button><button class="avatar" id="profile" type="button" aria-label="User profile, signed in as SU" title="Demo profile" hidden>SU</button></div>
 <div class="breadcrumb">Sukuma! <span aria-hidden="true">/</span> Workspace <span aria-hidden="true">/</span> Overview</div>
 </header>
-<div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><img src="assets/sukuma-app-icon.png" alt="Sukuma! phoenix mark"><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
+<div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><img id="drawer-logo-img" src="assets/sukuma-stacked-light-proof.png" alt="Sukuma! logo"><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
 <section id="overview"><div class="heading hero-seascape"><div class="hero-copy"><div class="overline">Community accountability workspace</div><p class="hero-welcome" id="hero-welcome">Good morning!</p><h1>A cleaner, safer, stronger city.</h1><p class="hero-subheading">Report issues, track progress and hold your municipality accountable together.</p><a class="button hero-cta" href="#issues">Report an issue <span aria-hidden="true">→</span></a></div><div class="hero-weather" id="hero-weather" aria-live="polite"><span class="weather-city">Durban, South Africa</span><span class="weather-temp">Weather loading…</span><span class="weather-detail">Today</span></div><span class="pill hero-pill">Preview · sample data</span></div>
 
 </section><div class="search-dock" aria-label="Dashboard search"><div class="search-dock-label"><label for="search">Search issues and updates</label><span aria-hidden="true">⌕</span></div><div class="search-dock-control"><input id="search" class="search" type="search" placeholder="Search service issues…" autocomplete="off"><button class="button primary" id="search-submit" type="button">Search</button></div></div>
@@ -476,12 +515,12 @@ main.main{padding-bottom:22px}
 
 
 <section class="card insight" id="community"><div class="overline">Community intelligence</div><div class="section-title" style="margin-top:7px"><h2>Growing trends</h2><span aria-hidden="true">↗</span></div><p>Service delivery patterns. This concept shows how verified service trends could be summarised. The examples below are illustrative, not actual municipal statistics.</p><div class="bar-list"><div><div class="bar-label"><span>Water & sanitation</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div><div><div class="bar-label"><span>Roads & streetlights</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div><div><div class="bar-label"><span>Waste collection</span><strong>Example</strong></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div></div></section>
-<section class="card public-card" id="announcements"><div class="section-title"><div><h2>Community updates</h2><p class="card-subtitle">Public notices &amp; upcoming events</p></div><span aria-hidden="true">▤</span></div><p>Official service notices, public consultations, community meetings and local activities.</p><div class="community-feed"><article class="feed-item"><span class="feed-icon notice-icon" aria-hidden="true">ⓘ</span><div><strong>Public service announcements</strong><p>Verified municipal notices will appear here when an official source is connected.</p><span class="feed-meta">Source: pending verification</span></div></article><article class="feed-item"><span class="feed-icon event-icon" aria-hidden="true">▦</span><div><strong>Upcoming community events</strong><p>Confirmed community meetings, clean-ups and public consultations will be listed here.</p><span class="feed-meta">No verified events listed yet</span></div></article></div></section>
+<section class="card public-card" id="announcements"><div class="section-title"><div><h2>Community updates</h2><p class="card-subtitle">Public notices &amp; upcoming events</p></div></div><p>Official service notices, public consultations, community meetings and local activities.</p><div class="community-feed"><article class="feed-item"><span class="feed-icon notice-icon" aria-hidden="true">ⓘ</span><div><strong>Public service announcements</strong><p>Verified municipal notices will appear here when an official source is connected.</p><span class="feed-meta">Source: pending verification</span></div></article><article class="feed-item"><span class="feed-icon event-icon" aria-hidden="true">▦</span><div><strong>Upcoming community events</strong><p>Confirmed community meetings, clean-ups and public consultations will be listed here.</p><span class="feed-meta">No verified events listed yet</span></div></article></div></section>
 
 <section class="card public-card" id="jobs"><div class="section-title"><h2>Opportunities for job seekers</h2><span aria-hidden="true">↗</span></div><p>A future community jobs board could share verified vacancies and offer secure CV submission for job seekers.</p><div class="public-placeholder"><strong>Job seeker portal — planned</strong><span>Secure CV submission is planned, not active in this preview. Before launch: obtain clear consent, encrypt files in transit and at rest, restrict recruiter access, define retention and deletion periods, and provide a way to withdraw consent.</span></div></section>
 <section class="community-banner" aria-labelledby="community-banner-title">
  <div class="community-banner-image" role="img" aria-label="Durban beachfront and city skyline on the KwaZulu-Natal coast"></div>
- <div class="community-banner-copy"><span class="banner-kicker">SUKUMA! · COMMUNITY FIRST</span><h2 id="community-banner-title">Small actions. Stronger communities.</h2><p>See what is happening nearby, share service concerns and help build a city that works for everyone.</p><a class="banner-link" href="#community-pulse">Explore community pulse <span aria-hidden="true">→</span></a></div>
+ <div class="community-banner-copy"><span class="banner-kicker">SUKUMA! · We build together</span><h2 id="community-banner-title">Small actions. Stronger communities.</h2><p>See what is happening nearby, share service concerns and help build a city that works for everyone.</p><a class="banner-link" href="#community-pulse">Explore community pulse <span aria-hidden="true">→</span></a></div>
  <span class="banner-flame" aria-hidden="true">✳</span>
 </section>
 
@@ -496,7 +535,7 @@ async function updateHeroWeather(){const el=document.getElementById('hero-weathe
 
 const root=document.documentElement;
 const themeButton=document.getElementById('theme');
-function syncThemeAssets(){const dark=root.dataset.theme==='dark';const horizontalLogo=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';document.getElementById('header-logo-img').src=horizontalLogo;const sidebarLogo=document.querySelector('.logo img');if(sidebarLogo)sidebarLogo.src=horizontalLogo;const drawerLogo=document.querySelector('.drawer-head img');if(drawerLogo)drawerLogo.src=dark?'assets/sukuma-stacked-dark-proof.png':'assets/sukuma-stacked-light-proof.png';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeButton.title=dark?'Switch to light theme':'Switch to dark theme';}
+function syncThemeAssets(){const dark=root.dataset.theme==='dark';const horizontalLogo=dark?'assets/sukuma-horizontal-dark.png':'assets/sukuma-horizontal-light.png';document.getElementById('header-logo-img').src=horizontalLogo;const sidebarLogo=document.querySelector('.logo img');if(sidebarLogo)sidebarLogo.src=horizontalLogo;const drawerLogo=document.getElementById('drawer-logo-img');if(drawerLogo)drawerLogo.src=dark?'assets/sukuma-stacked-dark-proof.png':'assets/sukuma-stacked-light-proof.png';themeButton.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');themeButton.title=dark?'Switch to light theme':'Switch to dark theme';}
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';syncThemeAssets();});
 const drawer=document.getElementById('nav-drawer'),scrim=document.getElementById('drawer-scrim'),menuOpen=document.getElementById('menu-open');
 function setDrawer(open){drawer.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));menuOpen.setAttribute('aria-expanded',String(open));scrim.hidden=!open;document.body.style.overflow=open?'hidden':'';if(open)document.getElementById('menu-close').focus();else menuOpen.focus();}
