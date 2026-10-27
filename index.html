@@ -441,6 +441,26 @@ main.main{padding-bottom:22px}
 .help-result[hidden]{display:none}
 .help-note{margin:15px 0 0;font-size:12px}
 @media(max-width:600px){.help-search-row{flex-direction:column}.help-search-row .button{width:100%}.help-results{grid-template-columns:1fr}.help-centre{margin-top:18px}}
+/* Accessibility and knowledge discovery refinements */
+[data-theme="light"] .drawer-head{background:#073744!important;border-radius:16px;padding:14px}
+[data-theme="light"] .drawer-head img{background:#fff;border-radius:10px;padding:5px}
+[data-theme="dark"] .header-logo img{background:transparent!important;mix-blend-mode:normal!important}
+.header-logo picture{display:block;background:transparent!important}
+#community.insight{color:var(--text)!important}
+#community .overline,#community .section-title h2,#community p,#community .bar-label,#community .bar-label span,#community .bar-label strong{color:var(--text)!important;opacity:1}
+#community .section-title{padding-left:0!important}
+.community-banner-copy{background:linear-gradient(115deg,#0b5965,#087f8c)!important}
+.community-banner-copy .banner-kicker,.community-banner-copy h2,.community-banner-copy>p{color:#fff!important}
+.context-help{margin:14px 0;padding:14px 16px;border-left:3px solid var(--brand);border-radius:0 12px 12px 0;background:var(--soft);color:var(--text);font-size:13px;line-height:1.6}
+.context-help strong{display:block;font-family:Montserrat,sans-serif;font-size:15px;margin-bottom:4px}
+.knowledge-search-results{display:none;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
+.knowledge-search-results[data-open="true"]{display:block}
+.knowledge-search-results h3{margin:0 0 8px;font:700 15px Montserrat,sans-serif}
+.knowledge-search-results a{display:block;padding:9px 2px;border-bottom:1px solid var(--line);color:var(--brand);font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.knowledge-search-results a:last-child{border-bottom:0}
+.knowledge-search-results p{margin:6px 0;font-size:13px;line-height:1.5;color:var(--text)}
+.inline-help{padding:10px 12px;margin:10px 0;background:var(--soft);border-radius:10px;color:var(--text)!important;font-size:12px;line-height:1.55}
+@media(max-width:760px){.community-banner-copy{background:#087f8c!important}.context-help{font-size:12px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -514,7 +534,7 @@ main.main{padding-bottom:22px}
 <div class="drawer-scrim" id="drawer-scrim" hidden></div><aside class="nav-drawer" id="nav-drawer" aria-label="Navigation menu" aria-hidden="true"><div class="drawer-head"><div class="drawer-logo-surface"><img id="drawer-logo-img" src="assets/sukuma-stacked-dark-proof.png" alt="Sukuma! logo"></div><button class="icon-button" id="menu-close" type="button" aria-label="Close navigation menu">×</button></div><div class="drawer-label">Workspace</div><nav class="drawer-nav"><a class="active" href="#overview" aria-current="page"><span>▦</span>Overview</a><a href="#issues"><span>◎</span>Service issues</a><a href="#announcements"><span>ⓘ</span>Announcements</a><a href="#actions"><span>✓</span>Tasks &amp; follow-ups</a><a href="#community-pulse"><span>⌖</span>Community pulse</a><a href="#reports"><span>▤</span>Reports</a><a href="#help"><span>?</span>Help &amp; knowledge base</a><a href="#settings"><span>⚙</span>Settings</a></nav><div class="drawer-foot">Community accountability workspace</div></aside>
 <section id="overview"><div class="heading hero-seascape"><div class="hero-copy"><div class="overline">Community accountability workspace</div><p class="hero-welcome" id="hero-welcome">Good morning!</p><h1>A cleaner, safer, stronger city.</h1><p class="hero-subheading">Report issues, track progress and hold your municipality accountable together.</p><a class="button hero-cta" href="#issues">Report an issue <span aria-hidden="true">→</span></a></div><div class="hero-weather" id="hero-weather" aria-live="polite"><span class="weather-city">Durban, South Africa</span><span class="weather-temp">Weather loading…</span><span class="weather-detail">Today</span></div><span class="pill hero-pill">Preview · sample data</span></div>
 
-</section><div class="search-dock" aria-label="Dashboard search"><div class="search-dock-label"><label for="search">Search issues and updates</label><span aria-hidden="true">⌕</span></div><div class="search-dock-control"><input id="search" class="search" type="search" placeholder="Search service issues…" autocomplete="off"><button class="button primary" id="search-submit" type="button">Search</button></div></div>
+</section><div class="search-dock" aria-label="Dashboard search"><div class="search-dock-label"><label for="search">Search issues and updates</label><span aria-hidden="true">⌕</span></div><div class="search-dock-control"><input id="search" class="search" type="search" placeholder="Search service issues…" autocomplete="off"><button class="button primary" id="search-submit" type="button">Search</button></div></div><div class="knowledge-search-results" id="knowledge-search-results" aria-live="polite" data-open="false"></div>
 
 <section class="quick-actions-panel" id="actions"><div class="section-title"><h2>Quick actions</h2><a class="subtle-link" href="#actions">View all <span aria-hidden="true">→</span></a></div><div class="quick-grid"><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Report issue</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><span>My cases</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8h8l4 4V20H6z"/><path d="M14 4v4h4M9 12h6M9 16h6"/></svg><span>Follow-ups</span></div><div class="quick-tile"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.4A4.6 4.6 0 0 1 8.1 13h1.8a4.6 4.6 0 0 1 4.6 4.6V19M16 5.4a3 3 0 0 1 0 5.8M17 13.3a4.5 4.5 0 0 1 3.5 4.4V19"/></svg><span>Community insight</span></div></div></section>
 
@@ -609,7 +629,19 @@ syncThemeAssets();
 updateHeroWelcome();updateHeroWeather();
 let activeFilter='all';
 function filterIssues(){const q=search.value.trim().toLowerCase();const cards=[...document.querySelectorAll('.issue')];let visible=0;cards.forEach(card=>{const matchesText=(card.innerText+' '+card.dataset.search).toLowerCase().includes(q);const matchesFilter=activeFilter==='all'||card.dataset.status===activeFilter;card.hidden=!(matchesText&&matchesFilter);if(!card.hidden)visible++;});document.getElementById('no-results').hidden=visible!==0;}
-search.addEventListener('input',filterIssues);
+const knowledgeBase=[
+{title:'Resolution rate',keywords:['resolution rate','resolved','resolution','metric','percentage'],summary:'The percentage of recorded cases marked as resolved during the selected reporting period. Check the reporting period and case-status definitions before comparing results.',href:'#service-metrics'},
+{title:'How to report a problem',keywords:['report','complaint','submit','submission','required information'],summary:'Before submitting, provide a clear description, the service location at a safe level of detail, and any relevant evidence. Do not include unnecessary personal information.',href:'#issues'},
+{title:'What happens after submission?',keywords:['after submission','next step','follow up','municipality','response','no response'],summary:'This preview does not yet confirm a live submission workflow or automated follow-ups. The final steps must be documented against verified application behaviour.',href:'#issues'},
+{title:'Issue statuses explained',keywords:['status','in progress','resolved','open','monitored'],summary:'Statuses describe the latest recorded stage of a case. Definitions and any status changes must be shown alongside the case history; sample statuses in this preview are illustrative.',href:'#issues'},
+{title:'Community pulse and trends',keywords:['community pulse','map','trend','growing trends','community intelligence'],summary:'The map and trend panel demonstrate how service reports could be explored. Current pins, categories and trend values are illustrative, not verified municipal records.',href:'#community-pulse'},
+{title:'Privacy and personal information',keywords:['privacy','popia','personal information','data','consent'],summary:'Share only information needed to understand the service concern. Sukuma! must apply appropriate access controls, retention rules and lawful deletion processes before handling real resident data.',href:'#settings'},
+{title:'Municipal notices and sources',keywords:['notice','announcement','source','date','official'],summary:'A public notice should show its issuing organisation, publication date, source link and any relevant expiry or update date. Unverified notices should not be presented as official.',href:'#announcements'}
+];
+function renderKnowledgeResults(){const box=document.getElementById('knowledge-search-results');const q=search.value.trim().toLowerCase();if(!q){box.dataset.open='false';box.innerHTML='';return;}const results=knowledgeBase.filter(item=>(item.title+' '+item.keywords.join(' ')+' '+item.summary).toLowerCase().includes(q));box.dataset.open='true';box.innerHTML='<h3>Help & knowledge base</h3>'+ (results.length?results.map(item=>'<a href="'+item.href+'">'+item.title+'</a><p>'+item.summary+'</p>').join(''):'<p>No exact help result found. Try “resolution rate”, “status”, “privacy”, “report” or “municipal notice”.</p>');}
+search.addEventListener('input',()=>{filterIssues();renderKnowledgeResults();});
+document.getElementById('search-submit').addEventListener('click',renderKnowledgeResults);
+
 document.querySelectorAll('[data-filter]').forEach(button=>{button.setAttribute('aria-pressed',button.dataset.filter==='all'?'true':'false');button.addEventListener('click',()=>{activeFilter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});filterIssues();});});
 document.querySelectorAll('[data-toast]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();showToast(link.dataset.toast);}));
 
